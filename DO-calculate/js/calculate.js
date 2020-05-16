@@ -112,12 +112,12 @@ function refreshStatistics() {
     $("#cargo").text("Cargo: " + stats["cargo"]["cargo"]().toFixed(0));
     $("#shield").text("Shield: " + stats["shield"]["shield"]().toFixed(0));
 
-    $("#dmg-PVE").text("Damage PVE: " + stats["laser"]["PVE"]()[0].toFixed(0)
+    $("#damage-PVE").text("Damage PVE: " + stats["laser"]["PVE"]()[0].toFixed(0)
         + "(" + Number(stats["laser"]["bonus_PVE"]()[0] + stats["laser"]["PVE"]()[0]).toFixed(0) + ")"
         + " - " + stats["laser"]["PVE"]()[1].toFixed(0)
         + "(" + Number(stats["laser"]["bonus_PVE"]()[1] + stats["laser"]["PVE"]()[1]).toFixed(0) + ")");
 
-    $("#dmg-PVP").text("Damage PVP: " + stats["laser"]["PVP"]()[0].toFixed(0)
+    $("#damage-PVP").text("Damage PVP: " + stats["laser"]["PVP"]()[0].toFixed(0)
         + "(" + Number(stats["laser"]["bonus_PVP"]()[0] + stats["laser"]["PVP"]()[0]).toFixed(0) + ")"
         + " - " + stats["laser"]["PVP"]()[1].toFixed(0)
         + "(" + Number(stats["laser"]["bonus_PVP"]()[1] + stats["laser"]["PVP"]()[1]).toFixed(0) + ")");
@@ -293,7 +293,6 @@ function skillBonuses() {
             if (skills[type][s].amount != null && skills[type][s].requirements() && skills[type][s].amount > 0) {
                 let bonus = skills[type][s].levels[skills[type][s].amount - 1];
                 bonuses[bonus.bonus] = bonus.value;
-                console.log(bonuses);
             }
         }
     }

@@ -14,113 +14,38 @@ hr {
     background-color: var(--main-color);
 }
 
-.item-field {
-    position: relative;
-    width: 70px;
-    height: 70px;
-    border: 2px solid grey;
-    padding: 3px;
-    display: inline-block;
-    margin: 3px;
-    background-color: var(--item-bg-color);
-    text-align: left;
+::-webkit-scrollbar {
+    width: 10px;
 }
 
-.sector {
-    padding-bottom: 10px;
-    display: inline-block;
-    margin: 5px;
-    text-align: center;
+::-webkit-scrollbar-track {
+    background: rgba(0, 0, 0, .1);
 }
 
-.inline {
-    display: inline-block;
-    vertical-align: top;
-    max-width: 930px;
+::-webkit-scrollbar-thumb {
+    background: rgba(0, 0, 0, .3);
 }
 
-.stat-sector,
-.ship-select {
-    display: inline-block;
-    font-weight: 200;
-    padding: 10px;
-    font-size: 1.5rem;
+::-webkit-scrollbar-thumb:hover {
+    background: rgba(0, 0, 0, .7);
 }
 
-.ship-select,
-.main-select-ship {
-    padding-top: 40px;
-    vertical-align: top;
-}
-
-.ship-select .bootstrap-select:not([class*="col-"]):not([class*="form-control"]):not(.input-group-btn),
-.main-select-ship .bootstrap-select:not([class*="col-"]):not([class*="form-control"]):not(.input-group-btn) {
-    width: 300px;
-}
-
-.ship-select .bootstrap-select .btn,
-.ship-select .bootstrap-select .btn:hover,
-.ship-select .show > .btn-light.dropdown-toggle,
-.main-select-ship .bootstrap-select .btn,
-.main-select-ship .bootstrap-select .btn:hover,
-.main-select-ship .show > .btn-light.dropdown-toggle {
-    font-weight: 400;
-    padding: 0 0 0 0;
-    font-size: 2rem;
-    width: 280px;
-    background-color: transparent;
-    border-bottom: 1px solid transparent;
-    border-radius: 0;
-}
-
-.ship-select .bootstrap-select .btn:hover,
-.main-select-ship .bootstrap-select .btn:hover {
-    border-bottom: 1px solid white;
-}
-
-.ship-select .bootstrap-select .dropdown-toggle .filter-option,
-.main-select-ship .bootstrap-select .dropdown-toggle .filter-option {
-    text-align: center;
-    background-color: transparent;
-}
-
-.stat-container {
-    position: -webkit-sticky;
-    position: sticky;
-    top: 0;
-    z-index: 1000;
-    background-color: var(--main-bg-color);
-}
-
-
-.main-select-ship .dropdown-header,
-.ship-select .dropdown-header {
-    color: #aaaaaa;
-}
-
-.dropdown-header {
+.bootstrap-select > .dropdown-toggle.bs-placeholder,
+.bootstrap-select > .dropdown-toggle.bs-placeholder:hover {
     color: var(--main-color);
 }
 
-.dropdown-divider {
-    border-top: 1px solid #aaaaaa;
+.bootstrap-select .dropdown-item {
+    color: var(--main-color);
 }
 
-.drone {
-    display: inline-block;
-    border: 2px solid grey;
+.bootstrap-select .dropdown-item:hover {
+    background-color: #323232;
+    color: var(--main-color);
+}
+
+.bootstrap-select .dropdown-menu {
     background-color: var(--item-bg-color);
-    padding: 2px;
-    margin: 5px;
-    text-align: left;
-}
-
-#field-ship-laser-id,
-#field-ship-generator-id,
-#field-drone-id,
-#field-drone-slot-id-0,
-#field-drone-slot-id-1 {
-    border: 2px solid #dddddd;
 }
 
 .bootstrap-select .btn,
@@ -135,17 +60,75 @@ hr {
     margin-bottom: 10px;
 }
 
-.bootstrap-select .dropdown-menu {
+.form-control,
+.form-control:focus,
+.bootstrap-select .no-results {
     background-color: var(--item-bg-color);
-}
-
-.bootstrap-select .dropdown-item {
     color: var(--main-color);
 }
 
-.bootstrap-select .dropdown-item:hover {
-    background-color: #323232;
+.dropdown-header {
     color: var(--main-color);
+}
+
+.dropdown-divider {
+    border-top: 1px solid #aaaaaa;
+}
+
+:not(.input-group) > .bootstrap-select.form-control:not([class*="col-"]) {
+    height: 100%;
+}
+
+@keyframes border-pulse {
+    0% {
+        border-bottom: 1px solid rgba(255, 255, 255, 0);
+    }
+    50% {
+        border-bottom: 1px solid rgba(255, 255, 255, 1);
+    }
+    100% {
+        border-bottom: 1px solid rgba(255, 255, 255, 0);
+    }
+}
+
+.main-select-ship .bootstrap-select .btn {
+    animation: border-pulse 3s infinite;
+}
+
+.main-select-ship .show > .btn-light.dropdown-toggle {
+    animation-play-state: paused;
+}
+
+.main-select-ship {
+    height: fit-content;
+    width: fit-content;
+    margin-right: auto;
+    margin-left: auto;
+    margin-top: 15%;
+}
+
+.ship-select .bootstrap-select .btn,
+.ship-select .bootstrap-select .btn:hover,
+.ship-select .show > .btn-light.dropdown-toggle,
+.main-select-ship .bootstrap-select .btn,
+.main-select-ship .bootstrap-select .btn:hover,
+.main-select-ship .show > .btn-light.dropdown-toggle {
+    font-weight: 400;
+    padding: 0;
+    font-size: 2rem;
+    width: 280px;
+    background-color: transparent;
+    border-bottom: 1px solid transparent;
+    border-radius: 0;
+}
+
+.item-field .bootstrap-select .dropdown-toggle .filter-option,
+.drone-design .bootstrap-select .dropdown-toggle .filter-option,
+.drone-lvl .bootstrap-select .dropdown-toggle .filter-option,
+.ores .bootstrap-select .dropdown-toggle .filter-option,
+.ship-select .bootstrap-select .dropdown-toggle .filter-option,
+.main-select-ship .bootstrap-select .dropdown-toggle .filter-option {
+    text-align: center;
 }
 
 .item-field .bootstrap-select > .dropdown-toggle::after,
@@ -158,35 +141,165 @@ hr {
     display: none;
 }
 
-.item-field .bootstrap-select > .dropdown-toggle {
-    width: 60px;
-    height: 60px;
+.main-select-ship .dropdown-header,
+.ship-select .dropdown-header {
+    color: #aaaaaa;
 }
 
-.item-field .bootstrap-select .dropdown-toggle .filter-option,
-.drone-design .bootstrap-select .dropdown-toggle .filter-option,
-.drone-lvl .bootstrap-select .dropdown-toggle .filter-option,
-.ores .bootstrap-select .dropdown-toggle .filter-option {
+.ship-select {
+    margin-top: 30px;
+    vertical-align: top;
+}
+
+.ship-select .bootstrap-select .btn:hover {
+    border-bottom: 1px solid white;
+}
+
+.stat-sector {
+    display: inline-block;
+    font-weight: 200;
+    padding: 10px;
+    font-size: 1.5rem;
+}
+
+/*.stat-container {*/
+/*    position: -webkit-sticky;*/
+/*    position: sticky;*/
+/*    top: 0;*/
+/*    z-index: 1000;*/
+/*    background-color: var(--main-bg-color);*/
+/*}*/
+
+.modules,
+.boosts,
+.drone-formations,
+.ores,
+.other,
+.skill-tree {
+    padding: 10px;
+    margin: 5px;
     text-align: center;
+    width: 260px;
 }
 
-.item-field .bootstrap-select .dropdown-menu li.disabled a,
-.drone-design .bootstrap-select .dropdown-menu li.disabled a,
-.drone-lvl .bootstrap-select .dropdown-menu li.disabled a {
-    font-weight: bold;
+.item-field .bootstrap-select .dropdown-toggle .filter-option-inner,
+.ores .bootstrap-select .dropdown-toggle .filter-option-inner {
+    padding-right: 0;
+}
+
+.ore {
+    display: inline-block;
+    width: 100px;
+    height: 100px;
+    padding: 5px;
 }
 
 .item-field .bootstrap-select .btn,
-.item-field .bootstrap-select .btn:hover,
-.drone-design .bootstrap-select .btn,
-.drone-design .bootstrap-select .btn:hover,
-.drone-lvl .bootstrap-select .btn,
-.drone-lvl .bootstrap-select .btn:hover {
+.ore .bootstrap-select .btn {
+    height: 100%;
+}
+
+.checkmark-label input {
+    position: absolute;
+    opacity: 0;
+    cursor: pointer;
+    height: 0;
+    width: 0;
+}
+
+.checkmark-label {
+    display: block;
+    position: relative;
+    padding-left: 35px;
+    margin-bottom: 15px;
+    cursor: pointer;
+    font-size: 22px;
+    -webkit-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
+    text-align: left;
+}
+
+.checkmark {
+    position: absolute;
+    top: 4px;
+    left: 0;
+    height: 25px;
+    width: 25px;
+    background-color: var(--main-bg-color);
+    border: 1px solid var(--main-color);
+}
+
+.checkmark-label:hover input ~ .checkmark {
+    background-color: var(--main-bg-color);
+}
+
+.checkmark-label input:checked ~ .checkmark {
+    background-color: var(--main-bg-color);
+}
+
+.checkmark:after {
+    content: "";
+    position: absolute;
+    display: none;
+}
+
+.checkmark-label input:checked ~ .checkmark:after {
+    display: block;
+}
+
+.checkmark-label .checkmark:after {
+    left: 9px;
+    top: 5px;
+    width: 5px;
+    height: 10px;
+    border: solid var(--main-color);
+    border-width: 0 3px 3px 0;
+    -webkit-transform: rotate(45deg);
+    -ms-transform: rotate(45deg);
+    transform: rotate(45deg);
+}
+
+.items {
+    max-width: 930px;
+}
+
+.sector {
+    padding-bottom: 10px;
+    display: inline-block;
+    margin: 5px;
+    text-align: center;
+}
+
+.item-field {
+    position: relative;
+    width: 70px;
+    height: 70px;
+    border: 2px solid grey;
+    padding: 3px;
+    display: inline-block;
+    margin: 3px;
+    background-color: var(--item-bg-color);
+    text-align: left;
+}
+
+.items .bootstrap-select .btn,
+.items .bootstrap-select .btn:hover,
+.items .show > .btn-light.dropdown-toggle {
     font-weight: 100;
     padding: 9px 0 5px 0;
     font-size: 0.75rem;
     text-align: center;
     border-radius: 0;
+}
+
+#field-ship-laser-id,
+#field-ship-generator-id,
+#field-drone-id,
+#field-drone-slot-id-0,
+#field-drone-slot-id-1 {
+    border: 2px solid #dddddd;
 }
 
 .item-upgrade {
@@ -197,16 +310,21 @@ hr {
     right: 3px;
 }
 
-.item-upgrade .bootstrap-select > .dropdown-toggle {
-    width: 30px;
-    height: 30px;
-}
-
 .item-upgrade .bootstrap-select .btn,
-.item-upgrade .bootstrap-select .btn:hover {
+.item-upgrade .bootstrap-select .btn:hover,
+.item-upgrade .show > .btn-light.dropdown-toggle {
     padding: 10px 0 0 10px;
     text-align: right;
     background-color: transparent;
+}
+
+.drone {
+    display: inline-block;
+    border: 2px solid grey;
+    background-color: var(--item-bg-color);
+    padding: 2px;
+    margin: 5px;
+    text-align: left;
 }
 
 .drone-design {
@@ -217,36 +335,10 @@ hr {
 
 }
 
-.drone-design .bootstrap-select .btn {
-    width: 150px;
-}
-
 .drone-lvl {
     width: 75px;
     display: inline-block;
     height: 35px;
-}
-
-.drone-lvl .bootstrap-select:not([class*="col-"]):not([class*="form-control"]):not(.input-group-btn) {
-    width: 75px;
-}
-
-.drone-lvl .bootstrap-select .btn {
-    width: 75px;
-}
-
-.block {
-    display: block;
-}
-
-.ores .bootstrap-select:not([class*="col-"]):not([class*="form-control"]):not(.input-group-btn) {
-    width: 90px;
-}
-
-.ores .bootstrap-select .btn {
-    width: 80px;
-    height: 80px;
-    padding: 8px;
 }
 
 .skill {
@@ -273,152 +365,12 @@ hr {
     opacity: 0.5;
 }
 
-.skill .bootstrap-select {
-    position: absolute;
-    left: 18px;
-    bottom: 1px;
-}
-
 .skill-amount {
     position: absolute;
     left: 30px;
     bottom: 2px;
     font-size: 0.7rem;
 }
-
-.skill .bootstrap-select .btn {
-    width: 40px;
-    height: 10px;
-    font-weight: 100;
-    padding: 0 0 0 0;
-    font-size: 0.6rem;
-    background-color: transparent;
-}
-
-.skill .bootstrap-select .dropdown-toggle .filter-option {
-    height: 10px;
-    text-align: center;
-    background-color: transparent;
-}
-
-.modules,
-.boosts,
-.drone-formations,
-.ores,
-.skill-tree {
-    padding: 10px;
-    margin: 5px;
-    text-align: center;
-    width: 260px;
-}
-
-.ores .bootstrap-select .dropdown-toggle .filter-option-inner {
-    padding-right: 0;
-}
-
-
-@keyframes border-pulse {
-    0% {
-        border-bottom: 1px solid rgba(255, 255, 255, 0);
-    }
-    50% {
-        border-bottom: 1px solid rgba(255, 255, 255, 1);
-    }
-    100% {
-        border-bottom: 1px solid rgba(255, 255, 255, 0);
-    }
-}
-
-.main-select-ship .bootstrap-select .btn {
-    animation: border-pulse 3s infinite;
-}
-
-.main-select-ship .show > .btn-light.dropdown-toggle {
-    animation-play-state: paused;
-}
-
-.bootstrap-select > .dropdown-toggle.bs-placeholder,
-.bootstrap-select > .dropdown-toggle.bs-placeholder:hover {
-    color: var(--main-color);
-}
-
-.main-select-ship {
-    height: 50vh;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-}
-
-.form-control,
-.form-control:focus,
-.bootstrap-select .no-results {
-    background-color: var(--item-bg-color);
-    color: var(--main-color);
-}
-
-.container input {
-    position: absolute;
-    opacity: 0;
-    cursor: pointer;
-    height: 0;
-    width: 0;
-}
-
-.container {
-    display: block;
-    position: relative;
-    padding-left: 35px;
-    margin-bottom: 15px;
-    cursor: pointer;
-    font-size: 22px;
-    -webkit-user-select: none;
-    -moz-user-select: none;
-    -ms-user-select: none;
-    user-select: none;
-    text-align: left;
-}
-
-
-.checkmark {
-    position: absolute;
-    top: 4px;
-    left: 0;
-    height: 25px;
-    width: 25px;
-    background-color: var(--main-bg-color);
-    border: 1px solid var(--main-color);
-}
-
-.container:hover input ~ .checkmark {
-    background-color: var(--main-bg-color);
-}
-
-.container input:checked ~ .checkmark {
-    background-color: var(--main-bg-color);
-}
-
-.checkmark:after {
-    content: "";
-    position: absolute;
-    display: none;
-}
-
-.container input:checked ~ .checkmark:after {
-    display: block;
-}
-
-.container .checkmark:after {
-    left: 9px;
-    top: 5px;
-    width: 5px;
-    height: 10px;
-    border: solid var(--main-color);
-    border-width: 0 3px 3px 0;
-    -webkit-transform: rotate(45deg);
-    -ms-transform: rotate(45deg);
-    transform: rotate(45deg);
-}
-
 
 #accordion {
     width: 260px;
@@ -457,21 +409,4 @@ hr {
 .statistics-details {
     padding: 10px;
     margin: 5px;
-}
-
-
-::-webkit-scrollbar {
-    width: 10px;
-}
-
-::-webkit-scrollbar-track {
-    background: rgba(0, 0, 0, .1);
-}
-
-::-webkit-scrollbar-thumb {
-    background: rgba(0, 0, 0, .2);
-}
-
-::-webkit-scrollbar-thumb:hover {
-    background: rgba(0, 0, 0, .7);
 }

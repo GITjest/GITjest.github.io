@@ -73,7 +73,7 @@ function createOptionOre(value, ore, oreName) {
 }
 
 function createItemField(selectId, selectTitle, itemArrays, onChangeEvent) {
-    let itemSelect = $("<select>", {"class": "selectpicker", "id": selectId, "title": selectTitle})
+    let itemSelect = $("<select>", {"class": "selectpicker form-control", "id": selectId, "title": selectTitle})
         .append($("<option>", {"value": ""}))
         .append(itemArrays);
     itemSelect.on('change', onChangeEvent);
@@ -81,7 +81,7 @@ function createItemField(selectId, selectTitle, itemArrays, onChangeEvent) {
     let itemSlot = $("<div>", {"class": "item-field", "id": "field-" + selectId}).append(itemSelect);
 
     let upgradeSelect = $("<select>", {
-        "class": "selectpicker",
+        "class": "selectpicker form-control",
         "id": "upgrade-" + selectId,
         "title": selectTitle + " upgrade"
     }).append(itemUpgradeOption);
@@ -111,7 +111,7 @@ function setAllValues(object, containerId) {
 }
 
 function createDroneField(i, onChangeEvent) {
-    let droneDesign = $("<select>", {"class": "selectpicker", "id": "drone-design-" + i, "title": "Design"})
+    let droneDesign = $("<select>", {"class": "selectpicker form-control", "id": "drone-design-" + i, "title": "Design"})
         .append($("<option>", {"value": ""}))
         .append(createOptions(droneDesigns, "", "", false));
     droneDesign.on('change', onChangeEvent);
@@ -120,14 +120,14 @@ function createDroneField(i, onChangeEvent) {
     let droneSlot2 = createItemField("drone-slot-" + i + "-1", "Item", [lasersOption, shieldsOption], onChangeEvent);
 
     let droneLvl = $("<select>", {
-        "class": "selectpicker",
+        "class": "selectpicker form-control",
         "id": "drone-LVL-" + i,
         "title": "Drone lvl"
     }).append(droneLVLOption);
     droneLvl.on('change', onChangeEvent);
 
     let droneUpgrade = $("<select>", {
-        "class": "selectpicker",
+        "class": "selectpicker form-control",
         "id": "drone-upgrade-" + i,
         "title": "Drone upgrade"
     }).append(itemUpgradeOption);

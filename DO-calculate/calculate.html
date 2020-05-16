@@ -1,193 +1,227 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <link rel="shortcut icon" href="#" />
+    <link rel="shortcut icon" href="#"/>
     <title>DO calculate</title>
 
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.1/css/bootstrap.min.css">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-select/1.13.1/css/bootstrap-select.css" />
+    <link rel="stylesheet"
+          href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-select/1.13.1/css/bootstrap-select.css"/>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.1/js/bootstrap.bundle.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-select/1.13.1/js/bootstrap-select.min.js"></script>
-	
-    <link rel="stylesheet" type="text/css" href="css/style.css" />
-	<script src="js/data/ships.js"></script>
-	<script src="js/data/lasers.js"></script>
-	<script src="js/data/generators.js"></script>
-	<script src="js/data/shields.js"></script>
-	<script src="js/data/droneDesigns.js"></script>
-	<script src="js/data/boosters.js"></script>
-	<script src="js/data/modules.js"></script>
-	<script src="js/data/formations.js"></script>
-	<script src="js/data/ores.js"></script>
-	<script src="js/data/skills.js"></script>
-	<script src="js/data/stat.js"></script>
-	
-	<script src="js/generate-ship-select.js"></script>
-	<script src="js/create.js"></script>
-	<script src="js/calculate.js"></script>
+
+    <link rel="stylesheet" type="text/css" href="css/style.css"/>
+    <script src="js/data/ships.js"></script>
+    <script src="js/data/lasers.js"></script>
+    <script src="js/data/generators.js"></script>
+    <script src="js/data/shields.js"></script>
+    <script src="js/data/droneDesigns.js"></script>
+    <script src="js/data/boosters.js"></script>
+    <script src="js/data/modules.js"></script>
+    <script src="js/data/formations.js"></script>
+    <script src="js/data/ores.js"></script>
+    <script src="js/data/skills.js"></script>
+    <script src="js/data/stat.js"></script>
+
+    <script src="js/generate-ship-select.js"></script>
+    <script src="js/create.js"></script>
+    <script src="js/calculate.js"></script>
 </head>
 <body>
 <div class="stat-container">
-    <div class="ship-select">
-        <select class="selectpicker" id="select-ship" onchange="location = this.value;" title="Select ship" data-live-search="true"></select>
+    <div class="ship-select d-inline-block">
+        <select class="selectpicker form-control bg-transparent" id="select-ship" onchange="location = this.value;"
+                title="Select ship"
+                data-live-search="true"></select>
+    </div>
+    <div class="stat-sector">
+        <p id="damage-PVE">Damage PVE: 0(0) - 0(0)</p>
+        <p id="damage-PVP">Damage PVP: 0(0) - 0(0)</p>
     </div>
 
     <div class="stat-sector">
-        <div class="stat"><p id="dmg-PVE">Damage PVE: 0</p></div>
-        <div class="stat"><p id="dmg-PVP">Damage PVP: 0</p></div>
+        <p id="hp">HP: 0</p>
+        <p id="shield">Shield: 0</p>
     </div>
 
     <div class="stat-sector">
-        <div class="stat"><p id="hp">HP: 0</p></div>
-        <div class="stat"><p id="shield">Shield: 0</p></div>
-    </div>
-	
-    <div class="stat-sector">
-        <div class="stat"><p id="speed">Speed: 0</p></div>
-        <div class="stat"><p id="cargo">Cargo: 0</p></div>
+        <p id="speed">Speed: 0</p>
+        <p id="cargo">Cargo: 0</p>
     </div>
 </div>
 
-<div class="inline">
+<div class="d-inline-block align-top">
     <div class="boosts">
-        <h4>Boosters</h4><hr>
-		<select class="selectpicker" id="boosters" title="Boosters" data-live-search="true" data-selected-text-format="count > 3" multiple
-		data-actions-box="true"></select>
+        <h4>Boosters</h4>
+        <hr>
+        <select class="selectpicker form" id="boosters" title="Boosters" data-live-search="true"
+                data-selected-text-format="count > 3" multiple
+                data-actions-box="true"></select>
     </div>
 
     <div class="modules">
-        <h4>Modules</h4><hr>
+        <h4>Modules</h4>
+        <hr>
         <select class="selectpicker" id="modules" title="Modules" multiple></select>
     </div>
 
     <div class="drone-formations">
-        <h4>Drone formation</h4><hr>
+        <h4>Drone formation</h4>
+        <hr>
         <select class="selectpicker" id="drone-formation" title="Drone formation">
             <option></option>
         </select>
     </div>
     <div class="ores">
-        <h4>Ores</h4><hr>
-        <select class="selectpicker" id="ore-laser" title="Laser">
-            <option value="0"></option>
-        </select>
-        <select class="selectpicker" id="ore-rocket" title="Rocket">
-            <option value="0"></option>
-        </select>
-        <select class="selectpicker" id="ore-generator" title="Generator">
-            <option value="0"></option>
-        </select>
-        <select class="selectpicker" id="ore-shield" title="Shield">
-            <option value="0"></option>
-        </select>
+        <h4>Ores</h4>
+        <hr>
+        <div class="ore">
+            <select class="selectpicker form-control" id="ore-laser" title="Laser">
+                <option value="0"></option>
+            </select>
+        </div>
+        <div class="ore">
+            <select class="selectpicker form-control" id="ore-rocket" title="Rocket">
+                <option value="0"></option>
+            </select>
+        </div>
+        <div class="ore">
+            <select class="selectpicker form-control" id="ore-generator" title="Generator">
+                <option value="0"></option>
+            </select>
+        </div>
+        <div class="ore">
+            <select class="selectpicker form-control" id="ore-shield" title="Shield">
+                <option value="0"></option>
+            </select>
+        </div>
     </div>
-	<h4>Other</h4><hr>
-	<div class="stat-sector">
-		<label class="container" title="10% Damage&#10;-15% HP&#10;-10% Speed">Infection
-			<input type="checkbox" id="infection">
-			<span class="checkmark"></span>
-		</label>
+    <div class="other">
+        <h4>Other</h4>
+        <hr>
+        <div class="stat-sector">
+            <label class="checkmark-label" title="10% Damage&#10;-15% HP&#10;-10% Speed">Infection
+                <input type="checkbox" id="infection">
+                <span class="checkmark"></span>
+            </label>
 
-		<label class="container" title="50% shorter rocket reload time&#10;+100% repair robot efficiency&#10;500 extra units of cargo space">Premium
-			<input type="checkbox" id="premium">
-			<span class="checkmark"></span>
-		</label>
-	</div>
+            <label class="checkmark-label"
+                   title="50% shorter rocket reload time&#10;+100% repair robot efficiency&#10;500 extra units of cargo space">Premium
+                <input type="checkbox" id="premium">
+                <span class="checkmark"></span>
+            </label>
+        </div>
+    </div>
 </div>
 
-<div class="inline">
-    <div class="sector">
-        <h2>Lasers</h2><hr>
-		<div id="laser-slots-container"></div>
-    </div>
+<div class="d-inline-block">
+    <div class="items">
+        <div class="sector">
+            <h2>Lasers</h2>
+            <hr>
+            <div id="laser-slots-container"></div>
+        </div>
 
-    <div class="sector">
-        <h2>Generators</h2><hr>
-		<div id="generator-slots-container"></div>
-    </div>
+        <div class="sector">
+            <h2>Generators</h2>
+            <hr>
+            <div id="generator-slots-container"></div>
+        </div>
 
-    <div class="sector">
-        <h2>Drones</h2><hr>
-		<div id="drone-slots-container"></div>
-    </div>
-	
-	<div class="sector">
-        <h2>Skill tree</h2><hr>
-		<h4 id="skill-points"></h4>
-		<div id="skill-tree-container"></div>
+        <div class="sector">
+            <h2>Drones</h2>
+            <hr>
+            <div id="drone-slots-container"></div>
+        </div>
+
+        <div class="sector">
+            <h2>Skill tree</h2>
+            <hr>
+            <h4 id="skill-points"></h4>
+            <div id="skill-tree-container"></div>
+        </div>
     </div>
 </div>
-<div class="inline">
-	<div class="statistics-details">
-	<h4>Statistics details</h4><hr>
-		<div id="accordion">
-			<div class="card">
-				<div class="card-header">
-					<a class="card-link" data-toggle="collapse" href="#collapseLaser" id="statistics-details-laser-header">Laser</a>
-				</div>
-				<div id="collapseLaser" class="collapse" data-parent="#accordion">
-					<div class="card-body" id="statistics-details-laser"></div>
-				</div>
-			</div>
-			<div class="card">
-				<div class="card-header">
-					<a class="card-link" data-toggle="collapse" href="#collapseRocket" id="statistics-details-rocket-header">Rocket</a>
-				</div>
-				<div id="collapseRocket" class="collapse" data-parent="#accordion">
-					<div class="card-body" id="statistics-details-rocket"></div>
-				</div>
-			</div>
-			<div class="card">
-				<div class="card-header">
-					<a class="card-link" data-toggle="collapse" href="#collapseMine" id="statistics-details-mine-header">Mine</a>
-				</div>
-				<div id="collapseMine" class="collapse" data-parent="#accordion">
-					<div class="card-body" id="statistics-details-mine"></div>
-				</div>
-			</div>
-			<div class="card">
-				<div class="card-header">
-					<a class="collapsed card-link" data-toggle="collapse" href="#collapseHP" id="statistics-details-hp-header">HP</a>
-				</div>
-				<div id="collapseHP" class="collapse" data-parent="#accordion">
-					<div class="card-body" id="statistics-details-hp"></div>
-				</div>
-			</div>
-			<div class="card">
-				<div class="card-header">
-					<a class="collapsed card-link" data-toggle="collapse" href="#collapseSpeed" id="statistics-details-speed-header">Speed</a>
-				</div>
-				<div id="collapseSpeed" class="collapse" data-parent="#accordion">
-					<div class="card-body" id="statistics-details-speed"></div>
-				</div>
-			</div>
-			<div class="card">
-				<div class="card-header">
-					<a class="collapsed card-link" data-toggle="collapse" href="#collapseShield" id="statistics-details-shield-header">Shield</a>
-				</div>
-				<div id="collapseShield" class="collapse" data-parent="#accordion">
-					<div class="card-body" id="statistics-details-shield"></div>
-				</div>
-			</div>
-			<div class="card">
-				<div class="card-header">
-					<a class="collapsed card-link" data-toggle="collapse" href="#collapseCargo" id="statistics-details-cargo-header">Cargo</a>
-				</div>
-				<div id="collapseCargo" class="collapse" data-parent="#accordion">
-					<div class="card-body" id="statistics-details-cargo"></div>
-				</div>
-			</div>
-			<div class="card">
-				<div class="card-header">
-					<a class="collapsed card-link" data-toggle="collapse" href="#collapseOther" id="statistics-details-other-header">Other</a>
-				</div>
-				<div id="collapseOther" class="collapse" data-parent="#accordion">
-					<div class="card-body" id="statistics-details-other"></div>
-				</div>
-			</div>
-		</div>
-	</div>
+<div class="d-inline-block align-top">
+    <div class="statistics-details">
+        <h4>Statistics details</h4>
+        <hr>
+        <div id="accordion">
+            <div class="card">
+                <div class="card-header">
+                    <a class="card-link" data-toggle="collapse" href="#collapseLaser"
+                       id="statistics-details-laser-header">Laser</a>
+                </div>
+                <div id="collapseLaser" class="collapse" data-parent="#accordion">
+                    <div class="card-body" id="statistics-details-laser"></div>
+                </div>
+            </div>
+            <div class="card">
+                <div class="card-header">
+                    <a class="card-link" data-toggle="collapse" href="#collapseRocket"
+                       id="statistics-details-rocket-header">Rocket</a>
+                </div>
+                <div id="collapseRocket" class="collapse" data-parent="#accordion">
+                    <div class="card-body" id="statistics-details-rocket"></div>
+                </div>
+            </div>
+            <div class="card">
+                <div class="card-header">
+                    <a class="card-link" data-toggle="collapse" href="#collapseMine"
+                       id="statistics-details-mine-header">Mine</a>
+                </div>
+                <div id="collapseMine" class="collapse" data-parent="#accordion">
+                    <div class="card-body" id="statistics-details-mine"></div>
+                </div>
+            </div>
+            <div class="card">
+                <div class="card-header">
+                    <a class="collapsed card-link" data-toggle="collapse" href="#collapseHP"
+                       id="statistics-details-hp-header">HP</a>
+                </div>
+                <div id="collapseHP" class="collapse" data-parent="#accordion">
+                    <div class="card-body" id="statistics-details-hp"></div>
+                </div>
+            </div>
+            <div class="card">
+                <div class="card-header">
+                    <a class="collapsed card-link" data-toggle="collapse" href="#collapseSpeed"
+                       id="statistics-details-speed-header">Speed</a>
+                </div>
+                <div id="collapseSpeed" class="collapse" data-parent="#accordion">
+                    <div class="card-body" id="statistics-details-speed"></div>
+                </div>
+            </div>
+            <div class="card">
+                <div class="card-header">
+                    <a class="collapsed card-link" data-toggle="collapse" href="#collapseShield"
+                       id="statistics-details-shield-header">Shield</a>
+                </div>
+                <div id="collapseShield" class="collapse" data-parent="#accordion">
+                    <div class="card-body" id="statistics-details-shield"></div>
+                </div>
+            </div>
+            <div class="card">
+                <div class="card-header">
+                    <a class="collapsed card-link" data-toggle="collapse" href="#collapseCargo"
+                       id="statistics-details-cargo-header">Cargo</a>
+                </div>
+                <div id="collapseCargo" class="collapse" data-parent="#accordion">
+                    <div class="card-body" id="statistics-details-cargo"></div>
+                </div>
+            </div>
+            <div class="card">
+                <div class="card-header">
+                    <a class="collapsed card-link" data-toggle="collapse" href="#collapseOther"
+                       id="statistics-details-other-header">Other</a>
+                </div>
+                <div id="collapseOther" class="collapse" data-parent="#accordion">
+                    <div class="card-body" id="statistics-details-other"></div>
+                </div>
+            </div>
+        </div>
+    </div>
 </div>
 </body>
 </html>
