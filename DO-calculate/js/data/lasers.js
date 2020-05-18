@@ -97,7 +97,7 @@ lasers["Prometheus"] = {
 		"damage_PVE_laser": 210,
 		"damage_PVP_laser": 210,
 		"damage_bonus_laser": 200,
-		"damage_BL_laser": 735,
+		"damage_BL_laser": 525,
 		"fluctuating_%_laser": 25
 	},
 	image: "prometheus.png",
@@ -172,7 +172,7 @@ lasers["AA-1"] = {
 	bonuses: {
 		"damage_PVE_laser": 175,
 		"damage_PVP_laser": 175,
-		"damage_IA_laser": 250,
+		"damage_IA_laser": 75,
 		"fluctuating_%_laser": 25
 	},
 	image: "AA-1.png",

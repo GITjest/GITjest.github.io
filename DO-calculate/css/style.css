@@ -162,13 +162,15 @@ hr {
     font-size: 1.5rem;
 }
 
-/*.stat-container {*/
-/*    position: -webkit-sticky;*/
-/*    position: sticky;*/
-/*    top: 0;*/
-/*    z-index: 1000;*/
-/*    background-color: var(--main-bg-color);*/
-/*}*/
+@media (min-width: 1200px) {
+    .stat-container {
+        position: -webkit-sticky;
+        position: sticky;
+        top: 0;
+        z-index: 1000;
+        background-color: var(--main-bg-color);
+    }
+}
 
 .modules,
 .boosts,

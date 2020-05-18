@@ -789,9 +789,8 @@ ships["MIMESIS"] = {
 			"hp_ship": 386000,
 			"speed_ship": 300,
 			"cargo_ship": 1500,
-			"hp_%_ship": 25,
 			"shield_%_ship": 10,
-			"shield_penetration_%_ship": 10
+			"shield_penetration_%_ship": 5
 		},
 		modules: ["DMG-MS02", "SHD-MS01", "DMG-NPC01", "DMG-MS01", "DMG-MTCH01"]
 	}
