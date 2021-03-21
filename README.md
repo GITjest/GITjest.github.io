@@ -8,7 +8,7 @@ Here is a working live demo : https://gitjest.github.io/DO-calculate/
 * [Screenshots](#screenshots)
 * [Technologies](#technologies)
 * [Setup](#setup)
-* [Features](#To-do)
+* [To-do](#To-do)
 
 ## Screenshots
 ![Empty goliath](./img/empty-goliath.png)
