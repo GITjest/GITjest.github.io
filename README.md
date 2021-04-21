@@ -33,5 +33,7 @@ start index.html
 
 ## To-do
 * Data update to the current version of the game
-* Add amunition
+* Add ammunition
 * Improve damage calculation
+* Add P.E.T
+* Add CPU

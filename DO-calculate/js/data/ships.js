@@ -1613,3 +1613,48 @@ ships["SOLARIS"] = {
 		modules: ["DMG-ROC01", "DMG-SDZ01"]
 	}
 };
+
+ships["KERES"] = {
+	"KERES": {
+		lasers: 15,
+		generators: 16,
+		modulesSlot: 3,
+		description: describe,
+		bonuses: {
+			"hp_ship": 356000,
+			"speed_ship": 300,
+			"cargo_ship": 1500
+		},
+		modules: []
+	}
+};
+
+ships["RETIARUS"] = {
+	"RETIARUS": {
+		lasers: 15,
+		generators: 14,
+		modulesSlot: 3,
+		description: describe,
+		bonuses: {
+			"hp_ship": 386000,
+			"speed_ship": 310,
+			"cargo_ship": 1500
+		},
+		modules: []
+	}
+};
+
+ships["ORCUS"] = {
+	"ORCUS": {
+		lasers: 15,
+		generators: 15,
+		modulesSlot: 3,
+		description: describe,
+		bonuses: {
+			"hp_ship": 350000,
+			"speed_ship": 290,
+			"cargo_ship": 1500
+		},
+		modules: []
+	}
+};
