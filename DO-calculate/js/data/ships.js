@@ -497,7 +497,7 @@ ships["GOLIATH"] = {
 			"cargo_ship": 1600,
 			"damage_%_ship": 5
 		},
-		modules: ["HP-DIM01", "SHD-DIM01"]
+		modules: ["HP-DIM01", "SHD-DIM01", "SPC-SPD02"]
 	},
 	"SPECTRUM": {
 		lasers: 15,
@@ -510,7 +510,7 @@ ships["GOLIATH"] = {
 			"cargo_ship": 1600,
 			"shield_%_ship": 10
 		},
-		modules: ["DMG-ST01", "DMG-ROC01", "SPC-SPE01"]
+		modules: ["DMG-ST01", "DMG-ROC01", "SPC-SPE01", "SHD-SK01"]
 	},
 	"SENTINEL": {
 		lasers: 15,
@@ -536,7 +536,7 @@ ships["GOLIATH"] = {
 			"cargo_ship": 1600,
 			"damage_%_ship": 5
 		},
-		modules: []
+		modules: ["DMG-VEN01", "SPC-SPD02"]
 	},
 	"G-PECEMAKER": {
 		lasers: 15,
@@ -617,7 +617,7 @@ ships["SPEARHEAD"] = {
 			"speed_ship": 370,
 			"cargo_ship": 500
 		},
-		modules: ["HP-S01", "DMG-SG01", "SHD-SH01", "SHD-SH02", "DMG-SH01"]
+		modules: ["HP-S01", "DMG-SG01", "SHD-SH01", "SHD-SH02", "DMG-SH01", "SHD-SK01"]
 	},
 	"S-ELITE": {
 		lasers: 5,
@@ -792,7 +792,7 @@ ships["MIMESIS"] = {
 			"shield_%_ship": 10,
 			"shield_penetration_%_ship": 5
 		},
-		modules: ["DMG-MS02", "SHD-MS01", "DMG-NPC01", "DMG-MS01", "DMG-MTCH01"]
+		modules: ["DMG-MS02", "SHD-MS01", "DMG-NPC01", "DMG-MS01", "DMG-MTCH01", "SPC-SPD02"]
 	}
 };
 
@@ -1523,7 +1523,7 @@ ships["DISRUPTOR"] = {
 			"speed_ship": 300,
 			"cargo_ship": 1600
 		},
-		modules: ["DMG-ROC01", "DMG-SDZ01", "SPC-EVA01", "HP-D01"]
+		modules: ["DMG-ROC01", "DMG-SDZ01", "SPC-EVA01", "HP-D01", "SPC-SPD02"]
 	}
 };
 
@@ -1553,7 +1553,7 @@ ships["ZEPHYR"] = {
 			"speed_ship": 300,
 			"cargo_ship": 1500
 		},
-		modules: ["DMG-ROC01"]
+		modules: ["DMG-ROC01", "DMG-ZEP01"]
 	}
 };
 
@@ -1625,7 +1625,7 @@ ships["KERES"] = {
 			"speed_ship": 300,
 			"cargo_ship": 1500
 		},
-		modules: []
+		modules: ["SPC-SPD02", "SHD-SK01"]
 	}
 };
 
