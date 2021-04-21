@@ -4,7 +4,7 @@ if(url.searchParams.get("shipBase") === null || url.searchParams.get("ship") ===
 }
 const ship = ships[url.searchParams.get("shipBase")][url.searchParams.get("ship")];
 
-const itemUpgradeOption = createNumberOptions(16);
+const itemUpgradeOption = createNumberOptions(20);
 const droneLVLOption = createNumberOptions(6);
 const lasersOption = `<optgroup label="Lasers">${createOptions(lasers, "Lasers", "lasers", false)}</optgroup>`;
 const shieldsOption = `<optgroup label="Shields">${createOptions(shields, "Shields", "shields", false)}</optgroup>`;

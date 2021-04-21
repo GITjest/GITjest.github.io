@@ -126,11 +126,10 @@ stats["hp"] = {
     "hp_%": function () {
         let hpBoost = nanToZero(bonuses["hp_%_boost"]) + nanToZero(bonuses["hp_%_laser_ship"]) + nanToZero(bonuses["hp_%_laser_drone"]);
         let hpSpartan = nanToZero(bonuses["hp_%_spartan_drone"]) + nanToZero(bonuses["hp_%_spartan_set_drone"]);
-        return ((((nanToZero(bonuses["hp_%_ship"]) + nanToZero(bonuses["hp_%_formation"]) + nanToZero(bonuses["hp_%_module"]) + nanToZero(bonuses["hp_%_infection"]))
+        return ((((nanToZero(bonuses["hp_%_ship"]) + nanToZero(bonuses["hp_%_formation"]) + nanToZero(bonuses["hp_%_module"]) + nanToZero(bonuses["hp_%_infection"]) + nanToZero(bonuses["hp_%_hermes_drone"]))
             * (1 + hpBoost * 0.01) + hpBoost)
             * (1 + nanToZero(bonuses["hp_%_hercules_set_drone"]) * 0.01) + nanToZero(bonuses["hp_%_hercules_set_drone"]))
-            * (1 + hpSpartan * 0.01) + hpSpartan)
-            * (1 + nanToZero(bonuses["hp_%_hermes_drone"]) * 0.01) + nanToZero(bonuses["hp_%_hermes_drone"]);
+            * (1 + hpSpartan * 0.01) + hpSpartan);
     },
     "repair": function () {
         return (this["hp"]() / (90 - 90 * nanToZero(bonuses["rep_%_skill"]) * 0.01))

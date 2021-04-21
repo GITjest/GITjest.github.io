@@ -52,6 +52,14 @@ modules["DMG"] = {
 	"DMG-GP01": {
 		description: "10% increased PVP damage if equipped on your ship.&#10;This ship upgrade module can be used on the following ships:&#10;G-Champion, Goliath, Goliath-X, Bastion, Enforcer, Saturn.",
 		bonuses: {"damage_PVP_%_module": 10}
+	},
+	"DMG-ZEP01": {
+		description: "8% increased damage if equipped on your ship.&#10;This ship upgrade module can be used on the following ships:&#10;Zephyr.",
+		bonuses: {"damage_%_module": 8}
+	},
+	"DMG-VEN01": {
+		description: "12% increased damage and 12% increased rocket damage .&#10;This ship upgrade module can be used on the following ships:&#10;Venom.",
+		bonuses: {"damage_%_module": 12, "damage_rocket_%_module": 12}
 	}
 };
 
@@ -65,42 +73,46 @@ modules["SHD"] = {
 		bonuses: {"shield_%_module": 8, "hp_%_module": -5, "evasion_%_module": 5}
 	},
 	"SHD-SL01": {
-		description: "10% increased shield, but 5% decreased HP if equipped on your ship.&#10;This ship upgrade module can be used on the following ships: Sentinel, Solace.",
+		description: "10% increased shield, but 5% decreased HP if equipped on your ship.&#10;This ship upgrade module can be used on the following ships:&#10;Sentinel, Solace.",
 		bonuses: {"shield_%_module": 10, "hp_%_module": -5}
 	},
 	"SHD-GOL01": {
-		description: "This module gives a 5% shield increase and 5% evasion.&#10;This ship upgrade module can be used on the following ships: Goliath, Goliath-X and Champion Goliath.",
+		description: "This module gives a 5% shield increase and 5% evasion.&#10;This ship upgrade module can be used on the following ships:&#10;Goliath, Goliath-X and Champion Goliath.",
 		bonuses: {"shield_%_module": 5, "evasion_%_module": 5}
 	},
 	"SHD-DIM01": {
-		description: "25% increased shield if equipped on your ship.&#10;This ship upgrade module can be used on the following ships: Diminisher.",
+		description: "25% increased shield if equipped on your ship.&#10;This ship upgrade module can be used on the following ships:&#10;Diminisher.",
 		bonuses: {"shield_%_module": 25}
 	},
 	"SHD-SH01": {
-		description: "5% increased damage and 10% increased shield but 5% decreased speed if equipped on your ship.&#10;This ship upgrade module can be used on the following ships: Spearhead.",
+		description: "5% increased damage and 10% increased shield but 5% decreased speed if equipped on your ship.&#10;This ship upgrade module can be used on the following ships:&#10;Spearhead.",
 		bonuses: {"shield_%_module": 10, "damage_%_module": 5, "speed_%_module": -5}
 	},
 	"SHD-SH02": {
-		description: "15% increased shield but 5% decreased speed if equipped on your ship.&#10;This ship upgrade module can be used on the following ships: Spearhead.",
+		description: "15% increased shield but 5% decreased speed if equipped on your ship.&#10;This ship upgrade module can be used on the following ships:&#10;Spearhead.",
 		bonuses: {"shield_%_module": 15, "speed_%_module": -5}
+	},
+	"SHD-SK01": {
+		description: "12% increased shield but 5% decreased damage if equipped on your ship.&#10;This ship upgrade module can be used on the following ships:&#10;Keres, Spectrum, Spearhead.",
+		bonuses: {"shield_%_module": 12, "damage_%_module": -5}
 	}
 };
 
 modules["HP"] = {
 	"HP-DIM01": {
-		description: "10% increased HP if equipped on your ship.&#10;This ship upgrade module can be used on the following ship: Diminisher.",
+		description: "10% increased HP if equipped on your ship.&#10;This ship upgrade module can be used on the following ship:&#10;Diminisher.",
 		bonuses: {"hp_%_module": 10}
 	},
 	"HP-VP01": {
-		description: "15% increased HP if equipped on your ship.&#10;This ship upgrade module can be used on the following ships; Vengeance,&#10;V-Lightning, V-Adept, V-Avenger, V-Corsair, V-Revenge and Pusat.",
+		description: "15% increased HP if equipped on your ship.&#10;This ship upgrade module can be used on the following ships:&#10;Vengeance, V-Lightning, V-Adept, V-Avenger, V-Corsair, V-Revenge and Pusat.",
 		bonuses: {"hp_%_module": 15}
 	},
 	"HP-S01": {
-		description: "15% increased HP if equipped on your ship.&#10;Thiis ship upgrade module can be used on the following ships: Spearhead, S-Elite, S-Veteran.",
+		description: "15% increased HP if equipped on your ship.&#10;Thiis ship upgrade module can be used on the following ships:&#10;Spearhead, S-Elite, S-Veteran.",
 		bonuses: {"hp_%_module": 15}
 	},
 	"HP-A01": {
-		description: "5% increased HP if equipped on your ship.&#10;This ship upgrade module can be used on the following ships: Aegis, A-Elite, A-Veteran.",
+		description: "5% increased HP if equipped on your ship.&#10;This ship upgrade module can be used on the following ships:&#10;Aegis, A-Elite, A-Veteran.",
 		bonuses: {"hp_%_module": 5}
 	},
 	"HP-SOL01": {
@@ -153,6 +165,10 @@ modules["SPC"] = {
 	"SPC-SPD01": {
 		description: "5% increased speed if equipped on your ship.&#10;This ship upgrade module can be used on the following ships:&#10;Goliath, Goliath-X, Hecate, Sentinel, Solace.",
 		bonuses: {"speed_%_module": 5}
+	},
+	"SPC-SPD02": {
+		description: "3% increased speed if equipped on your ship.&#10;This ship upgrade module can be used on the following ships:&#10;Venom, Rozpraszacz, Diminisher, Keres, Mimesis.",
+		bonuses: {"speed_%_module": 3}
 	},
 	"SPC-ROC01": {
 		description: "4% increased rockets damage and 4% increased hitchance on rockets if equipped on your ship.&#10;This ship upgrade module can be used on the following ships:&#10;Solaris, Disruptor, Zephyr, Spectrum.",
