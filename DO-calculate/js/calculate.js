@@ -1,4 +1,4 @@
-let bonuses = [];
+//let bonuses = [];
 
 $(function () {
     margeArray(bonuses, ship.bonuses);
