@@ -32,7 +32,7 @@ const bonuses = {
 
     //damage PVP
     "damage_PVP_laser_ship": 0,
-    "damage_PVP_laser_drone ": 0,
+    "damage_PVP_laser_drone": 0,
     "damage_PVP_%_ship": 0,
     "damage_PVP_%_formation": 0,
     "damage_PVP_%_module": 0,

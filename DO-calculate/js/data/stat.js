@@ -65,7 +65,7 @@ stats["laser"] = {
         return [damage - damage * this["fluctuating_%"]() * 0.01, damage];
     },
     "fluctuating_%": function () {
-        return (bonuses["fluctuating_%_laser_ship"] + bonuses["fluctuating_%_laser_drone"]) / this["amount"]();
+        return (bonuses["fluctuating_%_laser_ship"] + bonuses["fluctuating_%_laser_drone"]) / (this["amount"]() > 1 ? this["amount"]() : 1);
     },
     "accuracy_%": function () {
         return 75 + bonuses["accuracy_%_ship"] + bonuses["accuracy_laser_%_module"] + bonuses["accuracy_laser_%_skill"];
@@ -169,7 +169,7 @@ stats["shield"] = {
     },
     "absorption_%": function () {
         return bonuses["shield_absorption_%_formation"]
-            + ((bonuses["shield_absorption_%_shield_ship"] + bonuses["shield_absorption_%_shield_drone"]) / this["amount"]())
+            + ((bonuses["shield_absorption_%_shield_ship"] + bonuses["shield_absorption_%_shield_drone"]) / (this["amount"]() > 1 ? this["amount"]() : 1))
             + bonuses["shield_absorption_%_skill"];
     },
     "regeneration": function () {
