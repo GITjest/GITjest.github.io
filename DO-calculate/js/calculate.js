@@ -1,6 +1,14 @@
-//let bonuses = [];
-
 $(function () {
+    let v = [];
+    for(let b in bonuses) {
+        v.push(b);
+    }
+    status.init(v);
+    status.setShip(url.searchParams.get("shipBase"), url.searchParams.get("ship"));
+
+    generator.init(ships[status.getShipBase()][status.getShip()]);
+
+
     margeArray(bonuses, ship.bonuses);
     refreshStatistics();
 
@@ -71,7 +79,7 @@ function nanToZero(value) {
 }
 
 function resetBonus(item) {
-    for (let bonus in bonuses) {
+    for (let bonus in bonuses)  {
         bonuses[bonus] = bonus.search(item) > 0 ? 0 : bonuses[bonus];
     }
 }
@@ -176,8 +184,19 @@ function setBonuses(item, source, multi) {
     }
 }
 
+function extractSlotNumber(id) {
+    return id.slice(id.lastIndexOf("-") + 1);
+}
+
 function scanShipLasers() {
     resetBonus("laser_ship");
+
+    let slotNumber = extractSlotNumber($(this).attr("id"));
+    let itemName = $(this).val();
+
+    status.setLaser(slotNumber, itemName);
+    console.log(status.getBonuses());
+
     let field;
     let id = 0;
     while ((field = document.getElementById("field-ship-laser-" + id)) != null) {
