@@ -195,4 +195,4 @@ const lasers = {
 		image: "AA-1.png",
 		description: "AA-1&#10;&#10;Damage: 175&#10;Damage IA: 250&#10;Fluctuating: 25%",
 	}
-};
+}

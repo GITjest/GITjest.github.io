@@ -1,77 +1,101 @@
 const generator = (function () {
     const defaultMaxUpgradeLevelItem = 20;
+    const laserOptions = createItemOptionGroup(lasers, "Lasers");
+    const shieldOptions = createItemOptionGroup(shields, "Shields");
+    const generatorOptions = createItemOptionGroup(generators, "Generators");
+    const itemUpgradeOptions = createNumberOptions(defaultMaxUpgradeLevelItem);
 
     function init(ship) {
         const url = new URL(window.location.href);
         if(url.searchParams.get("shipBase") === null || url.searchParams.get("ship") === null) {
             window.location.replace("index.html");
         }
-        generateFields(ship);
+
+        generateItemFields(
+            ship.lasers,
+            "laser-slots-container",
+            "ship-laser-",
+            "Laser",
+            [laserOptions],
+            status.setLaser,
+            status.setLaserUpgrade
+        );
+
+        generateItemFields(
+            ship.generators,
+            "generator-slots-container",
+            "ship-generator",
+            "Generator",
+            [shieldOptions, generatorOptions],
+            status.setGenerator,
+            status.setGeneratorUpgrade
+        );
     }
-    
-    function generateFields(ship) {
-        generateLasersField(ship.lasers);
-    }
-    
-    function generateLasersField(numberOfLasers) {
-        let items = createItemOptionGroup(lasers, "Lasers");
-        let upgrade = createNumberOptions(defaultMaxUpgradeLevelItem);
-        items = `<option value=""></option>` + items;
 
-        for(let i = 0; i < numberOfLasers; i++) {
-            let itemSelect = createSelect(items, "ship-laser-" + i, "Laser", function () {
-                let id = $(this).attr("id");
-                let slotNumber = extractSlotNumber(id);
-                status.setLaser(slotNumber, $(this).val());
-                let laser = status.getLaser(slotNumber);
-                let maxUpgrade = defaultMaxUpgradeLevelItem;
-                if(laser.name !== "") {
-                    maxUpgrade = lasers[status.getLaser(slotNumber).name].maxUpgrade;
-                }
-                let lastUpgradeValue = $("#upgrade-" + id).val();
-                $("#upgrade-" + id).empty()
-                    .append(createNumberOptions(maxUpgrade))
-                    .selectpicker('refresh')
-                    .selectpicker('val', lastUpgradeValue > maxUpgrade ? maxUpgrade : lastUpgradeValue);
-            });
-
-            let upgradeSelect = createSelect(upgrade, "upgrade-ship-laser-" + i, "Laser upgrade", function () {
-                let slotNumber = extractSlotNumber($(this).attr("id"));
-                status.setLaserUpgrade(slotNumber, $(this).val());
-            })
-
-            $("#laser-slots-container")
-                .append(createItemField("field-ship-laser-" + i, itemSelect, upgradeSelect));
+    function generateItemFields(numberOfItems, containerId, itemId, title, selectOptions, setItem, setItemUpgrade) {
+        let iOnChangeEvent = function () {
+            let id = this.id;
+            let slotNumber = extractSlotNumber(id);
+            let itemName = this.value;
+            setItem(slotNumber, itemName);
+            updateItemField(id, itemName);
         }
-        let itemSelect = createSelect(items, "ship-laser-id", "Laser", function () {setAllValues(this)});
-        let upgradeSelect = createSelect(upgrade, "upgrade-ship-laser-id", "Laser upgrade", function () {setAllNumberValues(this)});
-        $("#laser-slots-container")
-            .append(createItemField("field-ship-laser-id", itemSelect, upgradeSelect));
+
+        let uOnChangeEvent = function () {
+            let slotNumber = extractSlotNumber(this.id);
+            setItemUpgrade(slotNumber, this.value);
+        }
+
+        for(let i = 0; i < numberOfItems; i++) {
+            $("#" + containerId).append(generateItemField(selectOptions, itemId + "-" + i, title, iOnChangeEvent, uOnChangeEvent));
+        }
+        $("#" + containerId).append(generateItemField(selectOptions, itemId + "-id", title, setAllValues, setAllUpgradeValues));
     }
 
-    function setAllValues(object) {
+    function updateItemField(id, itemName) {
+        let maxUpgrade = defaultMaxUpgradeLevelItem;
+        if(itemName !== "") {
+            maxUpgrade = status.findItem(itemName, [lasers, shields, generators]).maxUpgrade;
+        }
+        setFieldStatus("#field-" + id, (itemName !== ""));
+        updateItemUpgradeSelect(id, maxUpgrade);
+    }
+
+    function setFieldStatus(id, active) {
+        $(id).css("border", active ? "2px solid green" : "2px solid grey");
+    }
+
+    function updateItemUpgradeSelect(id, maxUpgrade) {
+        let lastUpgradeValue = $("#upgrade-" + id).val();
+        $("#upgrade-" + id).empty()
+            .append(createNumberOptions(maxUpgrade))
+            .selectpicker('refresh')
+            .selectpicker('val', lastUpgradeValue > maxUpgrade ? maxUpgrade : lastUpgradeValue);
+    }
+
+    function setAllValues() {
         let id = 0;
-        while (document.getElementById(object.id.replace("id", id)) != null) {
-            $("#" + object.id.replace("id", id)).selectpicker('val', object.value);
+        while (document.getElementById(this.id.replace("id", id)) != null) {
+            $("#" + this.id.replace("id", id)).selectpicker('val', this.value);
             id++;
         }
     }
 
-    function setAllNumberValues(object) {
+    function setAllUpgradeValues() {
         let id = 0;
-        while (document.getElementById(object.id.replace("id", id)) != null) {
-            let container = $("#" + object.id.replace("id", id));
+        while (document.getElementById(this.id.replace("id", id)) != null) {
+            let container = $("#" + this.id.replace("id", id));
             let maxUpgrade = container.children().length - 1;
-            container.selectpicker('val', object.value > maxUpgrade ? maxUpgrade : object.value);
+            container.selectpicker('val', this.value > maxUpgrade ? maxUpgrade : this.value);
             id++;
         }
     }
 
-    function createItemField(containerId, itemSelect, upgradeSelect) {
-        return $("<div>", {"class": "item-field", "id": containerId})
-                .append(itemSelect)
-                .append($("<div>", {"class": "item-upgrade"})
-                    .append(upgradeSelect));
+    function generateItemField(itemOptions, id, title, itemOnChangeEvent, upgradeOnChangeEvent) {
+        itemOptions = `<option value=""></option>` + itemOptions;
+        let itemSelect = createSelect(itemOptions, id, title, itemOnChangeEvent);
+        let upgradeSelect = createSelect(itemUpgradeOptions, "upgrade-" + id, title + " upgrade", upgradeOnChangeEvent);
+        return createItemField("field-" + id, itemSelect, upgradeSelect);
     }
 
     function createSelect(options, id, title, onChangeEvent) {
@@ -82,6 +106,13 @@ const generator = (function () {
         }).append(options);
         select.on('change', onChangeEvent);
         return select;
+    }
+
+    function createItemField(containerId, itemSelect, upgradeSelect) {
+        return $("<div>", {"class": "item-field", "id": containerId})
+                .append(itemSelect)
+                .append($("<div>", {"class": "item-upgrade"})
+                    .append(upgradeSelect));
     }
 
     function createItemOptionGroup(items, groupName) {
@@ -105,9 +136,14 @@ const generator = (function () {
         return output.join("\n");
     }
 
+    function extractSlotNumber(id) {
+        return id.slice(id.lastIndexOf("-") + 1);
+    }
+
     return {
         init: init
     }
+
 })()
 
 
@@ -143,12 +179,12 @@ $(function () {
     //     setAllValues(this, "field-ship-laser-id");
     // }));
 
-    for (let i = 0; i < ship.generators; i++) {
-        $("#generator-slots-container").append(createItemField("ship-generator-" + i, "Generator", [shieldsOption, generatorsOption], scanShipGenerators));
-    }
-    $("#generator-slots-container").append(createItemField("ship-generator-id", "Generator", [shieldsOption, generatorsOption], function () {
-        setAllValues(this, "field-ship-generator-id");
-    }));
+    // for (let i = 0; i < ship.generators; i++) {
+    //     $("#generator-slots-container").append(createItemField("ship-generator-" + i, "Generator", [shieldsOption, generatorsOption], scanShipGenerators));
+    // }
+    // $("#generator-slots-container").append(createItemField("ship-generator-id", "Generator", [shieldsOption, generatorsOption], function () {
+    //     setAllValues(this, "field-ship-generator-id");
+    // }));
 
     for (let i = 0; i < dronesCount; i++) {
         $("#drone-slots-container").append(createDroneField(i, scanDrones));

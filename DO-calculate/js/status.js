@@ -3,6 +3,7 @@ const status = (function () {
     let ship = "";
     let shipBase = "";
     let shipLasers = [];
+    let shipGenerators = [];
 
     function init(b) {
         for(let i = 0; i < b.length; i++) {
@@ -31,16 +32,24 @@ const status = (function () {
     }
 
     function setLaser(slot, name) {
-        shipLasers[slot] = setItem(shipLasers[slot], name, 0, lasers, "ship");
+        shipLasers[slot] = setItem(shipLasers[slot], name, 0, [lasers], "ship");
     }
 
     function setLaserUpgrade(slot, upgrade) {
-        shipLasers[slot] = setItem(shipLasers[slot], "", upgrade, lasers, "ship");
+        shipLasers[slot] = setItem(shipLasers[slot], "", upgrade, [lasers], "ship");
+    }
+
+    function setGenerator(slot, name) {
+        shipGenerators[slot] = setItem(shipGenerators[slot], name, 0, [shields, generators], "ship");
+    }
+
+    function setGeneratorUpgrade(slot, upgrade) {
+        shipGenerators[slot] = setItem(shipGenerators[slot], "", upgrade, [shields, generators], "ship");
     }
 
     function setItem(slot, name, upgrade, items, source) {
         if(slot != null && slot.name !== "") {
-            let item = items[slot.name];
+            let item = findItem(slot.name, items);
             let up = slot.upgrade;
             subBonuses(item, up, source);
         }
@@ -52,9 +61,20 @@ const status = (function () {
             upgrade = 1;
         }
         if(name !== "") {
-            addBonuses(items[name], upgrade, source);
-        }
+            addBonuses(findItem(name, items), upgrade, source);
+        }git
+        console.log(bonuses);       //TODO
         return {name: name, upgrade: upgrade};
+    }
+
+    function findItem(itemNameToFind, items) {
+        for(let i of items) {
+            let item = i[itemNameToFind];
+            if(item != null) {
+                return item;
+            }
+        }
+        return null;
     }
 
     function subBonuses(item, upgrade, source) {
@@ -79,6 +99,10 @@ const status = (function () {
         return shipLasers[slot];
     }
 
+    function getGenerator(slot) {
+        return shipGenerators[slot];
+    }
+
     return {
         init: init,
         getBonuses: getBonuses,
@@ -87,7 +111,11 @@ const status = (function () {
         getShipBase: getShipBase,
         setLaser: setLaser,
         setLaserUpgrade: setLaserUpgrade,
-        getLaser: getLaser
+        getLaser: getLaser,
+        setGenerator: setGenerator,
+        setGeneratorUpgrade: setGeneratorUpgrade,
+        getGenerator: getGenerator,
+        findItem: findItem
     };
 })();
 
