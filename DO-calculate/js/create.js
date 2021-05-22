@@ -1,9 +1,8 @@
 const generator = (function () {
-    const defaultMaxUpgradeLevelItem = 20;
     const laserOptions = createItemOptionGroup(lasers, "Lasers");
     const shieldOptions = createItemOptionGroup(shields, "Shields");
     const generatorOptions = createItemOptionGroup(generators, "Generators");
-    const itemUpgradeOptions = createNumberOptions(defaultMaxUpgradeLevelItem);
+    const itemUpgradeOptions = createNumberOptions(config.defaultMaxUpgradeLevelItem);
 
     function init(ship) {
         const url = new URL(window.location.href);
@@ -14,7 +13,7 @@ const generator = (function () {
         generateItemFields(
             ship.lasers,
             "laser-slots-container",
-            "ship-laser-",
+            "ship-laser",
             "Laser",
             [laserOptions],
             status.setLaser,
@@ -53,7 +52,7 @@ const generator = (function () {
     }
 
     function updateItemField(id, itemName) {
-        let maxUpgrade = defaultMaxUpgradeLevelItem;
+        let maxUpgrade = config.defaultMaxUpgradeLevelItem;
         if(itemName !== "") {
             maxUpgrade = status.findItem(itemName, [lasers, shields, generators]).maxUpgrade;
         }
