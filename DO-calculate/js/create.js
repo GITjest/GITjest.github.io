@@ -29,6 +29,8 @@ const generator = (function () {
             status.setGenerator,
             status.setGeneratorUpgrade
         );
+        
+        generateDroneFields(config.numberOfDrones, "drone-slots-container");
     }
 
     function generateItemFields(numberOfItems, containerId, itemId, title, selectOptions, setItem, setItemUpgrade) {
@@ -50,18 +52,94 @@ const generator = (function () {
         }
         $("#" + containerId).append(generateItemField(selectOptions, itemId + "-id", title, setAllValues, setAllUpgradeValues));
     }
+    
+    function generateDroneFields(numberOfDrones, containerId) {
+        let droneDesignOnChangeEvent = function () {
+            let id = this.id;
+            let slotNumber = extractSlotNumber(id);
+            let itemName = this.value;
+            status.setDroneDesign(slotNumber, itemName);
+            setFieldStatus("field-drone-" + slotNumber, status.isDroneActive(slotNumber));
+        };
+
+        let droneLevelOnChangeEvent = function () {
+            let id = this.id;
+            let slotNumber = extractSlotNumber(id);
+            let droneLevel = this.value;
+            status.setDroneLevel(slotNumber, droneLevel);
+        };
+
+        let droneUpgradeOnChangeEvent = function () {
+            let id = this.id;
+            let slotNumber = extractSlotNumber(id);
+            let droneUpgrade = this.value;
+            status.setDroneUpgrade(slotNumber, droneUpgrade);
+        };
+
+        let itemOnChangeEvent = function () {
+            let id = this.id;
+            let slotNumber = extractSlotNumber(id.substring(0, id.length - 2));
+            let itemSlotNumber = extractSlotNumber(id);
+            let itemName = this.value;
+            status.setDroneItem(slotNumber, itemSlotNumber, itemName);
+            setFieldStatus("field-drone-" + slotNumber, status.isDroneActive(slotNumber));
+            updateItemField(id, itemName);
+        };
+
+        let itemUpgradeOnChangeEvent = function () {
+            let id = this.id;
+            let slotNumber = extractSlotNumber(id.substring(0, id.length - 2));
+            let itemSlotNumber = extractSlotNumber(id);
+            let itemUpgrade = this.value;
+
+            status.setDroneItemUpgrade(slotNumber, itemSlotNumber, itemUpgrade);
+        };
+
+        for(let i = 0; i < numberOfDrones; i++) {
+            $("#" + containerId).append(generateDroneField(i, droneDesignOnChangeEvent, droneLevelOnChangeEvent, droneUpgradeOnChangeEvent, itemOnChangeEvent, itemUpgradeOnChangeEvent));
+        }
+        $("#" + containerId).append(generateDroneField("id", setAllValues, setAllUpgradeValues, setAllUpgradeValues, setAllValues, setAllUpgradeValues));
+    }
+    
+    function generateDroneField(id, droneDesignOnChangeEvent, droneLevelOnChangeEvent, droneUpgradeOnChangeEvent, itemOnChangeEvent, itemUpgradeOnChangeEvent) {
+        let droneDesign = createSelect(`<option value=""></option>` + createItemOptions(droneDesigns, ""), "drone-design-" + id, "Design", droneDesignOnChangeEvent);
+        let droneLevel = createSelect(createNumberOptions(config.defaultMaxDroneLevel), "drone-lvl-" + id, "Drone level", droneLevelOnChangeEvent);
+        let droneUpgrade = createSelect(createNumberOptions(config.defaultMaxDroneUpgrade), "drone-upgrade-" + id, "Drone upgrade", droneUpgradeOnChangeEvent);
+        let itemsField = [];
+
+        for(let i = 0; i < config.numberOfDroneItems; i++) {
+            itemsField[i] = generateItemField(
+                [laserOptions, shieldOptions],
+                "drone-slot-" + id + "-" + i,
+                "Item",
+                itemOnChangeEvent,
+                itemUpgradeOnChangeEvent);
+        }
+
+        return $("<div>", {"class": "drone", "id": "field-drone-" + id})
+            .append($("<div>", {"class": "drone-design"})
+                .append(droneDesign))
+            .append(itemsField)
+            .append($("<div>", {"class": "block"})
+                .append($("<div>", {"class": "drone-lvl"})
+                    .append(droneLevel)
+                ).append($("<div>", {"class": "drone-lvl"})
+                    .append(droneUpgrade)
+                )
+            );
+    }
 
     function updateItemField(id, itemName) {
         let maxUpgrade = config.defaultMaxUpgradeLevelItem;
         if(itemName !== "") {
             maxUpgrade = status.findItem(itemName, [lasers, shields, generators]).maxUpgrade;
         }
-        setFieldStatus("#field-" + id, (itemName !== ""));
+        setFieldStatus("field-" + id, (itemName !== ""));
         updateItemUpgradeSelect(id, maxUpgrade);
     }
 
     function setFieldStatus(id, active) {
-        $(id).css("border", active ? "2px solid green" : "2px solid grey");
+        $("#" + id).css("border", active ? "2px solid green" : "2px solid grey");
     }
 
     function updateItemUpgradeSelect(id, maxUpgrade) {
@@ -115,15 +193,22 @@ const generator = (function () {
     }
 
     function createItemOptionGroup(items, groupName) {
+        return `<optgroup label="${groupName}">${createItemOptions(items, groupName)}</optgroup>`;
+    }
+
+    function createItemOptions(items, groupName) {
         let output = [];
         for (let item in items) {
+            let dataContent = items[item].image
+                ? `<img src='images/${groupName.toLowerCase()}/${items[item].image}' alt='${item}' title='${items[item].description}'/>`
+                : `<span title='${items[item].description}'>${item}<span/>`;
             output.push(`<option 
                     value="${item}" 
                     data-tokens="${groupName}" 
-                    data-content="${`<img src='images/${groupName.toLowerCase()}/${items[item].image}' alt='${item}' title='${items[item].description}'/>`}">
+                    data-content="${dataContent}">
                 </option>`);
         }
-        return `<optgroup label="${groupName}">${output.join("\n")}</optgroup>>`;
+        return output.join("\n");
     }
 
     function createNumberOptions(max) {
@@ -185,12 +270,12 @@ $(function () {
     //     setAllValues(this, "field-ship-generator-id");
     // }));
 
-    for (let i = 0; i < dronesCount; i++) {
-        $("#drone-slots-container").append(createDroneField(i, scanDrones));
-    }
-    $("#drone-slots-container").append(createDroneField("id", function () {
-        setAllValues(this, "field-drone-id");
-    }));
+    // for (let i = 0; i < dronesCount; i++) {
+    //     $("#drone-slots-container").append(createDroneField(i, scanDrones));
+    // }
+    // $("#drone-slots-container").append(createDroneField("id", function () {
+    //     setAllValues(this, "field-drone-id");
+    // }));
 
     for (let item in boosters) {
         $("#boosters").append($("<optgroup>", {"label": item}).append(createOptions(boosters[item], item, "", false)));
