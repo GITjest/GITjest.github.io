@@ -33,6 +33,7 @@ const generator = (function () {
         generateDroneFields(config.numberOfDrones, "drone-slots-container");
         generateBoostersField();
         generateModulesField();
+        generateDroneFormationsField();
         //
         // $("#modules").attr({
         //     "data-max-options": ship.modulesSlot,
@@ -71,7 +72,7 @@ const generator = (function () {
         }
         let select = createSelect(options, "boosters", "Boosters", bOnchangeEvent);
         select.attr({
-            "class": "selectpicker form",
+            "class": "selectpicker",
             "data-live-search": true,
             "data-actions-box": true,
             "data-selected-text-format": "count > 3",
@@ -93,13 +94,27 @@ const generator = (function () {
         }
         let select = createSelect(options, "modules", "Modules", mOnchangeEvent);
         select.attr({
-            "class": "selectpicker form",
+            "class": "selectpicker",
             "data-max-options": ship.modulesSlot,
             "data-max-options-text": "This ship can have max " + ship.modulesSlot + " modules",
             "multiple": "multiple"
         });
         select.val([]);
         $("#modules-container").append(select);
+    }
+
+    function generateDroneFormationsField() {
+        let dfOnchangeEvent = function () {
+            status.setDroneFormation($(this).val());
+        };
+
+        let options = `<option value="""></option>`;
+        options = options + createItemOptions(formations, "formations");
+        let select = createSelect(options, "drone-formation", "Drone formation", dfOnchangeEvent);
+        select.attr({
+            "class": "selectpicker"
+        });
+        $("#drone-formations-container").append(select);
     }
 
     function shipModules(shipModuleNames) {
@@ -390,7 +405,7 @@ $(function () {
     // $("#modules").on('change', function () {setLimit(this,1)});
 
 
-    $("#drone-formation").append(createOptions(formations, "", "formations", true));
+    // $("#drone-formation").append(createOptions(formations, "", "formations", true));
 
     for (let ore in ores) {
         if (ores[ore].laser > 0)

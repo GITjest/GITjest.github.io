@@ -7,6 +7,7 @@ const status = (function () {
     let drones = [];
     let booster = [];
     let module = [];
+    let formation = "";
 
     function init(b) {
         for(let i = 0; i < b.length; i++) {
@@ -90,6 +91,12 @@ const status = (function () {
         module = names;
         resetBonuses("module");
         addBonusesFromItems(modules, module);
+    }
+
+    function setDroneFormation(name) {
+        formation = name;
+        resetBonuses("formation");
+        addBonuses(formations[formation], 1, "");
     }
 
     function addBonusesFromItems(items, itemsNameToAdd) {
@@ -297,6 +304,7 @@ const status = (function () {
         isDroneActive: isDroneActive,
         setBoosters: setBoosters,
         setModules: setModules,
+        setDroneFormation: setDroneFormation,
         findItem: findItem
     };
 })();

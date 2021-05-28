@@ -24,11 +24,11 @@ $(function () {
     //     refreshStatistics();
     // });
 
-    $("#drone-formation").on('change', function () {
-        resetBonus("formation");
-        margeArray(bonuses, getValues(this, formations));
-        refreshStatistics();
-    });
+    // $("#drone-formation").on('change', function () {
+    //     resetBonus("formation");
+    //     margeArray(bonuses, getValues(this, formations));
+    //     refreshStatistics();
+    // });
 
     $("#ore-laser").on('change', function () {
         bonuses["damage_%_ore"] = Number($("#ore-laser").val());
