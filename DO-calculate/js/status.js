@@ -5,6 +5,7 @@ const status = (function () {
     let shipLasers = [];
     let shipGenerators = [];
     let drones = [];
+    let booster = [];
 
     function init(b) {
         for(let i = 0; i < b.length; i++) {
@@ -76,6 +77,19 @@ const status = (function () {
     function setDroneItemSlot(slot, droneSlot, itemName, itemUpgrade) {
         if(drones[slot] == null) drones[slot] = setDrone(null, "", 0, 0);
         drones[slot].items[droneSlot] = setItem(drones[slot].items[droneSlot], itemName, itemUpgrade, [], "");
+    }
+
+    function setBoosters(names) {
+        booster = names;
+        resetBonuses("boost");
+        for(let type in boosters) {
+            for(let b of booster) {
+                let item = boosters[type][b];
+                if(item != null) {
+                    addBonuses(boosters[type][b],1, "");
+                }
+            }
+        }
     }
 
     function setDrone(slot, design, level, upgrade) {
@@ -229,7 +243,10 @@ const status = (function () {
 
     function addBonuses(item, multi, source) {
         for(let bonus in item.bonuses) {
-            let bonusName = bonus + "_" + source;
+            let bonusName = bonus;
+            if(source !== "") {
+                bonusName = bonusName + "_" + source
+            }
             bonuses[bonusName] = bonuses[bonusName] + item.bonuses[bonus]
                 * (bonus.search("%") > 0 ? 1 : multi);
         }
@@ -267,6 +284,7 @@ const status = (function () {
         setDroneItem: setDroneItem,
         setDroneItemUpgrade: setDroneItemUpgrade,
         isDroneActive: isDroneActive,
+        setBoosters: setBoosters,
         findItem: findItem
     };
 })();

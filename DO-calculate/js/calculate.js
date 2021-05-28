@@ -12,11 +12,11 @@ $(function () {
     margeArray(bonuses, ship.bonuses);
     refreshStatistics();
 
-    $("#boosters").on('change', function () {
-        resetBonus("boost");
-        margeArray(bonuses, getValuesFromGroup(this, boosters));
-        refreshStatistics();
-    });
+    // $("#boosters").on('change', function () {
+    //     resetBonus("boost");
+    //     margeArray(bonuses, getValuesFromGroup(this, boosters));
+    //     refreshStatistics();
+    // });
 
     $("#modules").on('change', function () {
         resetBonus("module");

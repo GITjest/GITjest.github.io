@@ -31,6 +31,54 @@ const generator = (function () {
         );
         
         generateDroneFields(config.numberOfDrones, "drone-slots-container");
+        generateBoostersField();
+        //
+        // $("#modules").attr({
+        //     "data-max-options": ship.modulesSlot,
+        //     "data-max-options-text": "This ship can have max " + ship.modulesSlot + " modules"
+        // });
+        // for (let item in shipModules(ship.modules)) {
+        //     $("#modules").append($("<optgroup>", {"label": item}).append(createOptions(shipModules(ship.modules)[item], item, "", false)));
+        // }
+        // $("#modules").on('change', function () {setLimit(this,1)});
+        //
+        //
+        // $("#drone-formation").append(createOptions(formations, "", "formations", true));
+        //
+        // for (let ore in ores) {
+        //     if (ores[ore].laser > 0)
+        //         $("#ore-laser").append(createOptionOre(ores[ore].laser, ores[ore], ore));
+        //     if (ores[ore].rocket > 0)
+        //         $("#ore-rocket").append(createOptionOre(ores[ore].rocket, ores[ore], ore));
+        //     if (ores[ore].generator > 0)
+        //         $("#ore-generator").append(createOptionOre(ores[ore].generator, ores[ore], ore));
+        //     if (ores[ore].shield > 0)
+        //         $("#ore-shield").append(createOptionOre(ores[ore].shield, ores[ore], ore));
+        // }
+
+
+    }
+
+    function generateBoostersField() {
+        let bOnchangeEvent = function () {
+            status.setBoosters($(this).val());
+
+        };
+
+        let options = [];
+        for(let booster in boosters) {
+            options.push(createItemOptionGroup(boosters[booster], booster));
+        }
+        let select = createSelect(options, "boosters", "Boosters", bOnchangeEvent);
+        select.attr({
+            "class": "selectpicker form",
+            "data-live-search": true,
+            "data-actions-box": true,
+            "data-selected-text-format": "count > 3",
+            "multiple": "multiple"
+        });
+        select.val([]);
+        $("#boosters-container").append(select);
     }
 
     function generateItemFields(numberOfItems, containerId, itemId, title, selectOptions, setItem, setItemUpgrade) {
@@ -277,9 +325,9 @@ $(function () {
     //     setAllValues(this, "field-drone-id");
     // }));
 
-    for (let item in boosters) {
-        $("#boosters").append($("<optgroup>", {"label": item}).append(createOptions(boosters[item], item, "", false)));
-    }
+    // for (let item in boosters) {
+    //     $("#boosters").append($("<optgroup>", {"label": item}).append(createOptions(boosters[item], item, "", false)));
+    // }
 
     $("#modules").attr({
         "data-max-options": ship.modulesSlot,
