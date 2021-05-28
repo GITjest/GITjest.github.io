@@ -18,11 +18,11 @@ $(function () {
     //     refreshStatistics();
     // });
 
-    $("#modules").on('change', function () {
-        resetBonus("module");
-        margeArray(bonuses, getValuesFromGroup(this, modules));
-        refreshStatistics();
-    });
+    // $("#modules").on('change', function () {
+    //     resetBonus("module");
+    //     margeArray(bonuses, getValuesFromGroup(this, modules));
+    //     refreshStatistics();
+    // });
 
     $("#drone-formation").on('change', function () {
         resetBonus("formation");

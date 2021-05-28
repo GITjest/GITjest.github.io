@@ -6,6 +6,7 @@ const status = (function () {
     let shipGenerators = [];
     let drones = [];
     let booster = [];
+    let module = [];
 
     function init(b) {
         for(let i = 0; i < b.length; i++) {
@@ -82,11 +83,21 @@ const status = (function () {
     function setBoosters(names) {
         booster = names;
         resetBonuses("boost");
-        for(let type in boosters) {
-            for(let b of booster) {
-                let item = boosters[type][b];
+        addBonusesFromItems(boosters, booster);
+    }
+
+    function setModules(names) {
+        module = names;
+        resetBonuses("module");
+        addBonusesFromItems(modules, module);
+    }
+
+    function addBonusesFromItems(items, itemsNameToAdd) {
+        for(let itemType in items) {
+            for(let name of itemsNameToAdd) {
+                let item = items[itemType][name];
                 if(item != null) {
-                    addBonuses(boosters[type][b],1, "");
+                    addBonuses(item,1, "");
                 }
             }
         }
@@ -285,6 +296,7 @@ const status = (function () {
         setDroneItemUpgrade: setDroneItemUpgrade,
         isDroneActive: isDroneActive,
         setBoosters: setBoosters,
+        setModules: setModules,
         findItem: findItem
     };
 })();

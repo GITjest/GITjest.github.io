@@ -32,6 +32,7 @@ const generator = (function () {
         
         generateDroneFields(config.numberOfDrones, "drone-slots-container");
         generateBoostersField();
+        generateModulesField();
         //
         // $("#modules").attr({
         //     "data-max-options": ship.modulesSlot,
@@ -62,7 +63,6 @@ const generator = (function () {
     function generateBoostersField() {
         let bOnchangeEvent = function () {
             status.setBoosters($(this).val());
-
         };
 
         let options = [];
@@ -79,6 +79,57 @@ const generator = (function () {
         });
         select.val([]);
         $("#boosters-container").append(select);
+    }
+
+    function generateModulesField() {
+        let mOnchangeEvent = function () {
+            setLimit(this,1);
+            status.setModules($(this).val());
+        };
+
+        let options = [];
+        for(let module in modules) {
+            options.push(createItemOptionGroup(shipModules(ship.modules)[module], module));
+        }
+        let select = createSelect(options, "modules", "Modules", mOnchangeEvent);
+        select.attr({
+            "class": "selectpicker form",
+            "data-max-options": ship.modulesSlot,
+            "data-max-options-text": "This ship can have max " + ship.modulesSlot + " modules",
+            "multiple": "multiple"
+        });
+        select.val([]);
+        $("#modules-container").append(select);
+    }
+
+    function shipModules(shipModuleNames) {
+        let shipModules = [];
+        for (let type in modules) {
+            for (let module in modules[type]) {
+                for (let i = 0; i < shipModuleNames.length; i++) {
+                    if (module === shipModuleNames[i]) {
+                        shipModules[type] = shipModules[type] ? shipModules[type] : [];
+                        shipModules[type][module] = modules[type][module];
+                    }
+                }
+            }
+        }
+        return shipModules;
+    }
+
+    function setLimit(object, limit) {
+        $(object).find('optgroup').each(function () {
+            let count = 0;
+            $(this).find('option').each(function () {
+                if ($(this).prop('selected')) {
+                    count++;
+                    if (count > limit) {
+                        $(this).attr("selected", false);
+                    }
+                }
+            });
+        });
+        $(object).selectpicker('refresh');
     }
 
     function generateItemFields(numberOfItems, containerId, itemId, title, selectOptions, setItem, setItemUpgrade) {
@@ -329,14 +380,14 @@ $(function () {
     //     $("#boosters").append($("<optgroup>", {"label": item}).append(createOptions(boosters[item], item, "", false)));
     // }
 
-    $("#modules").attr({
-        "data-max-options": ship.modulesSlot,
-        "data-max-options-text": "This ship can have max " + ship.modulesSlot + " modules"
-    });
-    for (let item in shipModules(ship.modules)) {
-        $("#modules").append($("<optgroup>", {"label": item}).append(createOptions(shipModules(ship.modules)[item], item, "", false)));
-    }
-    $("#modules").on('change', function () {setLimit(this,1)});
+    // $("#modules").attr({
+    //     "data-max-options": ship.modulesSlot,
+    //     "data-max-options-text": "This ship can have max " + ship.modulesSlot + " modules"
+    // });
+    // for (let item in shipModules(ship.modules)) {
+    //     $("#modules").append($("<optgroup>", {"label": item}).append(createOptions(shipModules(ship.modules)[item], item, "", false)));
+    // }
+    // $("#modules").on('change', function () {setLimit(this,1)});
 
 
     $("#drone-formation").append(createOptions(formations, "", "formations", true));
