@@ -125,7 +125,6 @@ hr {
 .item-field .bootstrap-select .dropdown-toggle .filter-option,
 .drone-design .bootstrap-select .dropdown-toggle .filter-option,
 .drone-lvl .bootstrap-select .dropdown-toggle .filter-option,
-.ores .bootstrap-select .dropdown-toggle .filter-option,
 .ship-select .bootstrap-select .dropdown-toggle .filter-option,
 .main-select-ship .bootstrap-select .dropdown-toggle .filter-option {
     text-align: center;
@@ -134,11 +133,15 @@ hr {
 .item-field .bootstrap-select > .dropdown-toggle::after,
 .drone-design .bootstrap-select > .dropdown-toggle::after,
 .drone-lvl .bootstrap-select > .dropdown-toggle::after,
-.ores .bootstrap-select > .dropdown-toggle::after,
 .skill .bootstrap-select > .dropdown-toggle::after,
 .ship-select .bootstrap-select > .dropdown-toggle::after,
 .main-select-ship .bootstrap-select > .dropdown-toggle::after {
     display: none;
+}
+
+.bootstrap-select img {
+    height: 32px;
+    width: 32px;
 }
 
 .main-select-ship .dropdown-header,
@@ -184,20 +187,11 @@ hr {
     width: 260px;
 }
 
-.item-field .bootstrap-select .dropdown-toggle .filter-option-inner,
-.ores .bootstrap-select .dropdown-toggle .filter-option-inner {
+.item-field .bootstrap-select .dropdown-toggle .filter-option-inner{
     padding-right: 0;
 }
 
-.ore {
-    display: inline-block;
-    width: 100px;
-    height: 100px;
-    padding: 5px;
-}
-
-.item-field .bootstrap-select .btn,
-.ore .bootstrap-select .btn {
+.item-field .bootstrap-select .btn{
     height: 100%;
 }
 
@@ -288,7 +282,7 @@ hr {
 
 .items .bootstrap-select .btn,
 .items .bootstrap-select .btn:hover,
-.items .show > .btn-light.dropdown-toggle {
+.items .show > .btn-light.dropdown-toggle{
     font-weight: 100;
     padding: 9px 0 5px 0;
     font-size: 0.75rem;

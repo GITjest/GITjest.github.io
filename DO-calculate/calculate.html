@@ -27,9 +27,24 @@
 
     <script src="js/config.js"></script>
     <script src="js/generate-ship-select.js"></script>
-    <script src="js/create.js"></script>
     <script src="js/status.js"></script>
-    <script src="js/calculate.js"></script>
+
+    <script src="js/App.js"></script>
+
+    <script src="js/generator/generator.js"></script>
+    <script src="js/generator/selectGenerator.js"></script>
+    <script src="js/generator/fieldGenerator.js"></script>
+
+    <script src="js/generator/shipGenerator/shipGenerator.js"></script>
+    <script src="js/generator/shipGenerator/shipLasersGenerator/shipLasersGenerator.js"></script>
+    <script src="js/generator/shipGenerator/shipGeneratorsGenerator/shipGeneratorsGenerator.js"></script>
+    <script src="js/generator/shipGenerator/dronesGenerator/dronesGenerator.js"></script>
+
+    <script src="js/generator/otherItemsGenerator/otherItemsGenerator.js"></script>
+    <script src="js/generator/otherItemsGenerator/boostersGenerator/boostersGenerator.js"></script>
+    <script src="js/generator/otherItemsGenerator/modulesGenerator/modulesGenerator.js"></script>
+    <script src="js/generator/otherItemsGenerator/droneFormationsGenerator/droneFormationsGenerator.js"></script>
+    <script src="js/generator/otherItemsGenerator/oresGenerator/oresGenerator.js"></script>
 </head>
 <body>
 <div class="stat-container">
@@ -75,41 +90,13 @@
     <div class="ores">
         <h4>Ores</h4>
         <hr>
-        <div class="ore">
-            <select class="selectpicker form-control" id="ore-laser" title="Laser">
-                <option value="0"></option>
-            </select>
-        </div>
-        <div class="ore">
-            <select class="selectpicker form-control" id="ore-rocket" title="Rocket">
-                <option value="0"></option>
-            </select>
-        </div>
-        <div class="ore">
-            <select class="selectpicker form-control" id="ore-generator" title="Generator">
-                <option value="0"></option>
-            </select>
-        </div>
-        <div class="ore">
-            <select class="selectpicker form-control" id="ore-shield" title="Shield">
-                <option value="0"></option>
-            </select>
-        </div>
+        <div id="ores-container"></div>
     </div>
     <div class="other">
         <h4>Other</h4>
         <hr>
         <div class="stat-sector">
-            <label class="checkmark-label" title="10% Damage&#10;-15% HP&#10;-10% Speed">Infection
-                <input type="checkbox" id="infection">
-                <span class="checkmark"></span>
-            </label>
-
-            <label class="checkmark-label"
-                   title="50% shorter rocket reload time&#10;+100% repair robot efficiency&#10;500 extra units of cargo space">Premium
-                <input type="checkbox" id="premium">
-                <span class="checkmark"></span>
-            </label>
+            <div id="other-items-container"></div>
         </div>
     </div>
 </div>

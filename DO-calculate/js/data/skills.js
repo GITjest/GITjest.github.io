@@ -3,7 +3,7 @@ const skills = [];
 skills["Defensive"] = {
 	"Ship hull I": {
 		amount: 0,
-		image: "ship-hull-1.png",
+		image: "skills/ship-hull-1.png",
 		requirements: function() {return true},
 		description: "Name: Ship hull I&#10;Level: 0/2&#10;&#10;Next level:&#10;Increase your HP by 5000&#10;&#10;Prequisites for next level:&#10;Credits: 10000&#10;Seprom: 0",
 		levels: [
@@ -25,7 +25,7 @@ skills["Defensive"] = {
 	},
 	"Engineering": {
 		amount: 0,
-		image: "engineering.png",
+		image: "skills/engineering.png",
 		requirements: function() {return skills["Defensive"]["Ship hull I"].amount > 0 || skills["Resource"]["Tactics"].amount > 0 || skills["Offensive"]["Detonation I"].amount > 0},
 		description: "Name: Engineering&#10;Level: 0/5&#10;&#10;Next level:&#10;Lets your bots repair 5% more Hp per second&#10;&#10;Prequisites for next level:&#10;Credits: 10000&#10;Seprom: 0&#10;&#10;1 PP required in any of the following:&#10;Detonation I&#10;Tactics&#10;Ship hull I",
 		levels: [
@@ -68,7 +68,7 @@ skills["Defensive"] = {
 	},
 	"Shield engineering": {
 		amount: 0,
-		image: "shield-engineering.png",
+		image: "skills/shield-engineering.png",
 		requirements: function() {return skills["Defensive"]["Engineering"].amount > 0 || skills["Resource"]["Logistics"].amount > 0 || skills["Offensive"]["Explosives"].amount > 0},
 		description: "Name: Shield engineering&#10;Level: 0/5&#10;&#10;Next level:&#10;Increases your shield strengt by 4%&#10;&#10;Prequisites for next level:&#10;Credits: 10000&#10;Seprom: 0&#10;&#10;1 PP required in any of the following:&#10;Explosives&#10;Logistics&#10;Engineering",
 		levels: [
@@ -112,7 +112,7 @@ skills["Defensive"] = {
 	"interspace 1": {},
 	"Evasive maneuvers I": {
 		amount: 0,
-		image: "evasive-maneuvers-1.png",
+		image: "skills/evasive-maneuvers-1.png",
 		requirements: function() {return (skills["Offensive"]["Heat-seeking missiles"].amount + skills["Defensive"]["Shield engineering"].amount) > 1},
 		description: "Name: Evasive maneuvers I&#10;Level: 0/2&#10;&#10;Next level:&#10;Reduces the probabillity of an enemy hit by 2%&#10;&#10;Prequisites for next level:&#10;Credits: 100000&#10;Seprom: 100&#10;&#10;2 PP required in any of the following:&#10;Heat-seeking missiles&#10;Shield engineering",
 		levels: [
@@ -134,7 +134,7 @@ skills["Defensive"] = {
 	},
 	"Ship hull II": {
 		amount: 0,
-		image: "ship-hull-2.png",
+		image: "skills/ship-hull-2.png",
 		requirements: function() {return skills["Defensive"]["Ship hull I"].amount > 1 && (skills["Offensive"]["Bounty Hunter I"].amount + skills["Resource"]["Luck I"].amount + skills["Defensive"]["Evasive maneuvers I"].amount) > 1},
 		description: "Name: Ship hull II&#10;Level: 0/3&#10;&#10;Next level:&#10;Increase your HP by 15000&#10;&#10;Prequisites for next level:&#10;Credits: 100000&#10;Seprom: 100&#10;&#10;2 PP required in any of the following:&#10;Bounty Hunter I&#10;Luck I&#10;Evasive maneuvers I&#10;&#10;2 PP required in:&#10;Ship hull I",
 		levels: [
@@ -165,7 +165,7 @@ skills["Defensive"] = {
 	"interspace 2": {},
 	"Shield mechanics": {
 		amount: 0,
-		image: "shield-mechanics.png",
+		image: "skills/shield-mechanics.png",
 		requirements: function() {return skills["Defensive"]["Ship hull II"].amount > 2},
 		description: "Name: Shield mechanics&#10;Level: 0/5&#10;&#10;Next level:&#10;Lets your shields withstand 2% more damage&#10;&#10;Prequisites for next level:&#10;Credits: 1000000&#10;Seprom: 1000&#10;&#10;3 PP required in:&#10;Ship hull II",
 		levels: [
@@ -209,7 +209,7 @@ skills["Defensive"] = {
 	"empty 2": {},
 	"Evasive maneuvers II": {
 		amount: 0,
-		image: "evasive-maneuvers-2.png",
+		image: "skills/evasive-maneuvers-2.png",
 		requirements: function() {return skills["Defensive"]["Evasive maneuvers I"].amount > 1 && skills["Defensive"]["Shield mechanics"].amount > 2},
 		description: "Name: Evasive maneuvers II&#10;Level: 0/3&#10;&#10;Next level:&#10;Reduces the probabillity of an enemy hit by 6%&#10;&#10;Prequisites for next level:&#10;Credits: 1000000&#10;Seprom: 1000&#10;&#10;3 PP required in:&#10;Shield mechanics&#10;&#10;2 PP required in:&#10;Evasive maneuvers I",
 		levels: [
@@ -242,7 +242,7 @@ skills["Defensive"] = {
 skills["Resource"] = {
 	"Tactics": {
 		amount: 0,
-		image: "tactics.png",
+		image: "skills/tactics.png",
 		requirements: function() {return true},
 		description: "Name: Tactics&#10;Level: 0/5&#10;&#10;Next level:&#10;Receive 2% more EP for each alien kill&#10;&#10;Prequisites for next level:&#10;Credits: 10000&#10;Seprom: 0",
 		levels: [
@@ -286,7 +286,7 @@ skills["Resource"] = {
 	"empty 1": {},
 	"Logistics": {
 		amount: 0,
-		image: "logistics.png",
+		image: "skills/logistics.png",
 		requirements: function() {return skills["Defensive"]["Ship hull I"].amount > 0 || skills["Resource"]["Tactics"].amount > 0 || skills["Offensive"]["Detonation I"].amount > 0},
 		description: "Name: Logistics&#10;Level: 0/5&#10;&#10;Next level:&#10;Expends your cargo bay by 4%&#10;&#10;Prequisites for next level:&#10;Credits: 10000&#10;Seprom: 0&#10;&#10;1 PP required in any of the following:&#10;Detonation I&#10;Tactics&#10;Ship hull I",
 		levels: [
@@ -330,7 +330,7 @@ skills["Resource"] = {
 	"interspace 1": {},
 	"Luck I": {
 		amount: 0,
-		image: "luck-1.png",
+		image: "skills/luck-1.png",
 		requirements: function() {return skills["Resource"]["Logistics"].amount > 1},
 		description: "Name: Luck I&#10;Level: 0/2&#10;&#10;Next level:&#10;Gives you 2% more bonus-box Uridium&#10;&#10;Prequisites for next level:&#10;Credits: 100000&#10;Seprom: 100&#10;&#10;2 PP required in:&#10;Logistics",
 		levels: [
@@ -352,7 +352,7 @@ skills["Resource"] = {
 	},
 	"Cruelty I": {
 		amount: 0,
-		image: "cruelty-1.png",
+		image: "skills/cruelty-1.png",
 		requirements: function() {return (skills["Resource"]["Luck I"].amount + skills["Defensive"]["Evasive maneuvers I"].amount + skills["Offensive"]["Bounty Hunter I"].amount) > 1},
 		description: "Name: Cruelty I&#10;Level: 0/2&#10;&#10;Next level:&#10;Gives you 4% more honor points&#10;&#10;Prequisites for next level:&#10;Credits: 100000&#10;Seprom: 100&#10;&#10;2 PP required in any of the following:&#10;Bounty Hunter I&#10;Luck I&#10;Evasive maneuvers I",
 		levels: [
@@ -374,7 +374,7 @@ skills["Resource"] = {
 	},
 	"Tractor beam I": {
 		amount: 0,
-		image: "tractor-beam-1.png",
+		image: "skills/tractor-beam-1.png",
 		requirements: function() {return (skills["Defensive"]["Ship hull II"].amount + skills["Resource"]["Cruelty I"].amount + skills["Offensive"]["Rocket fusion"].amount) > 1},
 		description: "Name: Tractor beam I&#10;Level: 0/5&#10;&#10;Next level:&#10;Increased cargo box loot by 1%&#10;&#10;Prequisites for next level:&#10;Credits: 100000&#10;Seprom: 100&#10;&#10;2 PP required in any of the following:&#10;Rocket fusion&#10;Cruelty I&#10;Ship hull II",
 		levels: [
@@ -418,7 +418,7 @@ skills["Resource"] = {
 	"interspace 2": {},
 	"Greed": {
 		amount: 0,
-		image: "greed.png",
+		image: "skills/greed.png",
 		requirements: function() {return (skills["Resource"]["Tractor beam I"].amount + skills["Offensive"]["Alien hunter"].amount) > 2},
 		description: "Name: Greed&#10;Level: 0/5&#10;&#10;Next level:&#10;Receive 4% more credits for alien kills&#10;&#10;Prequisites for next level:&#10;Credits: 1000000&#10;Seprom: 1000&#10;&#10;3 PP required in any of the following:&#10;Alien hunter&#10;Tractor beam I",
 		levels: [
@@ -461,7 +461,7 @@ skills["Resource"] = {
 	},
 	"Tractor beam II": {
 		amount: 0,
-		image: "tractor-beam-2.png",
+		image: "skills/tractor-beam-2.png",
 		requirements: function() {return (skills["Defensive"]["Shield mechanics"].amount + skills["Resource"]["Greed"].amount + skills["Offensive"]["Detonation II"].amount) > 4},
 		description: "Name: Tractor beam II&#10;Level: 0/5&#10;&#10;Next level:&#10;Increased bonus box loot by 2%&#10;&#10;Prequisites for next level:&#10;Credits: 1000000&#10;Seprom: 1000&#10;&#10;5 PP required in any of the following:&#10;Detonation II&#10;Greed&#10;Shield mechanics",
 		levels: [
@@ -504,7 +504,7 @@ skills["Resource"] = {
 	},
 	"Cruelty II": {
 		amount: 0,
-		image: "cruelty-2.png",
+		image: "skills/cruelty-2.png",
 		requirements: function() {return skills["Resource"]["Cruelty I"].amount > 1 && (skills["Resource"]["Tractor beam II"].amount + skills["Offensive"]["Electro-optics"].amount) > 2},
 		description: "Name: Cruelty II&#10;Level: 0/3&#10;&#10;Next level:&#10;Gives you 12% more honor points&#10;&#10;Prequisites for next level:&#10;Credits: 1000000&#10;Seprom: 1000&#10;&#10;3 PP required in any of the following:&#10;Electro-optics&#10;Tractor beam II&#10;&#10;2 PP required in:&#10;Cruelty I",
 		levels: [
@@ -533,7 +533,7 @@ skills["Resource"] = {
 	},
 	"Luck II": {
 		amount: 0,
-		image: "luck-2.png",
+		image: "skills/luck-2.png",
 		requirements: function() {return skills["Resource"]["Luck I"].amount > 1 && skills["Offensive"]["Bounty Hunter II"].amount > 2 && skills["Defensive"]["Evasive maneuvers II"].amount > 2},
 		description: "Name: Luck II&#10;Level: 0/3&#10;&#10;Next level:&#10;Gives you 6% more bonus-box Uridium&#10;&#10;Prequisites for next level:&#10;Credits: 1000000&#10;Seprom: 1000&#10;&#10;3 PP required in each of the following:&#10;Bounty Hunter II&#10;Evasive maneuvers II&#10;&#10;2 PP required in:&#10;Luck I",
 		levels: [
@@ -565,7 +565,7 @@ skills["Resource"] = {
 skills["Offensive"] = {
 	"Detonation I": {
 		amount: 0,
-		image: "detonation-1.png",
+		image: "skills/detonation-1.png",
 		requirements: function() {return true},
 		description: "Name: Detonation I&#10;Level: 0/2&#10;&#10;Next level:&#10;Makes your mines causse 7% more damage&#10;&#10;Prequisites for next level:&#10;Credits: 10000&#10;Seprom: 0",
 		levels: [
@@ -587,7 +587,7 @@ skills["Offensive"] = {
 	},
 	"Explosives": {
 		amount: 0,
-		image: "explosives.png",
+		image: "skills/explosives.png",
 		requirements: function() {return (skills["Defensive"]["Ship hull I"].amount + skills["Resource"]["Tactics"].amount + skills["Offensive"]["Detonation I"].amount) > 0},
 		description: "Name: Explosives&#10;Level: 0/5&#10;&#10;Next level:&#10;Inreases the radius of mine explosions by 4%&#10;&#10;Prequisites for next level:&#10;Credits: 10000&#10;Seprom: 0&#10;&#10;1 PP required in any of the following:&#10;Detonation I&#10;Tactics&#10;Ship hull I",
 		levels: [
@@ -630,7 +630,7 @@ skills["Offensive"] = {
 	},
 	"Heat-seeking missiles": {
 		amount: 0,
-		image: "heat-seeking-missiles.png",
+		image: "skills/heat-seeking-missiles.png",
 		requirements: function() {return (skills["Defensive"]["Engineering"].amount + skills["Resource"]["Logistics"].amount + skills["Offensive"]["Explosives"].amount) > 0},
 		description: "Name: Heat-seeking missiles&#10;Level: 0/5&#10;&#10;Next level:&#10;Inreases hit probabillity of your rockets by 1%&#10;&#10;Prequisites for next level:&#10;Credits: 10000&#10;Seprom: 0&#10;&#10;1 PP required in any of the following:&#10;Explosives&#10;Logistics&#10;Engineering",
 		levels: [
@@ -674,7 +674,7 @@ skills["Offensive"] = {
 	"interspace 1": {},
 	"Bounty Hunter I": {
 		amount: 0,
-		image: "bounty-hunter-1.png",
+		image: "skills/bounty-hunter-1.png",
 		requirements: function() {return (skills["Defensive"]["Shield engineering"].amount + skills["Offensive"]["Heat-seeking missiles"].amount) > 1},
 		description: "Name: Bounty Hunter I&#10;Level: 0/2&#10;&#10;Next level:&#10;Makes your lasers cause 2% more damage in PVP battles&#10;&#10;Prequisites for next level:&#10;Credits: 100000&#10;Seprom: 100&#10;&#10;2 PP required in any of the following:&#10;Heat-seeking missiles&#10;Shield engineering",
 		levels: [
@@ -696,7 +696,7 @@ skills["Offensive"] = {
 	},
 	"Rocket fusion": {
 		amount: 0,
-		image: "rocket-fusion.png",
+		image: "skills/rocket-fusion.png",
 		requirements: function() {return (skills["Defensive"]["Ship hull II"].amount + skills["Resource"]["Luck I"].amount + skills["Offensive"]["Bounty Hunter I"].amount) > 1},
 		description: "Name: Rocket fusion&#10;Level: 0/5&#10;&#10;Next level:&#10;Makes your rockets cause 2% more damage&#10;&#10;Prequisites for next level:&#10;Credits: 100000&#10;Seprom: 100&#10;&#10;2 PP required in any of the following:&#10;Bounty Hunter I&#10;Luck I&#10;Ship hull II",
 		levels: [
@@ -739,7 +739,7 @@ skills["Offensive"] = {
 	},
 	"Alien hunter": {
 		amount: 0,
-		image: "alien-hunter.png",
+		image: "skills/alien-hunter.png",
 		requirements: function() {return skills["Resource"]["Cruelty I"].amount > 1 && skills["Offensive"]["Rocket fusion"].amount > 1},
 		description: "Name: Alien hunter&#10;Level: 0/5&#10;&#10;Next level:&#10;Makes your lasers cause 2% more damage against aliens&#10;&#10;Prequisites for next level:&#10;Credits: 100000&#10;Seprom: 100&#10;&#10;2 PP required in each of the following:&#10;Rocket fusion&#10;Cruelty I",
 		levels: [
@@ -783,7 +783,7 @@ skills["Offensive"] = {
 	"interspace 2": {},
 	"Detonation II": {
 		amount: 0,
-		image: "detonation-2.png",
+		image: "skills/detonation-2.png",
 		requirements: function() {return skills["Offensive"]["Detonation I"].amount > 1 && (skills["Resource"]["Tractor beam I"].amount + skills["Offensive"]["Alien hunter"].amount) > 2},
 		description: "Name: Detonation II&#10;Level: 0/3&#10;&#10;Next level:&#10;Makes your mines causse 7% more damage&#10;&#10;Prequisites for next level:&#10;Credits: 1000000&#10;Seprom: 1000&#10;&#10;3 PP required in any of the following:&#10;Alien hunter&#10;Tractor beam I&#10;&#10;2 PP required in:&#10;Detonation I",
 		levels: [
@@ -812,7 +812,7 @@ skills["Offensive"] = {
 	},
 	"Electro-optics": {
 		amount: 0,
-		image: "electro-optics.png",
+		image: "skills/electro-optics.png",
 		requirements: function() {return (skills["Resource"]["Greed"].amount + skills["Defensive"]["Shield mechanics"].amount + skills["Offensive"]["Detonation II"].amount) > 4},
 		description: "Name: Electro-optics&#10;Level: 0/5&#10;&#10;Next level:&#10;Increases hit probabillity of lasers by 5%&#10;&#10;Prequisites for next level:&#10;Credits: 1000000&#10;Seprom: 1000&#10;&#10;5 PP required in any of the following:&#10;Detonation II&#10;Greed&#10;Shield mechanics",
 		levels: [
@@ -855,7 +855,7 @@ skills["Offensive"] = {
 	},
 	"Bounty Hunter II": {
 		amount: 0,
-		image: "bounty-hunter-2.png",
+		image: "skills/bounty-hunter-2.png",
 		requirements: function() {return skills["Offensive"]["Bounty Hunter I"].amount > 1 && (skills["Offensive"]["Electro-optics"].amount + skills["Resource"]["Tractor beam II"].amount) > 2},
 		description: "Name: Bounty Hunter II&#10;Level: 0/3&#10;&#10;Next level:&#10;Makes your lasers cause 6% more damage in PVP battles&#10;&#10;Prequisites for next level:&#10;Credits: 1000000&#10;Seprom: 1000&#10;&#10;3 PP required in any of the following:&#10;Electro-optics&#10;Tractor beam II&#10;&#10;2 PP required in:&#10;Bounty Hunter I",
 		levels: [

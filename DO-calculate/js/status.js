@@ -8,6 +8,12 @@ const status = (function () {
     let booster = [];
     let module = [];
     let formation = "";
+    let laserOre = "";
+    let rocketOre = "";
+    let generatorOre = "";
+    let shieldOre = "";
+    let infection = false;
+    let premium = false;
 
     function init(b) {
         for(let i = 0; i < b.length; i++) {
@@ -97,6 +103,46 @@ const status = (function () {
         formation = name;
         resetBonuses("formation");
         addBonuses(formations[formation], 1, "");
+    }
+
+    function setLaserOre(oreName) {
+        laserOre = oreName;
+        bonuses["damage_%_ore"] = ores[laserOre].laser;
+    }
+
+    function setRocketOre(oreName) {
+        rocketOre = oreName;
+        bonuses["damage_rocket_%_ore"] = ores[rocketOre].rocket;
+    }
+
+    function setGeneratorOre(oreName) {
+        generatorOre = oreName;
+        bonuses["speed_%_ore"] = ores[generatorOre].generator;
+    }
+
+    function setShieldOre(oreName) {
+        shieldOre = oreName;
+        bonuses["shield_%_ore"] = ores[shieldOre].shield;
+    }
+    
+    function setInfection(isInfected) {
+        infection = isInfected;
+        resetBonuses("infection");
+        if(infection) {
+            bonuses["damage_%_infection"] = 10;
+            bonuses["hp_%_infection"] = -15;
+            bonuses["speed_%_infection"] = -10;     //TODO add data
+        }
+    }
+    
+    function setPremium(hasPremium) {
+        premium = hasPremium;
+        resetBonuses("premium");
+        if(premium) {
+            bonuses["rocket_reload_time_%_premium"] = -50; //TODO add data
+            bonuses["rep_%_premium"] = 100;
+            bonuses["cargo_premium"] = 500;
+        }
     }
 
     function addBonusesFromItems(items, itemsNameToAdd) {
@@ -305,53 +351,16 @@ const status = (function () {
         setBoosters: setBoosters,
         setModules: setModules,
         setDroneFormation: setDroneFormation,
+        setLaserOre: setLaserOre,
+        setRocketOre: setRocketOre,
+        setGeneratorOre: setGeneratorOre,
+        setShieldOre: setShieldOre,
+        setInfection: setInfection,
+        setPremium: setPremium,
         findItem: findItem
     };
 })();
 
-// let status = {
-//     ship: "",
-//     shipBase: "",
-//     lasers: [
-//          // {
-//          //     name: "",
-//          //     upgrade: 0
-//          // }
-//     ],
-//     generators: [
-//         {
-//             name: "",
-//             upgrade: 0
-//         }
-//     ],
-//     drones: [
-//         {
-//             design: "",
-//             level: 0,
-//             upgrade: 0,
-//             items: [
-//                 {
-//                     name: "",
-//                     upgrade: 0
-//                 }
-//             ]
-//         }
-//     ],
-//     boosters: [
-//         "", ""
-//     ],
-//     modules: [
-//         "", ""
-//     ],
-//     droneFormation: [
-//         "", ""
-//     ],
-//     ores: [
-//         ""
-//     ],
-//     other: [
-//         "", ""
-//     ],
 //     skillTree: [
 //         {
 //             name: "",

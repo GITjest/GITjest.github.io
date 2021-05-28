@@ -6,7 +6,7 @@ ores["Prometid"] = {
 	generator: 0,
 	shield: 0,
 	description: "Prometid can be used to upgrade Laser Cannon and Rocket damage by 15%.",
-	image: "prometid.png"
+	image: "ores/prometid.png"
 };
 
 ores["Duranium"] = {
@@ -15,7 +15,7 @@ ores["Duranium"] = {
 	generator: 10,
 	shield: 10,
 	description: "Duranium can be used to upgrade speed and shield generators by 10%.",
-	image: "duranium.png"
+	image: "ores/duranium.png"
 };
 
 ores["Promerium"] = {
@@ -24,7 +24,7 @@ ores["Promerium"] = {
 	generator: 20,
 	shield: 20,
 	description: "Promerium can increase damage of Laser Cannons and Rockets by 30%.&#10;Speed and Shield generators can be increased by 20%.",
-	image: "promerium.png"
+	image: "ores/promerium.png"
 };
 
 ores["Seprom"] = {
@@ -33,7 +33,7 @@ ores["Seprom"] = {
 	generator: 0,
 	shield: 40,
 	description: "Seprom can increase damage of Laser Cannons and Rockets by 60%.&#10;Shield generators can be upgraded by 40%.",
-	image: "seprom.png"
+	image: "ores/seprom.png"
 };
 
 ores["Osmium"] = {
@@ -42,5 +42,5 @@ ores["Osmium"] = {
 	generator: 0,
 	shield: 50,
 	description: "Seprom can increase damage of Laser Cannons and Rockets by 50%.&#10;Shield generators can be upgraded by 50%.",
-	image: "osmium.png"
+	image: "ores/osmium.png"
 };
