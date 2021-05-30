@@ -10,7 +10,7 @@ const shipGenerator = (function () {
             .append(shipGeneratorsGenerator.createSetterForAllItems());
 
         $("#drone-slots-container")
-            .append(dronesGenerator.create(config.numberOfDrones))
+            .append(dronesGenerator.create(data.getConfigData("numberOfDrones")))
             .append(dronesGenerator.createSetterForAllItems());
     }
 

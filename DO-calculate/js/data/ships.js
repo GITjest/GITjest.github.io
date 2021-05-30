@@ -1,4 +1,4 @@
-const ships = [];
+const ships = {};
 
 function describe() {
     return `Laser: ${this.lasers}&#10;`

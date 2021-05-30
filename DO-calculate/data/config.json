@@ -1,0 +1,11 @@
+{
+  "defaultMaxUpgradeLevelItem": 20,
+  "numberOfDrones": 10,
+  "numberOfDroneItems": 2,
+  "defaultMaxDroneLevel": 6,
+  "defaultMaxDroneUpgrade": 16,
+  "droneUpgradePercentValueLaser": 0.5,
+  "droneUpgradePercentValueShield": 1,
+  "droneLevelPercentValueLaser": 2,
+  "droneLevelPercentValueShield": 4
+}

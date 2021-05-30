@@ -2,8 +2,8 @@ const boostersGenerator = (function () {
 
     function create() {
         let options = [];
-        for(let booster in boosters) {
-            options.push(selectGenerator.createItemOptionGroup(boosters[booster], booster));
+        for(let booster in data.getBoosters()) {
+            options.push(selectGenerator.createItemOptionGroup(data.getBooster(booster), booster));
         }
 
         let select = selectGenerator.createSelect(options, "boosters", "Boosters", boostersOnchangeEvent);

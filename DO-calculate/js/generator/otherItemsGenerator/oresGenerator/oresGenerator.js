@@ -2,9 +2,9 @@ const oresGenerator = (function () {
     
     function createLaserOre() {
         let laserOres = [];
-        for (let ore in ores) {
-            if (ores[ore].laser > 0) {
-                laserOres[ore] = ores[ore];
+        for (let ore in data.getOres()) {
+            if (data.getOre(ore).laser > 0) {
+                laserOres[ore] = data.getOre(ore);
             }
         }
         return createOre(laserOres, "ore-laser", "Laser", laserOresOnchangeEvent);
@@ -12,9 +12,9 @@ const oresGenerator = (function () {
 
     function createRocketOre() {
         let rocketOres = [];
-        for (let ore in ores) {
-            if (ores[ore].rocket > 0) {
-                rocketOres[ore] = ores[ore];
+        for (let ore in data.getOres()) {
+            if (data.getOre(ore).rocket > 0) {
+                rocketOres[ore] = data.getOre(ore);
             }
         }
         return createOre(rocketOres, "ore-rocket", "Rocket", rocketOresOnchangeEvent);
@@ -22,9 +22,9 @@ const oresGenerator = (function () {
 
     function createGeneratorOre() {
         let generatorOres = [];
-        for (let ore in ores) {
-            if (ores[ore].generator > 0) {
-                generatorOres[ore] = ores[ore];
+        for (let ore in data.getOres()) {
+            if (data.getOre(ore).generator > 0) {
+                generatorOres[ore] = data.getOre(ore);
             }
         }
         return createOre(generatorOres, "ore-generator", "Generator", generatorOresOnchangeEvent);
@@ -32,9 +32,9 @@ const oresGenerator = (function () {
 
     function createShieldOre() {
         let shieldOres = [];
-        for (let ore in ores) {
-            if (ores[ore].shield > 0) {
-                shieldOres[ore] = ores[ore];
+        for (let ore in data.getOres()) {
+            if (data.getOre(ore).shield > 0) {
+                shieldOres[ore] = data.getOre(ore);
             }
         }
         return createOre(shieldOres, "ore-shield", "Shield", shieldOresOnchangeEvent);

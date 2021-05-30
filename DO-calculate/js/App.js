@@ -7,14 +7,17 @@ $(function () {
         window.location.replace("index.html");
     }
 
-    let v = [];         //TODO
-    for(let b in bonuses) {
-        v.push(b);
-    }
+    data.setAsyncAjax(false);
+    data.loadAllData();
 
-    status.init(v);
+    bonuses.setBonuses(data.getBonuses());
+
     status.setShip(shipBase, ship);
 
-    const shipData = ships[status.getShipBase()][status.getShip()];
+    const shipData = data.getShip(shipBase, ship);
     generator.generate(shipData);
+
+    // let json = JSON.stringify(ships, null, 1);
+    // console.log(json);
 });
+

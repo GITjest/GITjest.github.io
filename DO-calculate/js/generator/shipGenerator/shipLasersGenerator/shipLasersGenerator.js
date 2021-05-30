@@ -1,8 +1,8 @@
 const shipLasersGenerator = (function () {
-    const laserOptions = selectGenerator.createItemOptionGroup(lasers, "Lasers");
-    const itemUpgradeOptions = selectGenerator.createNumberOptions(config.defaultMaxUpgradeLevelItem);
 
     function create(numberOfLasers) {
+        const laserOptions = selectGenerator.createItemOptionGroup(data.getLasers(), "Lasers");
+        const itemUpgradeOptions = selectGenerator.createNumberOptions(data.getConfigData("defaultMaxUpgradeLevelItem"));
         let fields = [];
         for(let i = 0; i < numberOfLasers; i++) {
             fields.push(fieldGenerator.generateItemField(
@@ -18,6 +18,8 @@ const shipLasersGenerator = (function () {
     }
 
     function createSetterForAllItems() {
+        const laserOptions = selectGenerator.createItemOptionGroup(data.getLasers(), "Lasers");
+        const itemUpgradeOptions = selectGenerator.createNumberOptions(data.getConfigData("defaultMaxUpgradeLevelItem"));
         return fieldGenerator.generateItemField(
             laserOptions,
             itemUpgradeOptions,

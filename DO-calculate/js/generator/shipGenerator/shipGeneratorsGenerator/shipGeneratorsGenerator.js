@@ -1,9 +1,9 @@
 const shipGeneratorsGenerator = (function () {
-    const shieldOptions = selectGenerator.createItemOptionGroup(shields, "Shields");
-    const generatorOptions = selectGenerator.createItemOptionGroup(generators, "Generators");
-    const itemUpgradeOptions = selectGenerator.createNumberOptions(config.defaultMaxUpgradeLevelItem);
 
     function create(numberOfGenerators) {
+        const shieldOptions = selectGenerator.createItemOptionGroup(data.getShields(), "Shields");
+        const generatorOptions = selectGenerator.createItemOptionGroup(data.getGenerators(), "Generators");
+        const itemUpgradeOptions = selectGenerator.createNumberOptions(data.getConfigData("defaultMaxUpgradeLevelItem"));
         let fields = [];
         for(let i = 0; i < numberOfGenerators; i++) {
             fields.push(fieldGenerator.generateItemField(
@@ -19,6 +19,9 @@ const shipGeneratorsGenerator = (function () {
     }
 
     function createSetterForAllItems() {
+        const shieldOptions = selectGenerator.createItemOptionGroup(data.getShields(), "Shields");
+        const generatorOptions = selectGenerator.createItemOptionGroup(data.getGenerators(), "Generators");
+        const itemUpgradeOptions = selectGenerator.createNumberOptions(data.getConfigData("defaultMaxUpgradeLevelItem"));
         return fieldGenerator.generateItemField(
             [shieldOptions, generatorOptions],
             itemUpgradeOptions,

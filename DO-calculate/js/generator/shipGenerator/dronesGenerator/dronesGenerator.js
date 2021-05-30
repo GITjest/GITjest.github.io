@@ -1,7 +1,4 @@
 const dronesGenerator = (function () {
-    const laserOptions = selectGenerator.createItemOptionGroup(lasers, "Lasers");
-    const shieldOptions = selectGenerator.createItemOptionGroup(shields, "Shields");
-    const itemUpgradeOptions = selectGenerator.createNumberOptions(config.defaultMaxUpgradeLevelItem);
 
     function create(numberOfDrones) {
         let fields = [];
@@ -35,8 +32,11 @@ const dronesGenerator = (function () {
                               droneUpgradeOnChangeEvent,
                               itemOnChangeEvent,
                               itemUpgradeOnChangeEvent) {
+        const laserOptions = selectGenerator.createItemOptionGroup(data.getLasers(), "Lasers");
+        const shieldOptions = selectGenerator.createItemOptionGroup(data.getShields(), "Shields");
+        const itemUpgradeOptions = selectGenerator.createNumberOptions(data.getConfigData("defaultMaxUpgradeLevelItem"));
         let itemsField = [];
-        for(let i = 0; i < config.numberOfDroneItems; i++) {
+        for(let i = 0; i < data.getConfigData("numberOfDroneItems"); i++) {
             itemsField.push(fieldGenerator.generateItemField(
                 [laserOptions, shieldOptions],
                 itemUpgradeOptions,
@@ -57,7 +57,7 @@ const dronesGenerator = (function () {
 
     function createDroneDesign(id, droneDesignOnChangeEvent) {
         return selectGenerator.createSelect(
-            `<option value=""></option>` + selectGenerator.createItemOptions(droneDesigns, ""),
+            `<option value=""></option>` + selectGenerator.createItemOptions(data.getDroneDesigns(), ""),
             "drone-design-" + id,
             "Design",
             droneDesignOnChangeEvent
@@ -66,7 +66,7 @@ const dronesGenerator = (function () {
 
     function createDroneLevel(id, droneLevelOnChangeEvent) {
         return selectGenerator.createSelect(
-            selectGenerator.createNumberOptions(config.defaultMaxDroneLevel),
+            selectGenerator.createNumberOptions(data.getConfigData("defaultMaxDroneLevel")),
             "drone-lvl-" + id,
             "Drone level",
             droneLevelOnChangeEvent
@@ -75,7 +75,7 @@ const dronesGenerator = (function () {
 
     function createDroneUpgrade(id, droneUpgradeOnChangeEvent) {
         return selectGenerator.createSelect(
-            selectGenerator.createNumberOptions(config.defaultMaxDroneUpgrade),
+            selectGenerator.createNumberOptions(data.getConfigData("defaultMaxDroneUpgrade")),
             "drone-upgrade-" + id,
             "Drone upgrade",
             droneUpgradeOnChangeEvent

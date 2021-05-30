@@ -1,5 +1,4 @@
 const status = (function () {
-    let bonuses = {};
     let ship = "";
     let shipBase = "";
     let shipLasers = [];
@@ -15,22 +14,10 @@ const status = (function () {
     let infection = false;
     let premium = false;
 
-    function init(b) {
-        for(let i = 0; i < b.length; i++) {
-            bonuses[b[i]] = 0;
-        }
-    }
-
-    function getBonuses() {
-        return bonuses;
-    }
-
     function setShip(sBase, s) {
         shipBase = sBase;
         ship = s;
-        for (let bonus in ships[shipBase][ship].bonuses) {
-            bonuses[bonus] = ships[shipBase][ship].bonuses[bonus];
-        }
+        bonuses.addBonuses(data.getShip(shipBase, ship).bonuses);
     }
 
     function getShip() {
@@ -42,19 +29,33 @@ const status = (function () {
     }
 
     function setLaser(slot, name) {
-        shipLasers[slot] = setItem(shipLasers[slot], name, 0, [lasers], "ship");
+        shipLasers[slot] = setItem(shipLasers[slot], name, 0, [data.getLasers()], "ship");
+        bonuses.setBonus("amount_laser_ship", countItems(shipLasers, data.getLasers()));
     }
 
     function setLaserUpgrade(slot, upgrade) {
-        shipLasers[slot] = setItem(shipLasers[slot], "", upgrade, [lasers], "ship");
+        shipLasers[slot] = setItem(shipLasers[slot], "", upgrade, [data.getLasers()], "ship");
     }
 
     function setGenerator(slot, name) {
-        shipGenerators[slot] = setItem(shipGenerators[slot], name, 0, [shields, generators], "ship");
+        shipGenerators[slot] = setItem(shipGenerators[slot], name, 0, [data.getShields(), data.getGenerators()], "ship");
+        bonuses.setBonus("amount_shield_ship", countItems(shipGenerators, data.getShields()));
+        bonuses.setBonus("amount_generator_ship", countItems(shipGenerators, data.getGenerators()));
+    }
+
+    function countItems(itemsToCount, items) {
+        let count = 0;
+        for(let item of itemsToCount) {
+            if(item != null) {
+                let i = items[item.name];
+                if(i != null) count++;
+            }
+        }
+        return count;
     }
 
     function setGeneratorUpgrade(slot, upgrade) {
-        shipGenerators[slot] = setItem(shipGenerators[slot], "", upgrade, [shields, generators], "ship");
+        shipGenerators[slot] = setItem(shipGenerators[slot], "", upgrade, [data.getShields(), data.getGenerators()], "ship");
     }
 
     function setDroneDesign(slot, design) {
@@ -89,59 +90,59 @@ const status = (function () {
 
     function setBoosters(names) {
         booster = names;
-        resetBonuses("boost");
-        addBonusesFromItems(boosters, booster);
+        bonuses.resetBonuses("boost");
+        addBonusesFromItems(data.getBoosters(), booster);
     }
 
     function setModules(names) {
         module = names;
-        resetBonuses("module");
-        addBonusesFromItems(modules, module);
+        bonuses.resetBonuses("module");
+        addBonusesFromItems(data.getModules(), module);
     }
 
     function setDroneFormation(name) {
         formation = name;
-        resetBonuses("formation");
-        addBonuses(formations[formation], 1, "");
+        bonuses.resetBonuses("formation");
+        bonuses.addBonuses(data.getDroneFormation(formation).bonuses);
     }
 
     function setLaserOre(oreName) {
         laserOre = oreName;
-        bonuses["damage_%_ore"] = ores[laserOre].laser;
+        bonuses.addBonus("damage_%_ore", data.getOre(laserOre).laser);
     }
 
     function setRocketOre(oreName) {
         rocketOre = oreName;
-        bonuses["damage_rocket_%_ore"] = ores[rocketOre].rocket;
+        bonuses.addBonus("damage_rocket_%_ore", data.getOre(rocketOre).rocket);
     }
 
     function setGeneratorOre(oreName) {
         generatorOre = oreName;
-        bonuses["speed_%_ore"] = ores[generatorOre].generator;
+        bonuses.addBonus("speed_%_ore", data.getOre(generatorOre).generator);
     }
 
     function setShieldOre(oreName) {
         shieldOre = oreName;
-        bonuses["shield_%_ore"] = ores[shieldOre].shield;
+        bonuses.addBonus("shield_%_ore", data.getOre(shieldOre).shield);
     }
     
     function setInfection(isInfected) {
         infection = isInfected;
-        resetBonuses("infection");
+        bonuses.resetBonuses("infection");
         if(infection) {
-            bonuses["damage_%_infection"] = 10;
-            bonuses["hp_%_infection"] = -15;
-            bonuses["speed_%_infection"] = -10;     //TODO add data
+            bonuses.addBonus("damage_%_infection", 10);
+            bonuses.addBonus("hp_%_infection", -15);
+            bonuses.addBonus("speed_%_infection", -10);     //TODO add data
         }
     }
     
     function setPremium(hasPremium) {
         premium = hasPremium;
-        resetBonuses("premium");
+        bonuses.resetBonuses("premium");
         if(premium) {
-            bonuses["rocket_reload_time_%_premium"] = -50; //TODO add data
-            bonuses["rep_%_premium"] = 100;
-            bonuses["cargo_premium"] = 500;
+            bonuses.addBonus("rocket_reload_time_%_premium", -50);
+            bonuses.addBonus("rep_%_premium", 100);
+            bonuses.addBonus("cargo_premium", 500);     //TODO add data
         }
     }
 
@@ -150,7 +151,7 @@ const status = (function () {
             for(let name of itemsNameToAdd) {
                 let item = items[itemType][name];
                 if(item != null) {
-                    addBonuses(item,1, "");
+                    bonuses.addBonuses(item.bonuses);
                 }
             }
         }
@@ -176,7 +177,7 @@ const status = (function () {
             if(design !== "") d = design;
             if(level > 0) l = level;
             if(upgrade > 0) u = upgrade;
-            for(let i = 0; i < config.numberOfDroneItems; i++) {
+            for(let i = 0; i < data.getConfigData("numberOfDroneItems"); i++) {
                 items[i] = setItem(null, "", 0, [], "");
             }
         }
@@ -184,61 +185,63 @@ const status = (function () {
     }
 
     function calculateDroneBonuses() {
-        resetBonuses("drone");
+        bonuses.resetBonuses("drone");
         let designSum = [];
         let droneCount = 0;
 
         for(let drone of drones) {
-            let hercules = 0;
-            let isActive = false;
-            if(drone.design !== "") {
-                designSum[drone.design] = designSum[drone.design] ? designSum[drone.design] + 1 : 1;
-                if (drone.design === "HERCULES") {
-                    hercules = droneDesigns["HERCULES"]["bonuses"]["shield_%_hercules_drone"];
-                }
-                isActive = true;
-            }
-
-            for(let item of drone.items) {
-                let itemValue = findItem(item.name, [lasers]);
-                if(itemValue != null) {
-                    let multi = multiplyPercentages(
-                        [item.upgrade, drone.level, drone.upgrade],
-                        [itemValue.upgradePercentValue, config.droneLevelPercentValueLaser, config.droneUpgradePercentValueLaser]
-                    );
-                    multi = 1 + multi * 0.01;
-                    bonuses["amount_laser_drone"]++;
-                    addBonuses(itemValue, multi, "drone");
+            if(drone != null) {
+                let hercules = 0;
+                let isActive = false;
+                if(drone.design !== "") {
+                    designSum[drone.design] = designSum[drone.design] ? designSum[drone.design] + 1 : 1;
+                    if (drone.design === "HERCULES") {
+                        hercules = data.getDroneDesign("HERCULES")["bonuses"]["shield_%_hercules_drone"];
+                    }
                     isActive = true;
-                } else {
-                    itemValue = findItem(item.name, [shields]);
+                }
+
+                for(let item of drone.items) {
+                    let itemValue = findItem(item.name, [data.getLasers()]);
                     if(itemValue != null) {
                         let multi = multiplyPercentages(
                             [item.upgrade, drone.level, drone.upgrade],
-                            [itemValue.upgradePercentValue, config.droneLevelPercentValueShield, config.droneUpgradePercentValueShield]
+                            [itemValue.upgradePercentValue, data.getConfigData("droneLevelPercentValueLaser"), data.getConfigData("droneUpgradePercentValueLaser")]
                         );
-                        multi = 1 + (multi * (1 + hercules * 0.01) + hercules) * 0.01;
-                        bonuses["amount_shield_drone"]++;
-                        addBonuses(itemValue, multi, "drone");
+                        multi = 1 + multi * 0.01;
+                        bonuses.addBonus("amount_laser_drone", 1);
+                        bonuses.addBonusesMultiValue(itemValue.bonuses, multi, "drone");
                         isActive = true;
+                    } else {
+                        itemValue = findItem(item.name, [data.getShields()]);
+                        if(itemValue != null) {
+                            let multi = multiplyPercentages(
+                                [item.upgrade, drone.level, drone.upgrade],
+                                [itemValue.upgradePercentValue, data.getConfigData("droneLevelPercentValueShield"), data.getConfigData("droneUpgradePercentValueShield")]
+                            );
+                            multi = 1 + (multi * (1 + hercules * 0.01) + hercules) * 0.01;
+                            bonuses.addBonus("amount_shield_drone", 1);
+                            bonuses.addBonusesMultiValue(itemValue.bonuses, multi, "drone");
+                            isActive = true;
+                        }
                     }
                 }
+                if(isActive) droneCount++;
             }
-            if(isActive) droneCount++;
         }
         setDroneDesignBonuses(designSum, droneCount);
     }
 
     function setDroneDesignBonuses(selectedDroneDesigns, numberActiveDrones) {
         for (let design in selectedDroneDesigns) {
-            let designBonuses = droneDesigns[design].bonuses;
+            let designBonuses = data.getDroneDesign(design).bonuses;
             for (let bonus in designBonuses) {
                 if (bonus.search("set") > 0) {
                     if (selectedDroneDesigns[design] === numberActiveDrones) {
-                        bonuses[bonus] += designBonuses[bonus];
+                        bonuses.addBonus(bonus, designBonuses[bonus]);
                     }
                 } else {
-                    bonuses[bonus] += designBonuses[bonus] * selectedDroneDesigns[design];
+                    bonuses.addBonus(bonus, (designBonuses[bonus] * selectedDroneDesigns[design]));
                 }
             }
         }
@@ -269,7 +272,7 @@ const status = (function () {
         if(slot != null && slot.name !== "" && source !== "") {
             let item = findItem(slot.name, items);
             let multi = 1 + slot.upgrade * item.upgradePercentValue - item.upgradePercentValue;
-            subBonuses(item, multi, source);
+            bonuses.subBonusesMultiValue(item.bonuses, multi, source);
         }
         if(upgrade > 0) {
             if(slot != null) {
@@ -281,9 +284,8 @@ const status = (function () {
         if(name !== "" && source !== "") {
             let item = findItem(name, items);
             let multi = 1 + upgrade * item.upgradePercentValue - item.upgradePercentValue;
-            addBonuses(item, multi, source);
+            bonuses.addBonusesMultiValue(item.bonuses, multi, source);
         }
-        console.log(bonuses);       //TODO
         return {name: name, upgrade: upgrade};
     }
 
@@ -297,31 +299,6 @@ const status = (function () {
         return null;
     }
 
-    function subBonuses(item, multi, source) {
-        for(let bonus in item.bonuses) {
-            let bonusName = bonus + "_" + source;
-            bonuses[bonusName] = bonuses[bonusName] - item.bonuses[bonus]
-                * (bonus.search("%") > 0 ? 1 : multi);
-        }
-    }
-
-    function addBonuses(item, multi, source) {
-        for(let bonus in item.bonuses) {
-            let bonusName = bonus;
-            if(source !== "") {
-                bonusName = bonusName + "_" + source
-            }
-            bonuses[bonusName] = bonuses[bonusName] + item.bonuses[bonus]
-                * (bonus.search("%") > 0 ? 1 : multi);
-        }
-    }
-
-    function resetBonuses(item) {
-        for (let bonus in bonuses)  {
-            bonuses[bonus] = bonus.search(item) > 0 ? 0 : bonuses[bonus];
-        }
-    }
-
     function getLaser(slot) {
         return shipLasers[slot];
     }
@@ -331,8 +308,6 @@ const status = (function () {
     }
 
     return {
-        init: init,
-        getBonuses: getBonuses,
         setShip: setShip,
         getShip: getShip,
         getShipBase: getShipBase,

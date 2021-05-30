@@ -1,14 +1,12 @@
 const otherItemsGenerator = (function () {
 
     function createInfection() {
-        let label = createLabel(
+        return  createLabel(
             "10% Damage&#10;-15% HP&#10;-10% Speed",
             "Infection",
             "infection",
             infectionOnChangeEvent
         );
-
-        return label;
     }
     
     function createPremium() {

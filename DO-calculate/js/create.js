@@ -9,13 +9,6 @@ $(function () {
     createSkillTree();
 });
 
-function createOptionOre(value, ore, oreName) {
-    return `<option value="${value}" data-content="<img src='images/ores/${ore.image}' alt='${oreName}' title='${ore.description}'/>"></option>`;
-}
-
-
-
-
 function createSkillTree() {
     resetSkills();
     for (let type in skills) {
