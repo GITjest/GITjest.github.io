@@ -180,11 +180,37 @@ hr {
 .drone-formations,
 .ores,
 .other,
-.skill-tree {
+.skill-tree,
+#menu{
     padding: 10px;
     margin: 5px;
     text-align: center;
     width: 260px;
+}
+
+.btn.btn-secondary.btn-menu {
+    font-weight: 400;
+    padding: 10px;
+    font-size: 1.7rem;
+    width: 100%;
+    background-color: var(--item-bg-color);
+    border-color: transparent;
+    margin: 5px;
+    border-radius: 0;
+}
+
+.btn-secondary:not(:disabled):not(.disabled).active,
+.btn-secondary:not(:disabled):not(.disabled):active,
+.show>.btn-secondary.dropdown-toggle{
+    background-color: var(--main-bg-color);
+    border-color: transparent;
+    border-left-color: white;
+}
+
+.btn-secondary:not(:disabled):not(.disabled).hover,
+.btn-secondary:not(:disabled):not(.disabled):hover {
+    border-color: transparent;
+    border-left-color: white;
 }
 
 .item-field .bootstrap-select .dropdown-toggle .filter-option-inner{
@@ -405,4 +431,9 @@ hr {
 .statistics-details {
     padding: 10px;
     margin: 5px;
+}
+
+#skill-container,
+#statistic-detail-container{
+    display: none;
 }

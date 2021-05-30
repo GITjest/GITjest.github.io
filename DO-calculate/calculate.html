@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" xmlns="http://www.w3.org/1999/html">
 <head>
     <link rel="shortcut icon" href="#"/>
     <title>DO calculate</title>
@@ -63,6 +63,61 @@
     </div>
 </div>
 
+<div class="d-inline-block" id="menu">
+    <div class="btn-group btn-group-toggle d-inline-block" data-toggle="buttons">
+        <label class="btn btn-secondary btn-menu active">
+            <input type="radio" name="options" id="ship" autocomplete="off" checked> Ship
+        </label>
+        <label class="btn btn-secondary btn-menu">
+            <input type="radio" name="options" id="skill-tree" autocomplete="off"> Skill Tree
+        </label>
+        <label class="btn btn-secondary btn-menu">
+            <input type="radio" name="options" id="statistic-details" autocomplete="off"> Statistics Details
+        </label>
+    </div>
+</div>
+
+<div class="d-inline-block align-top">
+    <div id="ship-container">
+        <div class="items">
+            <div class="sector">
+                <h2>Lasers</h2>
+                <hr>
+                <div id="laser-slots-container"></div>
+            </div>
+
+            <div class="sector">
+                <h2>Generators</h2>
+                <hr>
+                <div id="generator-slots-container"></div>
+            </div>
+
+            <div class="sector">
+                <h2>Drones</h2>
+                <hr>
+                <div id="drone-slots-container"></div>
+            </div>
+        </div>
+    </div>
+
+    <div id="skill-container">
+        <div class="sector">
+            <h2>Skill tree</h2>
+            <hr>
+            <h4 id="skill-points"></h4>
+            <div id="skill-tree-container"></div>
+        </div>
+    </div>
+
+    <div id="statistic-detail-container">
+        <div class="sector">
+            <h2>Statistics Details</h2>
+            <hr>
+            <div id="statistic-details-container"></div>
+        </div>
+    </div>
+</div>
+
 <div class="d-inline-block align-top">
     <div class="boosts">
         <h4>Boosters</h4>
@@ -95,114 +150,86 @@
     </div>
 </div>
 
-<div class="d-inline-block">
-    <div class="items">
-        <div class="sector">
-            <h2>Lasers</h2>
-            <hr>
-            <div id="laser-slots-container"></div>
-        </div>
-
-        <div class="sector">
-            <h2>Generators</h2>
-            <hr>
-            <div id="generator-slots-container"></div>
-        </div>
-
-        <div class="sector">
-            <h2>Drones</h2>
-            <hr>
-            <div id="drone-slots-container"></div>
-        </div>
-
-        <div class="sector">
-            <h2>Skill tree</h2>
-            <hr>
-            <h4 id="skill-points"></h4>
-            <div id="skill-tree-container"></div>
-        </div>
-    </div>
-</div>
-<div class="d-inline-block align-top">
-    <div class="statistics-details">
-        <h4>Statistics details</h4>
-        <hr>
-        <div id="accordion">
-            <div class="card">
-                <div class="card-header">
-                    <a class="card-link" data-toggle="collapse" href="#collapseLaser"
-                       id="statistics-details-laser-header">Laser</a>
-                </div>
-                <div id="collapseLaser" class="collapse" data-parent="#accordion">
-                    <div class="card-body" id="statistics-details-laser"></div>
-                </div>
-            </div>
-            <div class="card">
-                <div class="card-header">
-                    <a class="card-link" data-toggle="collapse" href="#collapseRocket"
-                       id="statistics-details-rocket-header">Rocket</a>
-                </div>
-                <div id="collapseRocket" class="collapse" data-parent="#accordion">
-                    <div class="card-body" id="statistics-details-rocket"></div>
-                </div>
-            </div>
-            <div class="card">
-                <div class="card-header">
-                    <a class="card-link" data-toggle="collapse" href="#collapseMine"
-                       id="statistics-details-mine-header">Mine</a>
-                </div>
-                <div id="collapseMine" class="collapse" data-parent="#accordion">
-                    <div class="card-body" id="statistics-details-mine"></div>
-                </div>
-            </div>
-            <div class="card">
-                <div class="card-header">
-                    <a class="collapsed card-link" data-toggle="collapse" href="#collapseHP"
-                       id="statistics-details-hp-header">HP</a>
-                </div>
-                <div id="collapseHP" class="collapse" data-parent="#accordion">
-                    <div class="card-body" id="statistics-details-hp"></div>
-                </div>
-            </div>
-            <div class="card">
-                <div class="card-header">
-                    <a class="collapsed card-link" data-toggle="collapse" href="#collapseSpeed"
-                       id="statistics-details-speed-header">Speed</a>
-                </div>
-                <div id="collapseSpeed" class="collapse" data-parent="#accordion">
-                    <div class="card-body" id="statistics-details-speed"></div>
-                </div>
-            </div>
-            <div class="card">
-                <div class="card-header">
-                    <a class="collapsed card-link" data-toggle="collapse" href="#collapseShield"
-                       id="statistics-details-shield-header">Shield</a>
-                </div>
-                <div id="collapseShield" class="collapse" data-parent="#accordion">
-                    <div class="card-body" id="statistics-details-shield"></div>
-                </div>
-            </div>
-            <div class="card">
-                <div class="card-header">
-                    <a class="collapsed card-link" data-toggle="collapse" href="#collapseCargo"
-                       id="statistics-details-cargo-header">Cargo</a>
-                </div>
-                <div id="collapseCargo" class="collapse" data-parent="#accordion">
-                    <div class="card-body" id="statistics-details-cargo"></div>
-                </div>
-            </div>
-            <div class="card">
-                <div class="card-header">
-                    <a class="collapsed card-link" data-toggle="collapse" href="#collapseOther"
-                       id="statistics-details-other-header">Other</a>
-                </div>
-                <div id="collapseOther" class="collapse" data-parent="#accordion">
-                    <div class="card-body" id="statistics-details-other"></div>
-                </div>
-            </div>
-        </div>
-    </div>
-</div>
+<!--<div class="d-inline-block align-top">-->
+<!--    <div class="statistics-details">-->
+<!--        <h4>Statistics details</h4>-->
+<!--        <hr>-->
+<!--        <div id="accordion">-->
+<!--            <div class="card">-->
+<!--                <div class="card-header">-->
+<!--                    <a class="card-link" data-toggle="collapse" href="#collapseLaser"-->
+<!--                       id="statistics-details-laser-header">Laser</a>-->
+<!--                </div>-->
+<!--                <div id="collapseLaser" class="collapse" data-parent="#accordion">-->
+<!--                    <div class="card-body" id="statistics-details-laser"></div>-->
+<!--                </div>-->
+<!--            </div>-->
+<!--            <div class="card">-->
+<!--                <div class="card-header">-->
+<!--                    <a class="card-link" data-toggle="collapse" href="#collapseRocket"-->
+<!--                       id="statistics-details-rocket-header">Rocket</a>-->
+<!--                </div>-->
+<!--                <div id="collapseRocket" class="collapse" data-parent="#accordion">-->
+<!--                    <div class="card-body" id="statistics-details-rocket"></div>-->
+<!--                </div>-->
+<!--            </div>-->
+<!--            <div class="card">-->
+<!--                <div class="card-header">-->
+<!--                    <a class="card-link" data-toggle="collapse" href="#collapseMine"-->
+<!--                       id="statistics-details-mine-header">Mine</a>-->
+<!--                </div>-->
+<!--                <div id="collapseMine" class="collapse" data-parent="#accordion">-->
+<!--                    <div class="card-body" id="statistics-details-mine"></div>-->
+<!--                </div>-->
+<!--            </div>-->
+<!--            <div class="card">-->
+<!--                <div class="card-header">-->
+<!--                    <a class="collapsed card-link" data-toggle="collapse" href="#collapseHP"-->
+<!--                       id="statistics-details-hp-header">HP</a>-->
+<!--                </div>-->
+<!--                <div id="collapseHP" class="collapse" data-parent="#accordion">-->
+<!--                    <div class="card-body" id="statistics-details-hp"></div>-->
+<!--                </div>-->
+<!--            </div>-->
+<!--            <div class="card">-->
+<!--                <div class="card-header">-->
+<!--                    <a class="collapsed card-link" data-toggle="collapse" href="#collapseSpeed"-->
+<!--                       id="statistics-details-speed-header">Speed</a>-->
+<!--                </div>-->
+<!--                <div id="collapseSpeed" class="collapse" data-parent="#accordion">-->
+<!--                    <div class="card-body" id="statistics-details-speed"></div>-->
+<!--                </div>-->
+<!--            </div>-->
+<!--            <div class="card">-->
+<!--                <div class="card-header">-->
+<!--                    <a class="collapsed card-link" data-toggle="collapse" href="#collapseShield"-->
+<!--                       id="statistics-details-shield-header">Shield</a>-->
+<!--                </div>-->
+<!--                <div id="collapseShield" class="collapse" data-parent="#accordion">-->
+<!--                    <div class="card-body" id="statistics-details-shield"></div>-->
+<!--                </div>-->
+<!--            </div>-->
+<!--            <div class="card">-->
+<!--                <div class="card-header">-->
+<!--                    <a class="collapsed card-link" data-toggle="collapse" href="#collapseCargo"-->
+<!--                       id="statistics-details-cargo-header">Cargo</a>-->
+<!--                </div>-->
+<!--                <div id="collapseCargo" class="collapse" data-parent="#accordion">-->
+<!--                    <div class="card-body" id="statistics-details-cargo"></div>-->
+<!--                </div>-->
+<!--            </div>-->
+<!--            <div class="card">-->
+<!--                <div class="card-header">-->
+<!--                    <a class="collapsed card-link" data-toggle="collapse" href="#collapseOther"-->
+<!--                       id="statistics-details-other-header">Other</a>-->
+<!--                </div>-->
+<!--                <div id="collapseOther" class="collapse" data-parent="#accordion">-->
+<!--                    <div class="card-body" id="statistics-details-other"></div>-->
+<!--                </div>-->
+<!--            </div>-->
+<!--        </div>-->
+<!--    </div>-->
+<!--</div>-->
 </body>
 </html>
 
