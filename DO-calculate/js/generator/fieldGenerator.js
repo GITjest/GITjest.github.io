@@ -3,7 +3,7 @@ const fieldGenerator = (function () {
     function updateItemField(id, itemName) {
         let maxUpgrade = data.getConfigData("defaultMaxUpgradeLevelItem");
         if(itemName !== "") {
-            maxUpgrade = status.findItem(itemName, [data.getLasers(), data.getShields(), data.getGenerators()]).maxUpgrade;
+            maxUpgrade = item.findItem(itemName, [data.getLasers(), data.getShields(), data.getGenerators()]).maxUpgrade;
         }
         setFieldStatus("field-" + id, (itemName !== ""));
         selectGenerator.updateItemUpgradeSelect(id, maxUpgrade);
