@@ -14,20 +14,20 @@
     <link rel="stylesheet" type="text/css" href="css/style.css"/>
 
     <script src="js/data/skills.js"></script>
-    <script src="js/status/stat.js"></script>
-
-    <script src="js/generate-ship-select.js"></script>
-    <script src="js/status/status.js"></script>
-    <script src="js/status/bonuses.js"></script>
 
     <script src="js/App.js"></script>
 
     <script src="js/data/data.js"></script>
 
+    <script src="js/status/status.js"></script>
+    <script src="js/status/bonuses.js"></script>
+    <script src="js/status/stat.js"></script>
+
     <script src="js/generator/generator.js"></script>
     <script src="js/generator/selectGenerator.js"></script>
     <script src="js/generator/fieldGenerator.js"></script>
 
+    <script src="js/generator/shipGenerator/shipSelectGenerator/shipSelectGenerator.js"></script>
     <script src="js/generator/shipGenerator/shipGenerator.js"></script>
     <script src="js/generator/shipGenerator/shipLasersGenerator/shipLasersGenerator.js"></script>
     <script src="js/generator/shipGenerator/shipGeneratorsGenerator/shipGeneratorsGenerator.js"></script>
@@ -41,10 +41,7 @@
 </head>
 <body>
 <div class="stat-container">
-    <div class="ship-select d-inline-block">
-        <select class="selectpicker form-control bg-transparent" id="select-ship" onchange="location = this.value;"
-                title="Select ship"
-                data-live-search="true"></select>
+    <div class="ship-select d-inline-block" id="ship-select-container">
     </div>
     <div class="stat-sector">
         <p id="damage-PVE">Damage PVE: 0(0) - 0(0)</p>

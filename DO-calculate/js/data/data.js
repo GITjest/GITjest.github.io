@@ -33,7 +33,7 @@ const data = (function () {
     function loadAllData() {
         bonuses = getJSONData("./data/bonuses.json");
 
-        ships = getJSONData("./data/ships.json");
+        loadShips();
 
         lasers = getJSONData("./data/lasers.json");
         generators = getJSONData("./data/generators.json");
@@ -46,6 +46,10 @@ const data = (function () {
         ores = getJSONData("./data/ores.json");
 
         config = getJSONData("./data/config.json");
+    }
+
+    function loadShips() {
+        ships = getJSONData("./data/ships.json");
     }
 
     function getBonuses() {
@@ -123,6 +127,7 @@ const data = (function () {
     return {
         setAsyncAjax: setAsyncAjax,
         loadAllData: loadAllData,
+        loadShips: loadShips,
         getBonuses: getBonuses,
         getShips: getShips,
         getShip: getShip,

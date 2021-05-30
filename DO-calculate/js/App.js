@@ -15,6 +15,7 @@ $(function () {
     status.setShip(shipBase, ship);
 
     const shipData = data.getShip(shipBase, ship);
+    $("#ship-select-container").append(shipSelectGenerator.create(data.getShips(), ship));
     generator.generate(shipData);
 
     // let json = JSON.stringify(ships, null, 1);
