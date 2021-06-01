@@ -88,6 +88,7 @@ const dronesGenerator = (function () {
         let itemName = this.value;
         status.setDroneDesign(slotNumber, itemName);
         fieldGenerator.setFieldStatus("field-drone-" + slotNumber, status.isDroneActive(slotNumber));
+        statisticsGenerator.refresh();
     }
 
     function droneLevelOnChangeEvent() {
@@ -95,6 +96,7 @@ const dronesGenerator = (function () {
         let slotNumber = extractSlotNumber(id);
         let droneLevel = this.value;
         status.setDroneLevel(slotNumber, droneLevel);
+        statisticsGenerator.refresh();
     }
 
     function droneUpgradeOnChangeEvent() {
@@ -102,6 +104,7 @@ const dronesGenerator = (function () {
         let slotNumber = extractSlotNumber(id);
         let droneUpgrade = this.value;
         status.setDroneUpgrade(slotNumber, droneUpgrade);
+        statisticsGenerator.refresh();
     }
 
     function itemOnChangeEvent() {
@@ -120,6 +123,7 @@ const dronesGenerator = (function () {
         let itemSlotNumber = extractSlotNumber(id);
         let itemUpgrade = this.value;
         status.setDroneItemUpgrade(slotNumber, itemSlotNumber, itemUpgrade);
+        statisticsGenerator.refresh();
     }
 
     function extractSlotNumber(id) {

@@ -12,6 +12,7 @@ const droneFormationGeneration = (function () {
 
     function droneFormationOnchangeEvent() {
         status.setDroneFormation($(this).val());
+        statisticsGenerator.refresh();
     }
 
     return {

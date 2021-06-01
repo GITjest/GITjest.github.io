@@ -43,6 +43,7 @@ const shipGeneratorsGenerator = (function () {
     function updateOnChangeEvent() {
         let slotNumber = extractSlotNumber(this.id);
         status.setGeneratorUpgrade(slotNumber, this.value);
+        statisticsGenerator.refresh();
     }
 
     function extractSlotNumber(id) {

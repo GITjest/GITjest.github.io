@@ -7,5 +7,12 @@
   "droneUpgradePercentValueLaser": 0.5,
   "droneUpgradePercentValueShield": 1,
   "droneLevelPercentValueLaser": 2,
-  "droneLevelPercentValueShield": 4
+  "droneLevelPercentValueShield": 4,
+  "baseAccuracy": 75,
+  "repairRobotTime": 90,
+  "baseShieldRegeneration": 4,
+  "baseRocketReload": 4,
+  "baseRocketLauncherReload": 5,
+  "baseMineReloadTime": 20,
+  "maxDiamondShield": 500000
 }

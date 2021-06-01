@@ -41,6 +41,7 @@ const shipLasersGenerator = (function () {
     function updateOnChangeEvent() {
         let slotNumber = extractSlotNumber(this.id);
         status.setLaserUpgrade(slotNumber, this.value);
+        statisticsGenerator.refresh();
     }
 
     function extractSlotNumber(id) {

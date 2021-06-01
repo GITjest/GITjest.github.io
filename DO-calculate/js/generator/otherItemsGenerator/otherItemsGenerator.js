@@ -20,10 +20,12 @@ const otherItemsGenerator = (function () {
 
     function infectionOnChangeEvent() {
         status.setInfection(this.checked);
+        statisticsGenerator.refresh();
     }
 
     function premiumOnChangeEvent() {
         status.setPremium(this.checked);
+        statisticsGenerator.refresh();
     }
 
     function createLabel(title, text, id, onChangeEvent) {

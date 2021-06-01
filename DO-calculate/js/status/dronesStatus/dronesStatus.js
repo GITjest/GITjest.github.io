@@ -75,11 +75,11 @@ const dronesStatus = (function () {
                     isActive = true;
                 }
 
-                for(let item of drone.items) {
-                    let itemValue = item.findItem(item.name, [data.getLasers()]);
+                for(let i of drone.items) {
+                    let itemValue = item.findItem(i.name, [data.getLasers()]);
                     if(itemValue != null) {
                         let multi = multiplyPercentages(
-                            [item.upgrade, drone.level, drone.upgrade],
+                            [i.upgrade, drone.level, drone.upgrade],
                             [itemValue.upgradePercentValue, data.getConfigData("droneLevelPercentValueLaser"), data.getConfigData("droneUpgradePercentValueLaser")]
                         );
                         multi = 1 + multi * 0.01;
@@ -87,10 +87,10 @@ const dronesStatus = (function () {
                         bonuses.addBonusesMultiValue(itemValue.bonuses, multi, "drone");
                         isActive = true;
                     } else {
-                        itemValue = item.findItem(item.name, [data.getShields()]);
+                        itemValue = item.findItem(i.name, [data.getShields()]);
                         if(itemValue != null) {
                             let multi = multiplyPercentages(
-                                [item.upgrade, drone.level, drone.upgrade],
+                                [i.upgrade, drone.level, drone.upgrade],
                                 [itemValue.upgradePercentValue, data.getConfigData("droneLevelPercentValueShield"), data.getConfigData("droneUpgradePercentValueShield")]
                             );
                             multi = 1 + (multi * (1 + hercules * 0.01) + hercules) * 0.01;

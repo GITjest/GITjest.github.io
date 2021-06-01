@@ -21,6 +21,7 @@ const boostersGenerator = (function () {
 
     function boostersOnchangeEvent() {
         status.setBoosters($(this).val());
+        statisticsGenerator.refresh();
     }
 
     return {

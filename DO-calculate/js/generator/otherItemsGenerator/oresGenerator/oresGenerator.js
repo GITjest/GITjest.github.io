@@ -52,18 +52,22 @@ const oresGenerator = (function () {
 
     function laserOresOnchangeEvent() {
         status.setLaserOre($(this).val());
+        statisticsGenerator.refresh();
     }
 
     function rocketOresOnchangeEvent() {
         status.setRocketOre($(this).val());
+        statisticsGenerator.refresh();
     }
 
     function generatorOresOnchangeEvent() {
         status.setGeneratorOre($(this).val());
+        statisticsGenerator.refresh();
     }
 
     function shieldOresOnchangeEvent() {
         status.setShieldOre($(this).val());
+        statisticsGenerator.refresh();
     }
     
     return {

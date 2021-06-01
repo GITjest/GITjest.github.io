@@ -20,7 +20,6 @@
     <script src="js/data/data.js"></script>
 
     <script src="js/status/bonuses.js"></script>
-    <script src="js/status/stat.js"></script>
     <script src="js/status/item.js"></script>
     <script src="js/status/shipStatus/shipStatus.js"></script>
     <script src="js/status/dronesStatus/dronesStatus.js"></script>
@@ -30,6 +29,7 @@
     <script src="js/generator/generator.js"></script>
     <script src="js/generator/selectGenerator.js"></script>
     <script src="js/generator/fieldGenerator.js"></script>
+    <script src="js/generator/statisticsGenerator/statisticsGenerator.js"></script>
 
     <script src="js/generator/shipGenerator/shipSelectGenerator/shipSelectGenerator.js"></script>
     <script src="js/generator/shipGenerator/shipGenerator.js"></script>
@@ -48,18 +48,18 @@
     <div class="ship-select d-inline-block" id="ship-select-container">
     </div>
     <div class="stat-sector">
-        <p id="damage-PVE">Damage PVE: 0(0) - 0(0)</p>
-        <p id="damage-PVP">Damage PVP: 0(0) - 0(0)</p>
+        <p>Damage PVE: <span id="damage-PVE">0(0) - 0(0)</span></p>
+        <p>Damage PVP: <span id="damage-PVP">0(0) - 0(0)</span></p>
     </div>
 
     <div class="stat-sector">
-        <p id="hp">HP: 0</p>
-        <p id="shield">Shield: 0</p>
+        <p>HP: <span class="hp">0</span></p>
+        <p>Shield: <span class="shield">0</span></p>
     </div>
 
     <div class="stat-sector">
-        <p id="speed">Speed: 0</p>
-        <p id="cargo">Cargo: 0</p>
+        <p>Speed: <span class="speed">0</span></p>
+        <p>Cargo: <span class="cargo">0</span></p>
     </div>
 </div>
 
@@ -109,12 +109,201 @@
         </div>
     </div>
 
-    <div id="statistic-detail-container">
+    <div id="statistic-details-container">
         <div class="sector">
-            <h2>Statistics Details</h2>
+            <h2>Laser</h2>
             <hr>
-            <div id="statistic-details-container"></div>
+            <div class="d-inline-block stat">
+                <span>Damage PVE<span class="damage-PVE">0</span></span>
+            </div>
+            <div class="d-inline-block stat">
+                <span>Damage PVE base<span class="damage-PVE-base">0</span></span>
+            </div>
+            <div class="d-inline-block stat">
+                <span>Damage PVE <span class="damage-PVE-percent">0%</span></span>
+            </div>
+            <div class="d-inline-block stat">
+                <span>Damage PVP<span class="damage-PVP">0</span></span>
+            </div>
+            <div class="d-inline-block stat">
+                <span>Damage PVP base<span class="damage-PVP-base">0</span></span>
+            </div>
+            <div class="d-inline-block stat">
+                <span>Damage PVP<span class="damage-PVP-percent">0%</span></span>
+            </div>
+            <div class="d-inline-block stat">
+                <span>Bonus damage PVE<span class="damage-bonus-PVE">0</span></span>
+            </div>
+            <div class="d-inline-block stat">
+                <span>Bonus damage PVP<span class="damage-bonus-PVP">0</span></span>
+            </div>
+            <div class="d-inline-block stat">
+                <span>Damage BL<span class="damage-BL">0</span></span>
+            </div>
+            <div class="d-inline-block stat">
+                <span>Damage AI<span class="damage-AI">0</span></span>
+            </div>
+            <div class="d-inline-block stat">
+                <span>Fluctuating<span class="fluctuating">0%</span></span>
+            </div>
+            <div class="d-inline-block stat">
+                <span>Accuracy<span class="accuracy">0%</span></span>
+            </div>
+            <div class="d-inline-block stat">
+                <span>Amount<span class="laser-amount">0</span></span>
+            </div>
         </div>
+
+        <div class="sector">
+            <h2>HP</h2>
+            <hr>
+            <div class="d-inline-block stat">
+                <span>HP<span class="hp">0</span></span>
+            </div>
+            <div class="d-inline-block stat">
+                <span>HP base<span class="hp-base">0</span></span>
+            </div>
+            <div class="d-inline-block stat">
+                <span>HP<span class="hp-percent">0%</span></span>
+            </div>
+            <div class="d-inline-block stat">
+                <span>Repair<span class="repair">0</span></span>
+            </div>
+        </div>
+
+        <div class="sector">
+            <h2>Shield</h2>
+            <hr>
+            <div class="d-inline-block stat">
+                <span>Shield<span class="shield">0</span></span>
+            </div>
+            <div class="d-inline-block stat">
+                <span>Shield base<span class="shield-base">0</span></span>
+            </div>
+            <div class="d-inline-block stat">
+                <span>Shield<span class="shield-percent">0%</span></span>
+            </div>
+            <div class="d-inline-block stat">
+                <span>Absorption<span class="absorption">0%</span></span>
+            </div>
+            <div class="d-inline-block stat">
+                <span>Regeneration<span class="regeneration">0</span></span>
+            </div>
+            <div class="d-inline-block stat">
+                <span>Regeneration<span class="regeneration-percent">0%</span></span>
+            </div>
+            <div class="d-inline-block stat">
+                <span>Regeneration diamond<span class="regeneration-diamond">0</span></span>
+            </div>
+            <div class="d-inline-block stat">
+                <span>Penetration<span class="penetration">0%</span></span>
+            </div>
+            <div class="d-inline-block stat">
+                <span>Amount<span class="shield-amount">0</span></span>
+            </div>
+        </div>
+
+        <div class="sector">
+            <h2>Speed</h2>
+            <hr>
+            <div class="d-inline-block stat">
+                <span>Speed<span class="speed">0</span></span>
+            </div>
+            <div class="d-inline-block stat">
+                <span>Speed base<span class="speed-base">0</span></span>
+            </div>
+            <div class="d-inline-block stat">
+                <span>Speed<span class="speed-percent">0%</span></span>
+            </div>
+            <div class="d-inline-block stat">
+                <span>Amount<span class="generator-amount">0</span></span>
+            </div>
+        </div>
+
+        <div class="sector">
+            <h2>Rocket</h2>
+            <hr>
+            <div class="d-inline-block stat">
+                <span>Damage<span class="rocket-damage">0</span></span>
+            </div>
+            <div class="d-inline-block stat">
+                <span>Damage base<span class="rocket-damage-base">0</span></span>
+            </div>
+            <div class="d-inline-block stat">
+                <span>Damage<span class="rocket-damage-percent">0%</span></span>
+            </div>
+            <div class="d-inline-block stat">
+                <span>Accuracy<span class="rocket-accuracy">0%</span></span>
+            </div>
+            <div class="d-inline-block stat">
+                <span>Reload time<span class="rocket-reload-time">0s</span></span>
+            </div>
+            <div class="d-inline-block stat">
+                <span>Launcher reload time<span class="rocket-launcher-reload-time">0s</span></span>
+            </div>
+        </div>
+
+        <div class="sector">
+            <h2>Mine</h2>
+            <hr>
+            <div class="d-inline-block stat">
+                <span>Damage<span class="mine-damage">0%</span></span>
+            </div>
+            <div class="d-inline-block stat">
+                <span>Reload time<span class="mine-reload-time">0s</span></span>
+            </div>
+            <div class="d-inline-block stat">
+                <span>Radius<span class="mine-radius">0%</span></span>
+            </div>
+        </div>
+
+        <div class="sector">
+            <h2>Cargo</h2>
+            <hr>
+            <div class="d-inline-block stat">
+                <span>Cargo<span class="cargo">0</span></span>
+            </div>
+            <div class="d-inline-block stat">
+                <span>Cargo base<span class="cargo-base">0</span></span>
+            </div>
+            <div class="d-inline-block stat">
+                <span>Cargo<span class="cargo-percent">0%</span></span>
+            </div>
+            <div class="d-inline-block stat">
+                <span>Cargo box<span class="cargo-box">0%</span></span>
+            </div>
+
+        </div>
+
+        <div class="sector">
+            <h2>Other</h2>
+            <hr>
+            <div class="d-inline-block stat">
+                <span>Experience<span class="experience">0%</span></span>
+            </div>
+            <div class="d-inline-block stat">
+                <span>Experience PVE<span class="experience-PVE">0%</span></span>
+            </div>
+            <div class="d-inline-block stat">
+                <span>Honor<span class="honor">0%</span></span>
+            </div>
+            <div class="d-inline-block stat">
+                <span>Evasion<span class="evasion">0%</span></span>
+            </div>
+            <div class="d-inline-block stat">
+                <span>Cooldown<span class="cooldown">0%</span></span>
+            </div>
+            <div class="d-inline-block stat">
+                <span>Bonus box<span class="bonus-box">0%</span></span>
+            </div>
+            <div class="d-inline-block stat">
+                <span>Bonus box uridium<span class="bonus-box-uridium">0%</span></span>
+            </div>
+            <div class="d-inline-block stat">
+                <span>Credits<span class="credits">0%</span></span>
+            </div>
+        </div>
+
     </div>
 </div>
 
@@ -150,86 +339,6 @@
     </div>
 </div>
 
-<!--<div class="d-inline-block align-top">-->
-<!--    <div class="statistics-details">-->
-<!--        <h4>Statistics details</h4>-->
-<!--        <hr>-->
-<!--        <div id="accordion">-->
-<!--            <div class="card">-->
-<!--                <div class="card-header">-->
-<!--                    <a class="card-link" data-toggle="collapse" href="#collapseLaser"-->
-<!--                       id="statistics-details-laser-header">Laser</a>-->
-<!--                </div>-->
-<!--                <div id="collapseLaser" class="collapse" data-parent="#accordion">-->
-<!--                    <div class="card-body" id="statistics-details-laser"></div>-->
-<!--                </div>-->
-<!--            </div>-->
-<!--            <div class="card">-->
-<!--                <div class="card-header">-->
-<!--                    <a class="card-link" data-toggle="collapse" href="#collapseRocket"-->
-<!--                       id="statistics-details-rocket-header">Rocket</a>-->
-<!--                </div>-->
-<!--                <div id="collapseRocket" class="collapse" data-parent="#accordion">-->
-<!--                    <div class="card-body" id="statistics-details-rocket"></div>-->
-<!--                </div>-->
-<!--            </div>-->
-<!--            <div class="card">-->
-<!--                <div class="card-header">-->
-<!--                    <a class="card-link" data-toggle="collapse" href="#collapseMine"-->
-<!--                       id="statistics-details-mine-header">Mine</a>-->
-<!--                </div>-->
-<!--                <div id="collapseMine" class="collapse" data-parent="#accordion">-->
-<!--                    <div class="card-body" id="statistics-details-mine"></div>-->
-<!--                </div>-->
-<!--            </div>-->
-<!--            <div class="card">-->
-<!--                <div class="card-header">-->
-<!--                    <a class="collapsed card-link" data-toggle="collapse" href="#collapseHP"-->
-<!--                       id="statistics-details-hp-header">HP</a>-->
-<!--                </div>-->
-<!--                <div id="collapseHP" class="collapse" data-parent="#accordion">-->
-<!--                    <div class="card-body" id="statistics-details-hp"></div>-->
-<!--                </div>-->
-<!--            </div>-->
-<!--            <div class="card">-->
-<!--                <div class="card-header">-->
-<!--                    <a class="collapsed card-link" data-toggle="collapse" href="#collapseSpeed"-->
-<!--                       id="statistics-details-speed-header">Speed</a>-->
-<!--                </div>-->
-<!--                <div id="collapseSpeed" class="collapse" data-parent="#accordion">-->
-<!--                    <div class="card-body" id="statistics-details-speed"></div>-->
-<!--                </div>-->
-<!--            </div>-->
-<!--            <div class="card">-->
-<!--                <div class="card-header">-->
-<!--                    <a class="collapsed card-link" data-toggle="collapse" href="#collapseShield"-->
-<!--                       id="statistics-details-shield-header">Shield</a>-->
-<!--                </div>-->
-<!--                <div id="collapseShield" class="collapse" data-parent="#accordion">-->
-<!--                    <div class="card-body" id="statistics-details-shield"></div>-->
-<!--                </div>-->
-<!--            </div>-->
-<!--            <div class="card">-->
-<!--                <div class="card-header">-->
-<!--                    <a class="collapsed card-link" data-toggle="collapse" href="#collapseCargo"-->
-<!--                       id="statistics-details-cargo-header">Cargo</a>-->
-<!--                </div>-->
-<!--                <div id="collapseCargo" class="collapse" data-parent="#accordion">-->
-<!--                    <div class="card-body" id="statistics-details-cargo"></div>-->
-<!--                </div>-->
-<!--            </div>-->
-<!--            <div class="card">-->
-<!--                <div class="card-header">-->
-<!--                    <a class="collapsed card-link" data-toggle="collapse" href="#collapseOther"-->
-<!--                       id="statistics-details-other-header">Other</a>-->
-<!--                </div>-->
-<!--                <div id="collapseOther" class="collapse" data-parent="#accordion">-->
-<!--                    <div class="card-body" id="statistics-details-other"></div>-->
-<!--                </div>-->
-<!--            </div>-->
-<!--        </div>-->
-<!--    </div>-->
-<!--</div>-->
 </body>
 </html>
 

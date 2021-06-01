@@ -19,6 +19,7 @@ const modulesGenerator = (function () {
     function modulesOnchangeEvent() {
         selectGenerator.setLimitSelectedItem(this,1);
         status.setModules($(this).val());
+        statisticsGenerator.refresh();
     }
 
     function shipModules(shipModuleNames) {

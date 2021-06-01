@@ -204,13 +204,13 @@ hr {
 .show>.btn-secondary.dropdown-toggle{
     background-color: var(--main-bg-color);
     border-color: transparent;
-    border-left-color: white;
+    border-right-color: white;
 }
 
 .btn-secondary:not(:disabled):not(.disabled).hover,
 .btn-secondary:not(:disabled):not(.disabled):hover {
     border-color: transparent;
-    border-left-color: white;
+    border-right-color: white;
 }
 
 .item-field .bootstrap-select .dropdown-toggle .filter-option-inner{
@@ -283,7 +283,8 @@ hr {
     transform: rotate(45deg);
 }
 
-.items {
+#ship-container,
+#statistic-details-container{
     max-width: 930px;
 }
 
@@ -292,6 +293,7 @@ hr {
     display: inline-block;
     margin: 5px;
     text-align: center;
+    width: 100%;
 }
 
 .item-field {
@@ -394,46 +396,19 @@ hr {
     font-size: 0.7rem;
 }
 
-#accordion {
-    width: 260px;
-    font-weight: 100;
-    font-size: 1rem;
-    background-color: var(--main-bg-color);
-    color: var(--main-color);
-}
-
-#accordion .card {
-    background-color: var(--main-bg-color);
-    color: var(--main-color);
-    border: 0;
-}
-
-#accordion .card-header {
-    padding: 1px;
-    background-color: var(--main-bg-color);
-}
-
-#accordion .card-header a {
-    color: var(--main-color);
-}
-
-#accordion .card-body {
-    border-bottom: 1px solid var(--main-color);
-    border-top: 1px solid var(--main-color);
+.stat {
+    padding: 5px 15px 5px 15px;
+    width: 300px;
     text-align: left;
+    display: inline-block;
 }
 
-#accordion .card-body span span {
+.stat span span {
     text-align: right;
     float: right;
 }
 
-.statistics-details {
-    padding: 10px;
-    margin: 5px;
-}
-
 #skill-container,
-#statistic-detail-container{
+#statistic-details-container{
     display: none;
 }
