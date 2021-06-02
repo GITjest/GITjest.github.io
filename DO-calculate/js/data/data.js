@@ -13,6 +13,9 @@ const data = (function () {
     let droneFormations = {};
     let modules = {};
     let ores = {};
+    let others = {};
+
+    let skills = {};
 
     let config = {};
 
@@ -44,6 +47,9 @@ const data = (function () {
         droneFormations = getJSONData("./data/droneFormations.json");
         modules = getJSONData("./data/modules.json");
         ores = getJSONData("./data/ores.json");
+        others = getJSONData("./data/others.json");
+
+        skills = getJSONData("./data/skills.json");
 
         config = getJSONData("./data/config.json");
     }
@@ -120,6 +126,22 @@ const data = (function () {
         return ores[ore];
     }
 
+    function getOther(data) {
+        return others[data];
+    }
+
+    function getSkills() {
+        return skills;
+    }
+
+    function getTypeSkills(skillType) {
+        return skills[skillType];
+    }
+
+    function getSkill(skillType, skill) {
+        return skills[skillType][skill];
+    }
+
     function getConfigData(data) {
         return config[data];
     }
@@ -145,6 +167,10 @@ const data = (function () {
         getModule: getModule,
         getOres: getOres,
         getOre: getOre,
+        getOther: getOther,
+        getSkills: getSkills,
+        getTypeSkills: getTypeSkills,
+        getSkill: getSkill,
         getConfigData: getConfigData
     }
 })();

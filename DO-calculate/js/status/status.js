@@ -24,15 +24,13 @@ const status = (function () {
         setGeneratorOre: otherItemStatus.setGeneratorOre,
         setShieldOre: otherItemStatus.setShieldOre,
         setInfection: otherItemStatus.setInfection,
-        setPremium: otherItemStatus.setPremium
+        setPremium: otherItemStatus.setPremium,
+        getSkillAmount: skillStatus.getSkillAmount,
+        getSkills: skillStatus.getSkills,
+        isSkillActive: skillStatus.isSkillActive,
+        addSkillPoint: skillStatus.addSkillPoint,
+        subSkillPoint: skillStatus.subSkillPoint,
+        isMaxAmount: skillStatus.isMaxAmount,
+        setSkill: skillStatus.setSkill
     }
 })();
-
-//     skillTree: [
-//         {
-//             name: "",
-//             points: 0
-//         }
-//     ]
-//
-// };

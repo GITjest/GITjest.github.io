@@ -1,0 +1,18 @@
+{
+  "infection": {
+    "description": "10% Damage&#10;-15% HP&#10;-10% Speed",
+    "bonuses": {
+      "damage_%_infection": 10,
+      "hp_%_infection": -15,
+      "speed_%_infection": -10
+    }
+  },
+  "premium": {
+    "description": "50% shorter rocket reload time&#10;+100% repair robot efficiency&#10;500 extra units of cargo space",
+    "bonuses": {
+      "rocket_reload_time_%_premium": -50,
+      "rep_%_premium": 100,
+      "cargo_premium": 500
+    }
+  }
+}

@@ -24,36 +24,53 @@ const otherItemStatus = (function () {
     function setDroneFormation(name) {
         formation = name;
         bonuses.resetBonuses("formation");
-        bonuses.addBonuses(data.getDroneFormation(formation).bonuses);
+        if(name !== "") {
+            bonuses.addBonuses(data.getDroneFormation(formation).bonuses);
+        }
     }
 
     function setLaserOre(oreName) {
         laserOre = oreName;
-        bonuses.addBonus("damage_%_ore", data.getOre(laserOre).laser);
+        if(oreName !== "") {
+            bonuses.addBonus("damage_%_ore", data.getOre(laserOre).laser);
+        } else {
+            bonuses.setBonus("damage_%_ore", 0);
+        }
     }
 
     function setRocketOre(oreName) {
         rocketOre = oreName;
-        bonuses.addBonus("damage_rocket_%_ore", data.getOre(rocketOre).rocket);
+        if(oreName !== "") {
+            bonuses.addBonus("damage_rocket_%_ore", data.getOre(rocketOre).rocket);
+        } else {
+            bonuses.setBonus("damage_rocket_%_ore", 0);
+        }
+
     }
 
     function setGeneratorOre(oreName) {
         generatorOre = oreName;
-        bonuses.addBonus("speed_%_ore", data.getOre(generatorOre).generator);
+        if(oreName !== "") {
+            bonuses.addBonus("speed_%_ore", data.getOre(generatorOre).generator);
+        } else {
+            bonuses.setBonus("speed_%_ore", 0);
+        }
     }
 
     function setShieldOre(oreName) {
         shieldOre = oreName;
-        bonuses.addBonus("shield_%_ore", data.getOre(shieldOre).shield);
+        if(oreName !== "") {
+            bonuses.addBonus("shield_%_ore", data.getOre(shieldOre).shield);
+        } else {
+            bonuses.setBonus("shield_%_ore", 0);
+        }
     }
 
     function setInfection(isInfected) {
         infection = isInfected;
         bonuses.resetBonuses("infection");
         if(infection) {
-            bonuses.addBonus("damage_%_infection", 10);
-            bonuses.addBonus("hp_%_infection", -15);
-            bonuses.addBonus("speed_%_infection", -10);     //TODO add data
+            bonuses.addBonuses(data.getOther("infection").bonuses);
         }
     }
 
@@ -61,9 +78,7 @@ const otherItemStatus = (function () {
         premium = hasPremium;
         bonuses.resetBonuses("premium");
         if(premium) {
-            bonuses.addBonus("rocket_reload_time_%_premium", -50);
-            bonuses.addBonus("rep_%_premium", 100);
-            bonuses.addBonus("cargo_premium", 500);     //TODO add data
+            bonuses.addBonuses(data.getOther("premium").bonuses);
         }
     }
 

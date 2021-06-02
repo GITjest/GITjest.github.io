@@ -23,12 +23,6 @@
       "bonuses": {
         "damage_%_boost": 5
       }
-    },
-    "MUL-B03": {
-      "description": "+5% damage",
-      "bonuses": {
-        "damage_%_boost": 5
-      }
     }
   },
   "SHD": {
@@ -48,12 +42,6 @@
       "description": "+25% shield",
       "bonuses": {
         "shield_%_boost": 25
-      }
-    },
-    "MUL-B03": {
-      "description": "+5% shield",
-      "bonuses": {
-        "shield_%_boost": 5
       }
     }
   },
@@ -141,12 +129,6 @@
       "bonuses": {
         "experience_%_boost": 100
       }
-    },
-    "MUL-B03": {
-      "description": "Gives you a 5% EP bonus",
-      "bonuses": {
-        "experience_%_boost": 5
-      }
     }
   },
   "REP": {
@@ -206,6 +188,16 @@
       "description": "+25% shield regeneration speed",
       "bonuses": {
         "shield_regeneration_%_boost": 25
+      }
+    }
+  },
+  "Multi": {
+    "MUL-B03": {
+      "description": "+5% damage&#10;+5% shield&#10;Gives you a 5% EP bonus",
+      "bonuses": {
+        "damage_%_boost": 5,
+        "shield_%_boost": 5,
+        "experience_%_boost": 5
       }
     }
   }

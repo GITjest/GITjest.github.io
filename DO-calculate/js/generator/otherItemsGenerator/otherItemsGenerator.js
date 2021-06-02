@@ -2,7 +2,7 @@ const otherItemsGenerator = (function () {
 
     function createInfection() {
         return  createLabel(
-            "10% Damage&#10;-15% HP&#10;-10% Speed",
+            data.getOther("infection").description,
             "Infection",
             "infection",
             infectionOnChangeEvent
@@ -11,7 +11,7 @@ const otherItemsGenerator = (function () {
     
     function createPremium() {
         return createLabel(
-            "50% shorter rocket reload time&#10;+100% repair robot efficiency&#10;500 extra units of cargo space",
+            data.getOther("premium").description,
             "Premium",
             "premium",
             premiumOnChangeEvent

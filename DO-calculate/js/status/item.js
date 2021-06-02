@@ -1,6 +1,7 @@
 const item = (function () {
 
     function addBonusesFromItems(items, itemsNameToAdd) {
+        if(itemsNameToAdd == null) return;
         for(let itemType in items) {
             for(let name of itemsNameToAdd) {
                 let item = items[itemType][name];

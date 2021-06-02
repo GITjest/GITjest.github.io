@@ -156,7 +156,7 @@ const statisticsGenerator = (function () {
 
     function repair() {
         let robotTime = data.getConfigData("repairRobotTime");
-        return (hpBase() / (robotTime - robotTime * bonuses.getBonus("rep_%_skill") * 0.01))
+        return (hp() / (robotTime - robotTime * bonuses.getBonus("rep_%_skill") * 0.01))
             * (1 + bonuses.getBonus("rep_%_boost") * 0.01)
             * (1 + bonuses.getBonus("rep_%_premium") * 0.01);
     }

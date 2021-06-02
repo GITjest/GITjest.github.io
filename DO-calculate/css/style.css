@@ -284,8 +284,13 @@ hr {
 }
 
 #ship-container,
+#skill-tree-container,
 #statistic-details-container{
     max-width: 930px;
+}
+
+#skill-tree-container {
+    min-width: 920px;
 }
 
 .sector {

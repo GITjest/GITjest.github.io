@@ -14,5 +14,6 @@
   "baseRocketReload": 4,
   "baseRocketLauncherReload": 5,
   "baseMineReloadTime": 20,
-  "maxDiamondShield": 500000
+  "maxDiamondShield": 500000,
+  "maxSkillPoints": 50
 }
