@@ -199,22 +199,6 @@ const skillStatus = (function () {
         }
     }
 
-    // function calculateSkillBonuses() {
-    //     bonuses.resetBonuses("skill");
-    //     let dataSkills = data.getSkills();
-    //     for(let skillType in dataSkills) {
-    //         for(let skill in dataSkills[skillType]) {
-    //             if(data.getSkill(skillType, skill).levels != null) {
-    //                 let amount = getSkillAmount(skill);
-    //                 if(amount > 0) {
-    //                     let skillLevel = data.getSkill(skillType, skill).levels[amount - 1];
-    //                     bonuses.addBonus(skillLevel.bonus, skillLevel.value);
-    //                 }
-    //             }
-    //         }
-    //     }
-    // }
-
     function isSkillActive(skillName) {
         return skills[skillName].active();
     }
