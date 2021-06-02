@@ -32,10 +32,8 @@ start index.html
 ```
 
 ## To-do
-* Data update to the current version of the game
 * Add ammunition
 * Improve damage calculation
 * Add P.E.T
 * Add CPU
 * Creating modules
-* Limiting the maximum upgrade level for some items to 16
