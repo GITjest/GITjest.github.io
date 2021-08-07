@@ -142,12 +142,17 @@ const dronesStatus = (function () {
         return false;
     }
 
+    function getStatus() {
+        return drones;
+    }
+
     return {
         setDroneDesign: setDroneDesign,
         setDroneLevel: setDroneLevel,
         setDroneUpgrade: setDroneUpgrade,
         setDroneItem: setDroneItem,
         setDroneItemUpgrade: setDroneItemUpgrade,
-        isDroneActive: isDroneActive
+        isDroneActive: isDroneActive,
+        getStatus: getStatus
     }
 })();

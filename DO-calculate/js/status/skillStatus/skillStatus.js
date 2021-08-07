@@ -211,6 +211,10 @@ const skillStatus = (function () {
         return skills;
     }
 
+    function getStatus() {
+        return skills;
+    }
+
     return {
         isSkillActive: isSkillActive,
         getSkillAmount: getSkillAmount,
@@ -218,6 +222,7 @@ const skillStatus = (function () {
         addSkillPoint: addSkillPoint,
         subSkillPoint: subSkillPoint,
         isMaxAmount: isMaxAmount,
-        setSkill: setSkill
+        setSkill: setSkill,
+        getStatus: getStatus
     }
 })();

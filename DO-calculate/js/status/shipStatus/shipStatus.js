@@ -45,6 +45,15 @@ const shipStatus = (function (){
         return shipGenerators[slot];
     }
 
+    function getStatus() {
+        return {
+            "shipBase": shipBase,
+            "ship": ship,
+            "shipLasers" : shipLasers,
+            "shipGenerators": shipGenerators
+        }
+    }
+
     return {
         setShip: setShip,
         getShip: getShip,
@@ -54,6 +63,7 @@ const shipStatus = (function (){
         getLaser: getLaser,
         setGenerator: setGenerator,
         setGeneratorUpgrade: setGeneratorUpgrade,
-        getGenerator: getGenerator
+        getGenerator: getGenerator,
+        getStatus: getStatus
     }
 })();

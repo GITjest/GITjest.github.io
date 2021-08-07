@@ -82,6 +82,20 @@ const otherItemStatus = (function () {
         }
     }
 
+    function getStatus() {
+        return {
+            "boosters": booster,
+            "modules": module,
+            "formation": formation,
+            "laserOre": laserOre,
+            "rocketOre": rocketOre,
+            "generatorOre": generatorOre,
+            "shieldOre": shieldOre,
+            "infection": infection,
+            "premium": premium
+        }
+    }
+
     return {
         setBoosters: setBoosters,
         setModules: setModules,
@@ -91,6 +105,7 @@ const otherItemStatus = (function () {
         setGeneratorOre: setGeneratorOre,
         setShieldOre: setShieldOre,
         setInfection: setInfection,
-        setPremium: setPremium
+        setPremium: setPremium,
+        getStatus: getStatus
     }
 })();

@@ -44,6 +44,7 @@
     <script src="js/generator/otherItemsGenerator/oresGenerator/oresGenerator.js"></script>
 </head>
 <body>
+
 <div class="stat-container">
     <div class="ship-select d-inline-block" id="ship-select-container">
     </div>
@@ -74,6 +75,19 @@
         <label class="btn btn-secondary btn-menu">
             <input type="radio" name="options" id="statistic-details" autocomplete="off"> Statistics Details
         </label>
+    </div>
+
+    <div class="d-flex justify-content-around">
+        <div class="image-save" id="file-output">
+            <img src="images/icons/save-file.png" title="Save file" alt="Save file"/>
+        </div>
+
+        <div class="image-load">
+            <label for="file-input">
+                <img src="images/icons/load-file.png" title="Load file" alt="Load file"/>
+            </label>
+            <input id="file-input" type="file">
+        </div>
     </div>
 </div>
 

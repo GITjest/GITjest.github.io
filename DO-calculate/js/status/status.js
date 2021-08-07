@@ -1,5 +1,50 @@
 const status = (function () {
 
+    function save() {
+        download(createData(), createFileName());
+    }
+
+    function createData() {
+        return {
+            "ship": shipStatus.getStatus(),
+            "drones": dronesStatus.getStatus(),
+            "otherItems": otherItemStatus.getStatus(),
+            "skillTree": skillStatus.getStatus()
+        }
+    }
+
+    function createFileName() {
+        let now = new Date()
+        let date = now.getFullYear() + "-" + (now.getMonth() + 1) + "-" + now.getDate()
+            + "_" + now.getHours() + "-" + now.getMinutes() + "-" + now.getSeconds();
+        return shipStatus.getShip() + "_" + date;
+    }
+
+    function download(data, fileName) {
+        const element = document.createElement('a');
+        element.setAttribute('href', 'data:text/plain;charset=utf-8,' + encodeURIComponent(JSON.stringify(data)));
+        element.setAttribute('download', fileName + ".json");
+
+        element.style.display = 'none';
+        document.body.appendChild(element);
+
+        element.click();
+
+        document.body.removeChild(element);
+    }
+
+    function load(e) {
+        const file = e.target.files[0];
+        if (!file) return;
+
+        const reader = new FileReader();
+        reader.onload = function(e) {
+            const contents = e.target.result;
+            console.log(contents);
+        };
+        reader.readAsText(file);
+    }
+
     return {
         setShip: shipStatus.setShip,
         getShip: shipStatus.getShip,
@@ -31,6 +76,8 @@ const status = (function () {
         addSkillPoint: skillStatus.addSkillPoint,
         subSkillPoint: skillStatus.subSkillPoint,
         isMaxAmount: skillStatus.isMaxAmount,
-        setSkill: skillStatus.setSkill
+        setSkill: skillStatus.setSkill,
+        save: save,
+        load: load
     }
 })();
