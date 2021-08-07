@@ -1,4 +1,4 @@
-const droneFormationGeneration = (function () {
+const droneFormationGenerator = (function () {
 
     function create() {
         let options = `<option value="""></option>`;
@@ -15,7 +15,12 @@ const droneFormationGeneration = (function () {
         statisticsGenerator.refresh();
     }
 
+    function setData(data) {
+        $("#drone-formation").selectpicker('val', data);
+    }
+
     return {
-        create: create
+        create: create,
+        setData: setData
     }
 })();

@@ -1,7 +1,7 @@
 const generator = (function () {
 
-    function generate(ship) {
-        shipGenerator.generate(ship);
+    function generate(ship, data) {
+        shipGenerator.generate(ship, data?.ship, data?.drones);
 
         $("#boosters-container")
             .append(boostersGenerator.create());
@@ -10,7 +10,7 @@ const generator = (function () {
             .append(modulesGenerator.create(ship));
 
         $("#drone-formations-container")
-            .append(droneFormationGeneration.create());
+            .append(droneFormationGenerator.create());
 
         $("#ores-container")
             .append(oresGenerator.createLaserOre())
@@ -22,10 +22,20 @@ const generator = (function () {
             .append(otherItemsGenerator.createInfection())
             .append(otherItemsGenerator.createPremium());
 
+        if(data?.otherItems) {
+            if(data.otherItems.boosters) boostersGenerator.setData(data.otherItems.boosters);
+            if(data.otherItems.modules) modulesGenerator.setData(data.otherItems.modules);
+            if(data.otherItems.formation) droneFormationGenerator.setData(data.otherItems.formation);
+            if(data.otherItems.ores) oresGenerator.setData(data.otherItems.ores);
+            if(data.otherItems.other) otherItemsGenerator.setData(data.otherItems.other);
+        }
+
         $("#skill-tree-container")
             .on("contextmenu", function (e) {return false;})
             .append(skillTreeGenerator.create());
         skillTreeGenerator.updateSkills();
+
+        if(data?.skillTree) skillTreeGenerator.setData(data.skillTree);
 
         $("#ship").on("change", function () {
             $("#ship-container").css("display", "inline-block");
@@ -44,7 +54,6 @@ const generator = (function () {
             $("#skill-container").css("display", "none");
             $("#statistic-details-container").css("display", "inline-block");
         })
-
     }
 
     return {

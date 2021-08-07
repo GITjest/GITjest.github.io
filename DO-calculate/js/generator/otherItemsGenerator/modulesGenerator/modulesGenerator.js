@@ -37,7 +37,12 @@ const modulesGenerator = (function () {
         return shipModules;
     }
 
+    function setData(data) {
+        $("#modules").selectpicker('val', data);
+    }
+
     return {
-        create: create
+        create: create,
+        setData: setData
     }
 })();

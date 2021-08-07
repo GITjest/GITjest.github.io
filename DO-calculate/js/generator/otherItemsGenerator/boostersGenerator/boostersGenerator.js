@@ -16,7 +16,6 @@ const boostersGenerator = (function () {
         });
         select.val([]);
         return select;
-
     }
 
     function boostersOnchangeEvent() {
@@ -24,7 +23,12 @@ const boostersGenerator = (function () {
         statisticsGenerator.refresh();
     }
 
+    function setData(data) {
+        $("#boosters").selectpicker('val', data);
+    }
+
     return {
-        create: create
+        create: create,
+        setData: setData
     }
 })();

@@ -130,9 +130,25 @@ const dronesGenerator = (function () {
         return id.slice(id.lastIndexOf("-") + 1);
     }
 
+    function setData(data) {
+        for(let i = 0; i < data.length; i++) {
+            if(data[i] !== null) {
+                $("#drone-design-" + i).selectpicker('val', data[i]?.design);
+                $("#drone-lvl-" + i).selectpicker('val', data[i]?.level);
+                $("#drone-upgrade-" + i).selectpicker('val', data[i]?.upgrade);
+                let items = data[i].items;
+                for(let j = 0; j < items.length; j++) {
+                    $("#drone-slot-" + i + "-" + j).selectpicker('val', items[j]?.name);
+                    $("#upgrade-drone-slot-" + i + "-" + j).selectpicker('val', items[j]?.upgrade);
+                }
+            }
+        }
+    }
+
     return {
         create: create,
-        createSetterForAllItems: createSetterForAllItems
+        createSetterForAllItems: createSetterForAllItems,
+        setData: setData
     }
 
 })();

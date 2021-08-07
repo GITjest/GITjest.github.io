@@ -34,13 +34,19 @@ const status = (function () {
     }
 
     function load(e) {
-        const file = e.target.files[0];
+        let file = e.target.files[0];
         if (!file) return;
 
-        const reader = new FileReader();
+        let reader = new FileReader();
         reader.onload = function(e) {
-            const contents = e.target.result;
-            console.log(contents);
+            try {
+                const object = JSON.parse(e.target.result);
+                window.location.replace("calculate.html?shipBase=" + object.ship.shipBase
+                    + "&ship=" + object.ship.ship
+                    + "&data=" + JSON.stringify(object))
+            } catch(e) {
+                alert("Invalid data in the file!");
+            }
         };
         reader.readAsText(file);
     }
@@ -71,6 +77,7 @@ const status = (function () {
         setInfection: otherItemStatus.setInfection,
         setPremium: otherItemStatus.setPremium,
         getSkillAmount: skillStatus.getSkillAmount,
+        setSkillAmount: skillStatus.setSkillAmount,
         getSkills: skillStatus.getSkills,
         isSkillActive: skillStatus.isSkillActive,
         addSkillPoint: skillStatus.addSkillPoint,

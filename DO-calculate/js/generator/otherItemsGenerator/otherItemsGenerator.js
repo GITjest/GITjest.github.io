@@ -35,9 +35,15 @@ const otherItemsGenerator = (function () {
             .append(input)
             .append($("<span>", {"class": "checkmark"}));
     }
+
+    function setData(data) {
+        $("#infection").prop('checked', data.infection).change();
+        $("#premium").prop('checked', data.premium).change();
+    }
     
     return {
         createInfection: createInfection,
-        createPremium: createPremium
+        createPremium: createPremium,
+        setData: setData
     }
 })();

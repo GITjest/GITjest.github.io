@@ -69,11 +69,19 @@ const oresGenerator = (function () {
         status.setShieldOre($(this).val());
         statisticsGenerator.refresh();
     }
+
+    function setData(data) {
+        $("#ore-laser").selectpicker('val', data.laserOre);
+        $("#ore-rocket").selectpicker('val', data.rocketOre);
+        $("#ore-generator").selectpicker('val', data.generatorOre);
+        $("#ore-shield").selectpicker('val', data.shieldOre);
+    }
     
     return {
         createLaserOre: createLaserOre,
         createRocketOre: createRocketOre,
         createGeneratorOre: createGeneratorOre,
-        createShieldOre: createShieldOre
+        createShieldOre: createShieldOre,
+        setData: setData
     }
 })();

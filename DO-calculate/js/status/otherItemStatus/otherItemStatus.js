@@ -87,12 +87,16 @@ const otherItemStatus = (function () {
             "boosters": booster,
             "modules": module,
             "formation": formation,
-            "laserOre": laserOre,
-            "rocketOre": rocketOre,
-            "generatorOre": generatorOre,
-            "shieldOre": shieldOre,
-            "infection": infection,
-            "premium": premium
+            "ores": {
+                "laserOre": laserOre,
+                "rocketOre": rocketOre,
+                "generatorOre": generatorOre,
+                "shieldOre": shieldOre
+            },
+            "other": {
+                "infection": infection,
+                "premium": premium
+            }
         }
     }
 

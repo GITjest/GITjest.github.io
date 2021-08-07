@@ -207,6 +207,11 @@ const skillStatus = (function () {
         return skills[skillName].amount;
     }
 
+    function setSkillAmount(skillType, skillName, amount) {
+        skills[skillName].amount = amount;
+        addSkillBonus(skillType, skillName, amount);
+    }
+
     function getSkills() {
         return skills;
     }
@@ -218,6 +223,7 @@ const skillStatus = (function () {
     return {
         isSkillActive: isSkillActive,
         getSkillAmount: getSkillAmount,
+        setSkillAmount: setSkillAmount,
         getSkills: getSkills,
         addSkillPoint: addSkillPoint,
         subSkillPoint: subSkillPoint,

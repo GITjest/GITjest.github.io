@@ -48,8 +48,16 @@ const shipLasersGenerator = (function () {
         return id.slice(id.lastIndexOf("-") + 1);
     }
 
+    function setData(data) {
+        for(let i = 0; i < data.length; i++) {
+            $("#ship-laser-" + i).selectpicker('val', data[i]?.name);
+            $("#upgrade-ship-laser-" + i).selectpicker('val', data[i]?.upgrade);
+        }
+    }
+
     return {
         create: create,
-        createSetterForAllItems: createSetterForAllItems
+        createSetterForAllItems: createSetterForAllItems,
+        setData: setData
     }
 })();

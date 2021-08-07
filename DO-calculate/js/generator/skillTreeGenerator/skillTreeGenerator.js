@@ -101,9 +101,23 @@ const skillTreeGenerator = (function () {
 
         }
     }
+
+    function setData(dataSkill) {
+        let dataSkills = data.getSkills()
+        for(let skillType in dataSkills) {
+            for (let skill in dataSkills[skillType]) {
+                if(dataSkill[skill])
+                    status.setSkillAmount(skillType, skill, dataSkill[skill].amount);
+            }
+        }
+        updateSkills();
+        updateSkillLevelsValue();
+        statisticsGenerator.refresh();
+    }
     
     return {
         create: create,
-        updateSkills: updateSkills
+        updateSkills: updateSkills,
+        setData: setData
     }
 })();
