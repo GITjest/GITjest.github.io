@@ -11,8 +11,10 @@ Here is a working live demo : https://gitjest.github.io/DO-calculate/
 * [To-do](#To-do)
 
 ## Screenshots
-![Empty goliath](./img/empty-goliath.png)
-![Example goliath](./img/example-goliath.png)
+![Empty ship](./img/empty_ship.png)
+![Full ship](./img/full_ship.png)
+![Skill tree](./img/skill_tree.png)
+![Statistics details](./img/statistics_details.png)
 
 ## Technologies
 * Bootstrap - 4.1.1
