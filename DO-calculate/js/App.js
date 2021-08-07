@@ -22,6 +22,7 @@ $(function () {
     status.setShip(shipBase, ship);
 
     document.getElementById('file-output').addEventListener('click', status.save, false);
+    document.getElementById('share').addEventListener('click', status.share, false);
     document.getElementById('file-input').addEventListener('change', status.load, false);
 
     const shipData = data.getShip(shipBase, ship);

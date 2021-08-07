@@ -40,15 +40,28 @@ const status = (function () {
         let reader = new FileReader();
         reader.onload = function(e) {
             try {
-                const object = JSON.parse(e.target.result);
-                window.location.replace("calculate.html?shipBase=" + object.ship.shipBase
-                    + "&ship=" + object.ship.ship
-                    + "&data=" + JSON.stringify(object))
+                window.location.replace("calculate.html" + createParameters(JSON.parse(e.target.result)))
             } catch(e) {
                 alert("Invalid data in the file!");
             }
         };
         reader.readAsText(file);
+    }
+
+    function createParameters(object) {
+        return "?shipBase=" + object.ship.shipBase
+            + "&ship=" + object.ship.ship
+            + "&data=" + JSON.stringify(object);
+    }
+
+    function share() {
+        let input = document.createElement("textarea");
+        input.value = location.origin + location.pathname + createParameters(createData());
+        document.body.appendChild(input);
+        input.select();
+        document.execCommand("Copy");
+        input.remove();
+        alert("Link copied to clipboard");
     }
 
     return {
@@ -85,6 +98,7 @@ const status = (function () {
         isMaxAmount: skillStatus.isMaxAmount,
         setSkill: skillStatus.setSkill,
         save: save,
-        load: load
+        load: load,
+        share: share
     }
 })();

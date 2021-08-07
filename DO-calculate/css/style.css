@@ -423,15 +423,14 @@ hr {
 }
 
 .image-save > img,
-.image-load > label > img {
+.image-load > label > img,
+.image-share > img {
     cursor: pointer;
     padding: 5px;
 }
 
-.image-save > img {
-    margin-left: 20px;
-}
-
-.image-load > label > img {
-    margin-right: 20px;
+.image-share > img {
+    width: 60px;
+    height: 60px;
+    margin-top: 5px;
 }
