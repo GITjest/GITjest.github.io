@@ -2,13 +2,6 @@ $(function () {
     const url = new URL(window.location.href);
     const shipBase = url.searchParams.get("shipBase");
     const ship = url.searchParams.get("ship");
-    let object = {};
-
-    try {
-        object = JSON.parse(url.searchParams.get("data"));
-    } catch(e) {
-        alert("Invalid data!");
-    }
 
     if(shipBase === null || ship === null) {
         window.location.replace("index.html");
@@ -27,6 +20,6 @@ $(function () {
 
     const shipData = data.getShip(shipBase, ship);
     $("#ship-select-container").append(shipSelectGenerator.create(data.getShips(), ship));
-    generator.generate(shipData, object);
+    generator.generate(shipData, statusConverter.convertLinkParametersToObject(url));
     statisticsGenerator.refresh();
 });

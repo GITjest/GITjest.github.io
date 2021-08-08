@@ -40,7 +40,7 @@ const status = (function () {
         let reader = new FileReader();
         reader.onload = function(e) {
             try {
-                window.location.replace("calculate.html" + createParameters(JSON.parse(e.target.result)))
+                window.location.replace("calculate.html" + statusConverter.convertObjectToLinkParameters(JSON.parse(e.target.result)))
             } catch(e) {
                 alert("Invalid data in the file!");
             }
@@ -48,15 +48,9 @@ const status = (function () {
         reader.readAsText(file);
     }
 
-    function createParameters(object) {
-        return "?shipBase=" + object.ship.shipBase
-            + "&ship=" + object.ship.ship
-            + "&data=" + JSON.stringify(object);
-    }
-
     function share() {
         let input = document.createElement("textarea");
-        input.value = location.origin + location.pathname + createParameters(createData());
+        input.value = location.origin + location.pathname + statusConverter.convertObjectToLinkParameters(createData());
         document.body.appendChild(input);
         input.select();
         document.execCommand("Copy");
