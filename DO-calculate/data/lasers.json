@@ -192,5 +192,27 @@
     "upgradePercentValue": 0.005,
     "image": "lasers/AA-1.png",
     "description": "AA-1&#10;&#10;Damage: 175&#10;Damage IA: 250&#10;Fluctuating: 25%"
+  },
+  "LF-3 (TEST SERVER)": {
+    "bonuses": {
+      "damage_PVE_laser": 175,
+      "damage_PVP_laser": 201.25,
+      "fluctuating_%_laser": 25
+    },
+    "maxUpgrade": 16,
+    "upgradePercentValue": 0.005,
+    "image": "lasers/LF-3.png",
+    "description": "LF-3 (TEST SERVER)&#10;&#10;Damage: 175 (+15%)&#10;Damage PVP: 175&#10;Fluctuating: 25%"
+  },
+  "Caucasus (TEST SERVER)": {
+    "bonuses": {
+      "damage_PVE_laser": 190,
+      "damage_PVP_laser": 218.5,
+      "fluctuating_%_laser": 25
+    },
+    "maxUpgrade": 20,
+    "upgradePercentValue": 0.005,
+    "image": "lasers/LF-1.png",
+    "description": "Caucasus (TEST SERVER)&#10;&#10;Damage: 190 (+15%)&#10;Damage PVP: 190&#10;Fluctuating: 25%"
   }
 }

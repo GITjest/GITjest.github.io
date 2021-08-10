@@ -1682,5 +1682,95 @@
       },
       "modules": []
     }
+  },
+  "HOLO": {
+    "HOLO": {
+      "lasers": 15,
+      "generators": 15,
+      "modulesSlot": 3,
+      "bonuses": {
+        "hp_ship": 350000,
+        "speed_ship": 300,
+        "cargo_ship": 1500
+      },
+      "modules": []
+    },
+    "HOLO (1 module)": {
+      "lasers": 15,
+      "generators": 15,
+      "modulesSlot": 3,
+      "bonuses": {
+        "hp_ship": 370000,
+        "speed_ship": 300,
+        "cargo_ship": 1500
+      },
+      "modules": []
+    },
+    "HOLO (2 modules)": {
+      "lasers": 15,
+      "generators": 15,
+      "modulesSlot": 3,
+      "bonuses": {
+        "hp_ship": 390000,
+        "speed_ship": 300,
+        "cargo_ship": 1500
+      },
+      "modules": []
+    },
+    "HOLO (3 modules)": {
+      "lasers": 15,
+      "generators": 15,
+      "modulesSlot": 3,
+      "bonuses": {
+        "hp_ship": 410000,
+        "speed_ship": 300,
+        "cargo_ship": 1500
+      },
+      "modules": []
+    },
+    "HOLO (TEST SERVER)": {
+      "lasers": 15,
+      "generators": 15,
+      "modulesSlot": 3,
+      "bonuses": {
+        "hp_ship": 375000,
+        "speed_ship": 300,
+        "cargo_ship": 1500
+      },
+      "modules": []
+    },
+    "HOLO (1 module) (TEST SERVER)": {
+      "lasers": 15,
+      "generators": 15,
+      "modulesSlot": 3,
+      "bonuses": {
+        "hp_ship": 395000,
+        "speed_ship": 300,
+        "cargo_ship": 1500
+      },
+      "modules": []
+    },
+    "HOLO (2 modules) (TEST SERVER)": {
+      "lasers": 15,
+      "generators": 15,
+      "modulesSlot": 3,
+      "bonuses": {
+        "hp_ship": 415000,
+        "speed_ship": 300,
+        "cargo_ship": 1500
+      },
+      "modules": []
+    },
+    "HOLO (3 modules) (TEST SERVER)": {
+      "lasers": 15,
+      "generators": 15,
+      "modulesSlot": 3,
+      "bonuses": {
+        "hp_ship": 435000,
+        "speed_ship": 300,
+        "cargo_ship": 1500
+      },
+      "modules": []
+    }
   }
 }
