@@ -206,13 +206,14 @@
   },
   "Caucasus (TEST SERVER)": {
     "bonuses": {
-      "damage_PVE_laser": 190,
-      "damage_PVP_laser": 218.5,
+      "damage_PVE_laser": 195,
+      "damage_PVP_laser": 234,
+      "damage_bonus_laser": 100,
       "fluctuating_%_laser": 25
     },
     "maxUpgrade": 20,
     "upgradePercentValue": 0.005,
     "image": "lasers/LF-1.png",
-    "description": "Caucasus (TEST SERVER)&#10;&#10;Damage: 190 (+15%)&#10;Damage PVP: 190&#10;Fluctuating: 25%"
+    "description": "Caucasus (TEST SERVER)&#10;&#10;Damage: 195 (+20%)&#10;Damage PVP: 195&#10;Damage extra: 100&#10;Fluctuating: 25%"
   }
 }
